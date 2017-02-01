@@ -1,5 +1,6 @@
 package de.jangobrick.scratchlib.project;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import de.jangobrick.scratchlib.objects.ScratchObject;
@@ -48,13 +49,29 @@ public class ScratchProject
         out.writeString(version.getHeader());
 
         // write info section
-        ScratchOutputStream tempInfoOut = new ScratchOutputStream();
-        sectionInfo.writeTo(tempInfoOut);
-        // copy to out
-        out.write32bitUnsignedInt(tempInfoOut.size());
-        tempInfoOut.writeTo(out);
+        ByteArrayOutputStream infoBytes = getSectionBytes(sectionInfo);
+        out.write32bitUnsignedInt(infoBytes.size());
+        infoBytes.writeTo(out);
 
         // write stage section
         sectionStage.writeTo(out);
+    }
+
+    /**
+     * Writes the given object store into a byte array output stream.
+     * 
+     * @param section The section to write.
+     * @return A {@code ByteArrayOutputStream} containing the written bytes.
+     * @throws IOException
+     */
+    private ByteArrayOutputStream getSectionBytes(ScratchObjectStore section)
+            throws IOException
+    {
+        ByteArrayOutputStream bout = new ByteArrayOutputStream();
+        ScratchOutputStream out = new ScratchOutputStream(bout);
+
+        section.writeTo(out);
+
+        return bout;
     }
 }
