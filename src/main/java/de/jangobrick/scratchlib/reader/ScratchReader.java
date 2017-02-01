@@ -1,11 +1,9 @@
 package de.jangobrick.scratchlib.reader;
 
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 import de.jangobrick.scratchlib.project.ScratchProject;
 import de.jangobrick.scratchlib.project.ScratchVersion;
@@ -42,45 +40,15 @@ public class ScratchReader
      */
     public ScratchProject read(InputStream in) throws IOException
     {
-        DataInputStream din = toDataInputStream(in);
+        try (ScratchInputStream sin = new ScratchInputStream(in)) {
 
-        ScratchVersion version = readHeader(din);
-        if (version == null) {
-            throw new IOException("Scratch version unknown");
+            ScratchVersion version = ScratchVersion
+                    .lookupHeader(sin.readString(10));
+            if (version == null) {
+                throw new IOException("Scratch version unknown");
+            }
+
+            return new ScratchProject(version);
         }
-
-        return new ScratchProject(version);
-    }
-
-    /**
-     * Casts the given stream into a {@code DataInputStream} if possible,
-     * otherwise instantiates a new one.
-     * 
-     * @param in The input stream to convert.
-     * @return A {@code DataInputStream} for the given input stream.
-     */
-    private static DataInputStream toDataInputStream(InputStream in)
-    {
-        if (in instanceof DataInputStream) {
-            return (DataInputStream) in;
-        }
-        return new DataInputStream(in);
-    }
-
-    /**
-     * Reads the header string from the given stream and returns the matching
-     * {@link ScratchVersion}.
-     * 
-     * @param din The input stream.
-     * @return The matching {@link ScratchVersion}.
-     * @throws IOException
-     */
-    private ScratchVersion readHeader(DataInputStream din) throws IOException
-    {
-        byte[] headerBytes = new byte[10];
-        din.readFully(headerBytes);
-        String header = new String(headerBytes, StandardCharsets.US_ASCII);
-
-        return ScratchVersion.lookupHeader(header);
     }
 }
