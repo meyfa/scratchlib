@@ -1,8 +1,8 @@
 package de.jangobrick.scratchlib.objects;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 
 
 /**
@@ -11,8 +11,7 @@ import java.util.Map;
  */
 public class ScratchReferenceTable implements Iterable<ScratchObject>
 {
-    private final Map<ScratchObject, Integer> references = new LinkedHashMap<>();
-    private int nextReferenceID = 1;
+    private final List<ScratchObject> references = new ArrayList<>();
 
     /**
      * Performs a reference lookup for the given {@link ScratchObject}.
@@ -22,7 +21,19 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      */
     public int lookup(ScratchObject object)
     {
-        return references.getOrDefault(object, -1);
+        int index = references.indexOf(object);
+        return index == -1 ? index : index + 1;
+    }
+
+    /**
+     * Performs an object lookup for the given reference ID.
+     * 
+     * @param referenceID The ID to look up.
+     * @return The referenced object, or null if not found.
+     */
+    public ScratchObject lookup(int referenceID)
+    {
+        return references.get(referenceID - 1);
     }
 
     /**
@@ -33,11 +44,10 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      */
     public void insert(ScratchObject object)
     {
-        if (references.containsKey(object)) {
+        if (references.contains(object)) {
             throw new IllegalArgumentException("Object already referenced");
         }
-        references.put(object, nextReferenceID);
-        nextReferenceID++;
+        references.add(object);
     }
 
     /**
@@ -51,6 +61,6 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
     @Override
     public Iterator<ScratchObject> iterator()
     {
-        return references.keySet().iterator();
+        return references.iterator();
     }
 }
