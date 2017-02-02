@@ -1,4 +1,4 @@
-package de.jangobrick.scratchlib.writer;
+package scratchlib.writer;
 
 import java.io.IOException;
 import java.io.OutputStream;

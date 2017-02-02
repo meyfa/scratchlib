@@ -1,4 +1,4 @@
-package de.jangobrick.scratchlib.reader;
+package scratchlib.reader;
 
 import java.io.DataInputStream;
 import java.io.IOException;

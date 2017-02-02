@@ -1,4 +1,4 @@
-package de.jangobrick.scratchlib.objects;
+package scratchlib.objects;
 
 import java.util.ArrayList;
 import java.util.Iterator;

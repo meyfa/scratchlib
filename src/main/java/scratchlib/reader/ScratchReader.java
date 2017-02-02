@@ -1,12 +1,12 @@
-package de.jangobrick.scratchlib.reader;
+package scratchlib.reader;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import de.jangobrick.scratchlib.project.ScratchProject;
-import de.jangobrick.scratchlib.project.ScratchVersion;
+import scratchlib.project.ScratchProject;
+import scratchlib.project.ScratchVersion;
 
 
 /**

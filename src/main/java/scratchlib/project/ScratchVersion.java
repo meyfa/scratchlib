@@ -1,4 +1,4 @@
-package de.jangobrick.scratchlib.project;
+package scratchlib.project;
 
 /**
  * Enumerates the supported Scratch versions / dialects.

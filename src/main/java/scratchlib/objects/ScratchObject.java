@@ -1,8 +1,8 @@
-package de.jangobrick.scratchlib.objects;
+package scratchlib.objects;
 
 import java.io.IOException;
 
-import de.jangobrick.scratchlib.writer.ScratchOutputStream;
+import scratchlib.writer.ScratchOutputStream;
 
 
 /**

@@ -1,11 +1,11 @@
-package de.jangobrick.scratchlib.project;
+package scratchlib.project;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import de.jangobrick.scratchlib.objects.ScratchObject;
-import de.jangobrick.scratchlib.objects.ScratchObjectStore;
-import de.jangobrick.scratchlib.writer.ScratchOutputStream;
+import scratchlib.objects.ScratchObject;
+import scratchlib.objects.ScratchObjectStore;
+import scratchlib.writer.ScratchOutputStream;
 
 
 /**

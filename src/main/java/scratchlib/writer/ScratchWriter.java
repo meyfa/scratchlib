@@ -1,10 +1,10 @@
-package de.jangobrick.scratchlib.writer;
+package scratchlib.writer;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import de.jangobrick.scratchlib.project.ScratchProject;
+import scratchlib.project.ScratchProject;
 
 
 /**
