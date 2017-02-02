@@ -21,6 +21,11 @@ import de.jangobrick.scratchlib.writer.ScratchOutputStream;
  */
 public class ScratchObjectStore
 {
+    /**
+     * The object store header, consisting of "ObjS" + 0x01 + "Stch" + 0x01.
+     */
+    public static final String HEADER = "ObjS" + (char) 1 + "Stch" + (char) 1;
+
     private ScratchObject object;
 
     /**
@@ -62,13 +67,8 @@ public class ScratchObjectStore
         refTable.insert(object);
         object.createReferences(refTable);
 
-        // write header
-        out.writeString("ObjS");
-        out.write(0x01);
-        out.writeString("Stch");
-        out.write(0x01);
-
-        // write size
+        // write header + size
+        out.writeString(HEADER);
         out.write32bitUnsignedInt(refTable.size());
 
         // write objects from reference table
