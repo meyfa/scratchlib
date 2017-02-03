@@ -35,6 +35,42 @@ public class ScratchProject
     }
 
     /**
+     * @return The object that is the project's info section.
+     */
+    public ScratchObject getInfoSection()
+    {
+        return info;
+    }
+
+    /**
+     * Sets the project's info section.
+     * 
+     * @param info The new info section.
+     */
+    public void setInfoSection(ScratchObject info)
+    {
+        this.info = info;
+    }
+
+    /**
+     * @return The object that is the project's stage / content section.
+     */
+    public ScratchObject getStageSection()
+    {
+        return stage;
+    }
+
+    /**
+     * Sets the project's stage / content section.
+     * 
+     * @param stage The new stage section.
+     */
+    public void setStageSection(ScratchObject stage)
+    {
+        this.stage = stage;
+    }
+
+    /**
      * Writes this project to the given output stream.
      * 
      * @param out The stream to write to.
