@@ -2,6 +2,7 @@ package scratchlib.objects;
 
 import java.io.IOException;
 
+import scratchlib.project.ScratchProject;
 import scratchlib.writer.ScratchOutputStream;
 
 
@@ -40,8 +41,20 @@ public class ScratchObject
      * table. Only inserts child fields, not this element.
      * 
      * @param ref The reference table the fields shall be inserted into.
+     * @param project The project this object belongs to, for version info.
      */
-    public void createReferences(ScratchReferenceTable ref)
+    public void createReferences(ScratchReferenceTable ref,
+            ScratchProject project)
+    {
+    }
+
+    /**
+     * Replaces all unresolved reference fields this instance has by looking
+     * them up in the given reference table.
+     * 
+     * @param ref The reference table to use for field lookup.
+     */
+    public void resolveReferences(ScratchReferenceTable ref)
     {
     }
 
@@ -52,12 +65,13 @@ public class ScratchObject
      * 
      * @param out The stream to write to.
      * @param ref The populated reference table.
+     * @param project The project this object belongs to, for version info.
      * @throws IOException
      * 
-     * @see #createReferences(ScratchReferenceTable)
+     * @see #createReferences(ScratchReferenceTable, ScratchProject)
      */
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref)
-            throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
+            ScratchProject project) throws IOException
     {
         out.write(classID);
     }

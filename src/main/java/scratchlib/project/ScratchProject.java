@@ -54,7 +54,7 @@ public class ScratchProject
         infoBytes.writeTo(out);
 
         // write stage section
-        sectionStage.writeTo(out);
+        sectionStage.writeTo(out, this);
     }
 
     /**
@@ -70,7 +70,7 @@ public class ScratchProject
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchOutputStream out = new ScratchOutputStream(bout);
 
-        section.writeTo(out);
+        section.writeTo(out, this);
 
         return bout;
     }

@@ -2,6 +2,7 @@ package scratchlib.objects;
 
 import java.io.IOException;
 
+import scratchlib.project.ScratchProject;
 import scratchlib.writer.ScratchOutputStream;
 
 
@@ -58,14 +59,16 @@ public class ScratchObjectStore
      * Writes this object store to the given {@link ScratchOutputStream}.
      * 
      * @param out The stream to write to.
+     * @param project The project this store belongs to, for version info.
      * @throws IOException
      */
-    public void writeTo(ScratchOutputStream out) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchProject project)
+            throws IOException
     {
         // create reference table
         ScratchReferenceTable refTable = new ScratchReferenceTable();
         refTable.insert(object);
-        object.createReferences(refTable);
+        object.createReferences(refTable, project);
 
         // write header + size
         out.writeString(HEADER);
@@ -73,7 +76,7 @@ public class ScratchObjectStore
 
         // write objects from reference table
         for (ScratchObject object : refTable) {
-            object.writeTo(out, refTable);
+            object.writeTo(out, refTable, project);
         }
 
         out.flush();
