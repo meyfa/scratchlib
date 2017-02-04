@@ -3,6 +3,7 @@ package scratchlib.objects;
 import java.io.IOException;
 
 import scratchlib.project.ScratchProject;
+import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
 
 
@@ -63,6 +64,9 @@ public class ScratchObject
      * already populated {@link ScratchReferenceTable} for writing out reference
      * fields.
      * 
+     * <p>
+     * Subclasses MUST override this if they store any (additional) data.
+     * 
      * @param out The stream to write to.
      * @param ref The populated reference table.
      * @param project The project this object belongs to, for version info.
@@ -74,5 +78,24 @@ public class ScratchObject
             ScratchProject project) throws IOException
     {
         out.write(classID);
+    }
+
+    /**
+     * Initializes this object's fields by reading from the given stream.
+     * 
+     * <p>
+     * Subclasses MUST override this if they store any (additional) data.
+     * 
+     * @param id This object's class ID.
+     * @param in The input stream to read from.
+     * @param project The project this object belongs to, for version info.
+     * @throws IOException
+     */
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
+            throws IOException
+    {
+        if (id != classID) {
+            throw new IOException("illegal ID " + id + ", expected " + classID);
+        }
     }
 }
