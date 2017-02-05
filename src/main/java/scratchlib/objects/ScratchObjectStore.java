@@ -1,8 +1,11 @@
 package scratchlib.objects;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import scratchlib.project.ScratchProject;
+import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
 
 
@@ -80,5 +83,41 @@ public class ScratchObjectStore
         }
 
         out.flush();
+    }
+
+    /**
+     * Reads an object store from the given input stream. The stream must be
+     * positioned <b>before</b> the object store header.
+     * 
+     * @param in The input stream to read from.
+     * @param project The project reading for.
+     * @return The instance read.
+     * @throws IOException
+     */
+    public static ScratchObjectStore readFrom(ScratchInputStream in,
+            ScratchProject project) throws IOException
+    {
+        String header = in.readString(10);
+        if (!header.equals(HEADER)) {
+            throw new IOException("invalid object store header");
+        }
+
+        int size = in.read32bitUnsignedInt();
+
+        // read objects
+        List<ScratchObject> objectList = new ArrayList<>();
+        ScratchReferenceTable refTable = new ScratchReferenceTable();
+        for (int i = 0; i < size; ++i) {
+            ScratchObject obj = ScratchObjects.read(in, project).get();
+            objectList.add(obj);
+            refTable.insert(obj);
+        }
+
+        // resolve references
+        for (ScratchObject obj : objectList) {
+            obj.resolveReferences(refTable);
+        }
+
+        return new ScratchObjectStore(objectList.get(0));
     }
 }

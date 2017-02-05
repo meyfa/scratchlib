@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import scratchlib.objects.ScratchObjectStore;
 import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 
@@ -48,7 +49,21 @@ public class ScratchReader
                 throw new IOException("Scratch version unknown");
             }
 
-            return new ScratchProject(version);
+            ScratchProject project = new ScratchProject(version);
+
+            // skip infoSize (redundant, since object store has own length)
+            sin.read32bitUnsignedInt();
+
+            // read info
+            project.setInfoSection(
+                    ScratchObjectStore.readFrom(sin, project).get());
+
+            // read contents
+            project.setStageSection(
+                    ScratchObjectStore.readFrom(sin, project).get());
+
+            return project;
+
         }
     }
 }
