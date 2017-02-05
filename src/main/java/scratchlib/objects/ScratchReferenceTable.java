@@ -44,8 +44,8 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      */
     public void insert(ScratchObject object)
     {
-        if (references.contains(object)) {
-            throw new IllegalArgumentException("Object already referenced");
+        if (references.stream().anyMatch(r -> r == object)) {
+            throw new IllegalArgumentException("object already referenced");
         }
         references.add(object);
     }
