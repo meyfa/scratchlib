@@ -2,6 +2,7 @@ package scratchlib.objects.inline;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Objects;
 
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchReferenceTable;
@@ -72,5 +73,28 @@ public class ScratchObjectLargePositiveInteger extends ScratchObject
         int length = in.read16bitUnsignedInt();
         byte[] bytes = in.readFully(length);
         this.value = new BigInteger(bytes);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + getClassID();
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ScratchObjectLargePositiveInteger other = (ScratchObjectLargePositiveInteger) obj;
+        return Objects.equals(value, other.value);
     }
 }

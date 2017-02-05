@@ -1,5 +1,8 @@
 package scratchlib.objects;
 
+import java.util.Objects;
+
+
 /**
  * Represents either an object or its reference, if not yet resolved.
  */
@@ -76,5 +79,34 @@ public class ScratchOptionalField
             return;
         }
         this.value = ref.lookup(referenceID);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        // result = prime * result + referenceID;
+        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof ScratchOptionalField)) {
+            return false;
+        }
+        ScratchOptionalField other = (ScratchOptionalField) obj;
+        if (isResolved()) {
+            return other.isResolved() && Objects.equals(value, other.value);
+        }
+        return referenceID == other.referenceID;
     }
 }

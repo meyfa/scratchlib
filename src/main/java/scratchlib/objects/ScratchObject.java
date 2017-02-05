@@ -12,12 +12,12 @@ import scratchlib.writer.ScratchOutputStream;
  * from simple constants like true/false/nil, to numbers, to collections, and
  * finally to arbitrarily complex user-class types.
  */
-public class ScratchObject
+public abstract class ScratchObject
 {
     /**
      * The singleton object representing a value of {@code null} ("nil").
      */
-    public static final ScratchObject NIL = new ScratchObject(1);
+    public static final ScratchObject NIL = new ScratchObjectNil();
 
     private final int classID;
 
@@ -96,6 +96,37 @@ public class ScratchObject
     {
         if (id != classID) {
             throw new IOException("illegal ID " + id + ", expected " + classID);
+        }
+    }
+
+    @Override
+    public abstract int hashCode();
+
+    @Override
+    public abstract boolean equals(Object obj);
+
+    /**
+     * Represents the Scratch "nil" constant.
+     */
+    private static class ScratchObjectNil extends ScratchObject
+    {
+        public static final int CLASS_ID = 1;
+
+        public ScratchObjectNil()
+        {
+            super(CLASS_ID);
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Integer.hashCode(31 + getClassID());
+        }
+
+        @Override
+        public boolean equals(Object obj)
+        {
+            return this == obj;
         }
     }
 }

@@ -3,6 +3,7 @@ package scratchlib.objects;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
@@ -83,6 +84,28 @@ public class ScratchObjectStore
         }
 
         out.flush();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((object == null) ? 0 : object.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ScratchObjectStore other = (ScratchObjectStore) obj;
+        return Objects.equals(object, other.object);
     }
 
     /**
