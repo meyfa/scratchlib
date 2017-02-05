@@ -12,9 +12,13 @@ public class ScratchOptionalField
      * Constructor for when the reference is not yet resolved.
      * 
      * @param referenceID The unresolved reference ID.
+     * @throws IllegalArgumentException If referenceID &lt; 1.
      */
     public ScratchOptionalField(int referenceID)
     {
+        if (referenceID < 1) {
+            throw new IllegalArgumentException("referenceID may not be < 1");
+        }
         this.referenceID = referenceID;
     }
 
@@ -22,9 +26,13 @@ public class ScratchOptionalField
      * Constructor for when there already is a value.
      * 
      * @param value The field value.
+     * @throws IllegalArgumentException If value is null.
      */
     public ScratchOptionalField(ScratchObject value)
     {
+        if (value == null) {
+            throw new IllegalArgumentException("value may not be null");
+        }
         this.value = value;
     }
 
@@ -64,7 +72,7 @@ public class ScratchOptionalField
      */
     public void resolve(ScratchReferenceTable ref)
     {
-        if (referenceID < 0) {
+        if (referenceID < 1) {
             return;
         }
         this.value = ref.lookup(referenceID);
