@@ -38,15 +38,18 @@ public abstract class ScratchObject
     }
 
     /**
-     * Inserts all reference fields of this object into the given reference
-     * table. Only inserts child fields, not this element.
+     * Inserts this object and all its reference fields into the given table,
+     * provided this object and the fields are reference types.
      * 
-     * @param ref The reference table the fields shall be inserted into.
+     * @param ref The reference table.
      * @param project The project this object belongs to, for version info.
      */
     public void createReferences(ScratchReferenceTable ref,
             ScratchProject project)
     {
+        if (this instanceof IScratchReferenceType) {
+            ref.insert(this);
+        }
     }
 
     /**

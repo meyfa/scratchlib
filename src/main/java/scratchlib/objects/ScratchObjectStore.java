@@ -71,7 +71,6 @@ public class ScratchObjectStore
     {
         // create reference table
         ScratchReferenceTable refTable = new ScratchReferenceTable();
-        refTable.insert(object);
         object.createReferences(refTable, project);
 
         // write header + size
