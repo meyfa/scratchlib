@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
+import scratchlib.objects.fixed.data.ScratchObjectString;
+import scratchlib.objects.fixed.data.ScratchObjectSymbol;
+import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.objects.inline.ScratchObjectFloat;
 import scratchlib.objects.inline.ScratchObjectLargeNegativeInteger;
@@ -89,6 +92,11 @@ public class ScratchObjects
         storeConstructor(ScratchObjectLargePositiveInteger.CLASS_ID, ScratchObjectLargePositiveInteger::new);
         storeConstructor(ScratchObjectLargeNegativeInteger.CLASS_ID, ScratchObjectLargeNegativeInteger::new);
         storeConstructor(ScratchObjectFloat.CLASS_ID, ScratchObjectFloat::new);
+        
+        // fixed-format: data (9 ... 14)
+        storeConstructor(ScratchObjectString.CLASS_ID, ScratchObjectString::new);
+        storeConstructor(ScratchObjectSymbol.CLASS_ID, ScratchObjectSymbol::new);
+        storeConstructor(ScratchObjectUtf8.CLASS_ID, ScratchObjectUtf8::new);
 
         //@formatter:on
     }
