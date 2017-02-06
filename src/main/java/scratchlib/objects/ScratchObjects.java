@@ -38,6 +38,9 @@ public class ScratchObjects
      */
     private static void storeConstructor(int id, Supplier<ScratchObject> con)
     {
+        if (cons.get(id - 1) != null) {
+            throw new IllegalArgumentException("class ID already used: " + id);
+        }
         cons.set(id - 1, con);
     }
 
