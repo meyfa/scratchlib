@@ -55,12 +55,10 @@ public class ScratchReader
             sin.read32bitUnsignedInt();
 
             // read info
-            project.setInfoSection(
-                    ScratchObjectStore.readFrom(sin, project).get());
+            project.setInfoSection(ScratchObjectStore.readFrom(sin, project));
 
             // read contents
-            project.setStageSection(
-                    ScratchObjectStore.readFrom(sin, project).get());
+            project.setStageSection(ScratchObjectStore.readFrom(sin, project));
 
             return project;
 

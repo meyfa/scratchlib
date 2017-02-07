@@ -15,8 +15,9 @@ import scratchlib.writer.ScratchOutputStream;
 public class ScratchProject
 {
     private final ScratchVersion version;
-    private ScratchObject info = ScratchObject.NIL;
-    private ScratchObject stage = ScratchObject.NIL;
+    private ScratchObjectStore info = new ScratchObjectStore(ScratchObject.NIL);
+    private ScratchObjectStore stage = new ScratchObjectStore(
+            ScratchObject.NIL);
 
     /**
      * @param version This project's version.
@@ -37,7 +38,7 @@ public class ScratchProject
     /**
      * @return The object that is the project's info section.
      */
-    public ScratchObject getInfoSection()
+    public ScratchObjectStore getInfoSection()
     {
         return info;
     }
@@ -47,7 +48,7 @@ public class ScratchProject
      * 
      * @param info The new info section.
      */
-    public void setInfoSection(ScratchObject info)
+    public void setInfoSection(ScratchObjectStore info)
     {
         this.info = info;
     }
@@ -55,7 +56,7 @@ public class ScratchProject
     /**
      * @return The object that is the project's stage / content section.
      */
-    public ScratchObject getStageSection()
+    public ScratchObjectStore getStageSection()
     {
         return stage;
     }
@@ -65,7 +66,7 @@ public class ScratchProject
      * 
      * @param stage The new stage section.
      */
-    public void setStageSection(ScratchObject stage)
+    public void setStageSection(ScratchObjectStore stage)
     {
         this.stage = stage;
     }
@@ -78,19 +79,16 @@ public class ScratchProject
      */
     public void writeTo(ScratchOutputStream out) throws IOException
     {
-        ScratchObjectStore sectionInfo = new ScratchObjectStore(info);
-        ScratchObjectStore sectionStage = new ScratchObjectStore(stage);
-
         // write header
         out.writeString(version.getHeader());
 
         // write info section
-        ByteArrayOutputStream infoBytes = getSectionBytes(sectionInfo);
+        ByteArrayOutputStream infoBytes = getSectionBytes(info);
         out.write32bitUnsignedInt(infoBytes.size());
         infoBytes.writeTo(out);
 
         // write stage section
-        sectionStage.writeTo(out, this);
+        stage.writeTo(out, this);
     }
 
     /**
