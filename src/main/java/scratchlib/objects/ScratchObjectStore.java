@@ -16,13 +16,21 @@ import scratchlib.writer.ScratchOutputStream;
  * 
  * <p>
  * Object stores have one root object, followed by zero or more reference types
- * required by that root object. In other words, they wrap exactly one main
+ * required by that root object. In other words, they simply wrap one main
  * object, but in a way that flattens its structure.
  * 
  * <p>
  * They start with the header: "ObjS" + 0x01 + "Stch" + 0x01. Next, there is a
  * 32-bit integer describing the store's flattened size (number of elements).
  * Finally, the main object and its referenced objects are written out.
+ * 
+ * <p>
+ * Due to some undocumented reason, Scratch and BYOB include "orphaned" objects
+ * after the main object and its referenced fields for the project's info store.
+ * "Orphaned" here means that they are written out, included in the store
+ * length, and have logical significance, but are not available by traversing
+ * the store root. Examples include the transparent color and a magic byte
+ * array.
  */
 public class ScratchObjectStore
 {
@@ -32,6 +40,7 @@ public class ScratchObjectStore
     public static final String HEADER = "ObjS" + (char) 1 + "Stch" + (char) 1;
 
     private ScratchObject object;
+    private List<ScratchObject> orphanedFields;
 
     /**
      * @param object The object contained in this store.
@@ -39,6 +48,17 @@ public class ScratchObjectStore
     public ScratchObjectStore(ScratchObject object)
     {
         this.object = object;
+        this.orphanedFields = new ArrayList<>();
+    }
+
+    /**
+     * @param object The object contained in this store.
+     * @param orphans Non-referenced objects stored in addition to the main one.
+     */
+    public ScratchObjectStore(ScratchObject object, List<ScratchObject> orphans)
+    {
+        this.object = object;
+        this.orphanedFields = new ArrayList<>(orphans);
     }
 
     /**
@@ -60,6 +80,26 @@ public class ScratchObjectStore
     }
 
     /**
+     * @return A writable list containing this store's "orphaned" fields (fields
+     *         not referenced from the root).
+     */
+    public List<ScratchObject> getOrphanedFields()
+    {
+        return orphanedFields;
+    }
+
+    /**
+     * Sets this store's list of "orphaned" fields (fields not referenced from
+     * the root).
+     * 
+     * @param orphans The new list of orphaned fields.
+     */
+    public void setOrphanedFields(List<ScratchObject> orphans)
+    {
+        this.orphanedFields = orphans;
+    }
+
+    /**
      * Writes this object store to the given {@link ScratchOutputStream}.
      * 
      * @param out The stream to write to.
@@ -72,6 +112,9 @@ public class ScratchObjectStore
         // create reference table
         ScratchReferenceTable refTable = new ScratchReferenceTable();
         object.createReferences(refTable, project);
+        for (ScratchObject object : orphanedFields) {
+            object.createReferences(refTable, project);
+        }
 
         // write header + size
         out.writeString(HEADER);
@@ -91,6 +134,8 @@ public class ScratchObjectStore
         final int prime = 31;
         int result = 1;
         result = prime * result + ((object == null) ? 0 : object.hashCode());
+        result = prime * result
+                + ((orphanedFields == null) ? 0 : orphanedFields.hashCode());
         return result;
     }
 
@@ -104,7 +149,8 @@ public class ScratchObjectStore
             return false;
         }
         ScratchObjectStore other = (ScratchObjectStore) obj;
-        return Objects.equals(object, other.object);
+        return Objects.equals(object, other.object)
+                && Objects.equals(orphanedFields, other.orphanedFields);
     }
 
     /**
@@ -140,6 +186,13 @@ public class ScratchObjectStore
             obj.resolveReferences(refTable);
         }
 
-        return new ScratchObjectStore(objectList.get(0));
+        // find orphaned fields
+        ScratchReferenceTable reverseRefTable = new ScratchReferenceTable();
+        objectList.get(0).createReferences(reverseRefTable, project);
+
+        int oStart = reverseRefTable.size(), oEnd = objectList.size();
+        List<ScratchObject> orphaned = objectList.subList(oStart, oEnd);
+
+        return new ScratchObjectStore(objectList.get(0), orphaned);
     }
 }
