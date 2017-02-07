@@ -3,6 +3,7 @@ package scratchlib.objects.fixed.dimensions;
 import java.io.IOException;
 import java.util.Objects;
 
+import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjects;
 import scratchlib.objects.ScratchReferenceTable;
@@ -16,6 +17,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Reference type representing a 2D point, consisting of two 16-bit integers.
  */
 public class ScratchObjectPoint extends ScratchObject
+        implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.

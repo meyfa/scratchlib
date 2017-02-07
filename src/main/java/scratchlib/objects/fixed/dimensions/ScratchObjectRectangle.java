@@ -3,6 +3,7 @@ package scratchlib.objects.fixed.dimensions;
 import java.io.IOException;
 import java.util.Objects;
 
+import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjects;
 import scratchlib.objects.ScratchReferenceTable;
@@ -17,6 +18,7 @@ import scratchlib.writer.ScratchOutputStream;
  * coordinates as well as width and height values (all four are 16-bit).
  */
 public class ScratchObjectRectangle extends ScratchObject
+        implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.

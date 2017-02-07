@@ -3,6 +3,7 @@ package scratchlib.objects.fixed.colors;
 import java.awt.Color;
 import java.io.IOException;
 
+import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchReferenceTable;
 import scratchlib.project.ScratchProject;
@@ -17,6 +18,7 @@ import scratchlib.writer.ScratchOutputStream;
  * another 8 bits for the A component.
  */
 public class ScratchObjectTranslucentColor extends ScratchObject
+        implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
