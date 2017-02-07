@@ -22,6 +22,8 @@ import scratchlib.objects.fixed.data.ScratchObjectSymbol;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.fixed.dimensions.ScratchObjectPoint;
 import scratchlib.objects.fixed.dimensions.ScratchObjectRectangle;
+import scratchlib.objects.fixed.forms.ScratchObjectColorForm;
+import scratchlib.objects.fixed.forms.ScratchObjectForm;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.objects.inline.ScratchObjectFloat;
 import scratchlib.objects.inline.ScratchObjectLargeNegativeInteger;
@@ -132,6 +134,10 @@ public class ScratchObjects
         // fixed-format: dimensions (32, 33)
         storeConstructor(ScratchObjectPoint.CLASS_ID, ScratchObjectPoint::new);
         storeConstructor(ScratchObjectRectangle.CLASS_ID, ScratchObjectRectangle::new);
+        
+        // fixed-format: forms
+        storeConstructor(ScratchObjectForm.CLASS_ID, ScratchObjectForm::new);
+        storeConstructor(ScratchObjectColorForm.CLASS_ID, ScratchObjectColorForm::new);
 
         //@formatter:on
     }
