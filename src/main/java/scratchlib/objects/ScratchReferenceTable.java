@@ -1,8 +1,12 @@
 package scratchlib.objects;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import scratchlib.project.ScratchProject;
+import scratchlib.writer.ScratchOutputStream;
 
 
 /**
@@ -62,5 +66,32 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
     public Iterator<ScratchObject> iterator()
     {
         return references.iterator();
+    }
+
+    /**
+     * Convenience method. If the object is inline, it is written out directly
+     * via its {@code writeTo(...)} method; otherwise, the reference stored for
+     * it in this table is written instead.
+     * 
+     * <p>
+     * This is useful for fields of other objects.
+     * 
+     * @param o The object to write.
+     * @param out The stream to write to.
+     * @param project The project the object is part of.
+     * @throws IOException
+     */
+    public void writeField(ScratchObject o, ScratchOutputStream out,
+            ScratchProject project) throws IOException
+    {
+        int ref = lookup(o);
+
+        if (!(o instanceof IScratchReferenceType) || ref < 1) {
+            o.writeTo(out, this, project);
+            return;
+        }
+
+        out.write(99);
+        out.write24bitUnsignedInt(ref);
     }
 }
