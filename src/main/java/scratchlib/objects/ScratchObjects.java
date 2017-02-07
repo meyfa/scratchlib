@@ -6,6 +6,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
+import scratchlib.objects.fixed.collections.ScratchObjectArray;
+import scratchlib.objects.fixed.collections.ScratchObjectIdentitySet;
+import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
+import scratchlib.objects.fixed.collections.ScratchObjectSet;
 import scratchlib.objects.fixed.data.ScratchObjectBitmap;
 import scratchlib.objects.fixed.data.ScratchObjectByteArray;
 import scratchlib.objects.fixed.data.ScratchObjectSoundBuffer;
@@ -106,6 +110,12 @@ public class ScratchObjects
         storeConstructor(ScratchObjectSoundBuffer.CLASS_ID, ScratchObjectSoundBuffer::new);
         storeConstructor(ScratchObjectBitmap.CLASS_ID, ScratchObjectBitmap::new);
         storeConstructor(ScratchObjectUtf8.CLASS_ID, ScratchObjectUtf8::new);
+        
+        // fixed-format: collections (20 ... 23)
+        storeConstructor(ScratchObjectArray.CLASS_ID, ScratchObjectArray::new);
+        storeConstructor(ScratchObjectOrderedCollection.CLASS_ID, ScratchObjectOrderedCollection::new);
+        storeConstructor(ScratchObjectSet.CLASS_ID, ScratchObjectSet::new);
+        storeConstructor(ScratchObjectIdentitySet.CLASS_ID, ScratchObjectIdentitySet::new);
 
         //@formatter:on
     }
