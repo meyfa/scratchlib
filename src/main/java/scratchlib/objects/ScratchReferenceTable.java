@@ -42,14 +42,14 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
 
     /**
      * Inserts the given {@link ScratchObject} into this reference table. The ID
-     * is determined automatically.
+     * is determined automatically. Nothing happens if it already exists.
      * 
      * @param object The object to insert.
      */
     public void insert(ScratchObject object)
     {
         if (references.stream().anyMatch(r -> r == object)) {
-            throw new IllegalArgumentException("object already referenced");
+            return;
         }
         references.add(object);
     }
