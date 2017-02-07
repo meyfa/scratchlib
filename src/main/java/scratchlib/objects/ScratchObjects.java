@@ -12,6 +12,8 @@ import scratchlib.objects.fixed.collections.ScratchObjectIdentityDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectIdentitySet;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectSet;
+import scratchlib.objects.fixed.colors.ScratchObjectColor;
+import scratchlib.objects.fixed.colors.ScratchObjectTranslucentColor;
 import scratchlib.objects.fixed.data.ScratchObjectBitmap;
 import scratchlib.objects.fixed.data.ScratchObjectByteArray;
 import scratchlib.objects.fixed.data.ScratchObjectSoundBuffer;
@@ -120,6 +122,10 @@ public class ScratchObjects
         storeConstructor(ScratchObjectIdentitySet.CLASS_ID, ScratchObjectIdentitySet::new);
         storeConstructor(ScratchObjectDictionary.CLASS_ID, ScratchObjectDictionary::new);
         storeConstructor(ScratchObjectIdentityDictionary.CLASS_ID, ScratchObjectIdentityDictionary::new);
+        
+        // fixed-format: colors (30, 31)
+        storeConstructor(ScratchObjectColor.CLASS_ID, ScratchObjectColor::new);
+        storeConstructor(ScratchObjectTranslucentColor.CLASS_ID, ScratchObjectTranslucentColor::new);
 
         //@formatter:on
     }
