@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
+import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
+import scratchlib.objects.fixed.collections.ScratchObjectIdentityDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectIdentitySet;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectSet;
@@ -111,11 +113,13 @@ public class ScratchObjects
         storeConstructor(ScratchObjectBitmap.CLASS_ID, ScratchObjectBitmap::new);
         storeConstructor(ScratchObjectUtf8.CLASS_ID, ScratchObjectUtf8::new);
         
-        // fixed-format: collections (20 ... 23)
+        // fixed-format: collections (20 ... 25)
         storeConstructor(ScratchObjectArray.CLASS_ID, ScratchObjectArray::new);
         storeConstructor(ScratchObjectOrderedCollection.CLASS_ID, ScratchObjectOrderedCollection::new);
         storeConstructor(ScratchObjectSet.CLASS_ID, ScratchObjectSet::new);
         storeConstructor(ScratchObjectIdentitySet.CLASS_ID, ScratchObjectIdentitySet::new);
+        storeConstructor(ScratchObjectDictionary.CLASS_ID, ScratchObjectDictionary::new);
+        storeConstructor(ScratchObjectIdentityDictionary.CLASS_ID, ScratchObjectIdentityDictionary::new);
 
         //@formatter:on
     }
