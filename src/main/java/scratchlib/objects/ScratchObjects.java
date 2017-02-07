@@ -20,6 +20,8 @@ import scratchlib.objects.fixed.data.ScratchObjectSoundBuffer;
 import scratchlib.objects.fixed.data.ScratchObjectString;
 import scratchlib.objects.fixed.data.ScratchObjectSymbol;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
+import scratchlib.objects.fixed.dimensions.ScratchObjectPoint;
+import scratchlib.objects.fixed.dimensions.ScratchObjectRectangle;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.objects.inline.ScratchObjectFloat;
 import scratchlib.objects.inline.ScratchObjectLargeNegativeInteger;
@@ -126,6 +128,10 @@ public class ScratchObjects
         // fixed-format: colors (30, 31)
         storeConstructor(ScratchObjectColor.CLASS_ID, ScratchObjectColor::new);
         storeConstructor(ScratchObjectTranslucentColor.CLASS_ID, ScratchObjectTranslucentColor::new);
+        
+        // fixed-format: dimensions (32, 33)
+        storeConstructor(ScratchObjectPoint.CLASS_ID, ScratchObjectPoint::new);
+        storeConstructor(ScratchObjectRectangle.CLASS_ID, ScratchObjectRectangle::new);
 
         //@formatter:on
     }
