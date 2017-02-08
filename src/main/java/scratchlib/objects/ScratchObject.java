@@ -43,13 +43,15 @@ public abstract class ScratchObject
      * 
      * @param ref The reference table.
      * @param project The project this object belongs to, for version info.
+     * @return Whether anything was inserted.
      */
-    public void createReferences(ScratchReferenceTable ref,
+    public boolean createReferences(ScratchReferenceTable ref,
             ScratchProject project)
     {
         if (this instanceof IScratchReferenceType) {
-            ref.insert(this);
+            return ref.insert(this);
         }
+        return false;
     }
 
     /**

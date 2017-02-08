@@ -114,16 +114,20 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     }
 
     @Override
-    public void createReferences(ScratchReferenceTable ref,
+    public boolean createReferences(ScratchReferenceTable ref,
             ScratchProject project)
     {
-        super.createReferences(ref, project);
+        if (!super.createReferences(ref, project)) {
+            return false;
+        }
 
         for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entries
                 .entrySet()) {
             entry.getKey().get().createReferences(ref, project);
             entry.getValue().get().createReferences(ref, project);
         }
+
+        return true;
     }
 
     @Override

@@ -112,13 +112,17 @@ public class ScratchObjectForm extends ScratchObject
     }
 
     @Override
-    public void createReferences(ScratchReferenceTable ref,
+    public boolean createReferences(ScratchReferenceTable ref,
             ScratchProject project)
     {
-        super.createReferences(ref, project);
+        if (!super.createReferences(ref, project)) {
+            return false;
+        }
 
         privateOffset.get().createReferences(ref, project);
         bits.get().createReferences(ref, project);
+
+        return true;
     }
 
     @Override
