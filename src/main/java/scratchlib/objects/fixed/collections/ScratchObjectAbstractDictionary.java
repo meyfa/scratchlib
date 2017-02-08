@@ -1,9 +1,14 @@
 package scratchlib.objects.fixed.collections;
 
 import java.io.IOException;
+import java.util.AbstractMap;
+import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -77,6 +82,35 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     {
         // TODO implement without instantiation
         entries.remove(new ScratchOptionalField(key));
+    }
+
+    /**
+     * @return A set of all keys in this dictionary.
+     */
+    public Set<ScratchObject> keySet()
+    {
+        return entries.keySet().stream().map(ScratchOptionalField::get)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+    }
+
+    /**
+     * @return A collection of all values in this dictionary.
+     */
+    public Collection<ScratchObject> values()
+    {
+        return entries.values().stream().map(ScratchOptionalField::get)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * @return A set of all mappings in this dictionary.
+     */
+    public Set<Entry<ScratchObject, ScratchObject>> entrySet()
+    {
+        return entries.entrySet().stream()
+                .map(e -> new AbstractMap.SimpleImmutableEntry<>(
+                        e.getKey().get(), e.getValue().get()))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     @Override
