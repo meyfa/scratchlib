@@ -54,20 +54,4 @@ public class ScratchObjectBoolean extends ScratchObject
     {
         super.readFrom(id, in, project);
     }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + Boolean.hashCode(this == TRUE);
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        return this == obj;
-    }
 }

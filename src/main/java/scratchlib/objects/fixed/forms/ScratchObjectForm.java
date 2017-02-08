@@ -1,7 +1,6 @@
 package scratchlib.objects.fixed.forms;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -161,36 +160,5 @@ public class ScratchObjectForm extends ScratchObject
                 .read(in, project).get();
         this.privateOffset = ScratchObjects.read(in, project);
         this.bits = ScratchObjects.read(in, project);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((bits == null) ? 0 : bits.hashCode());
-        result = prime * result
-                + ((privateOffset == null) ? 0 : privateOffset.hashCode());
-        result = prime * result + ((depth == null) ? 0 : depth.hashCode());
-        result = prime * result + ((height == null) ? 0 : height.hashCode());
-        result = prime * result + ((width == null) ? 0 : width.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectForm other = (ScratchObjectForm) obj;
-        return Objects.equals(width, other.width)
-                && Objects.equals(height, other.height)
-                && Objects.equals(depth, other.depth)
-                && Objects.equals(privateOffset, other.privateOffset)
-                && Objects.equals(bits, other.bits);
     }
 }

@@ -105,10 +105,16 @@ public abstract class ScratchObject
     }
 
     @Override
-    public abstract int hashCode();
+    public final int hashCode()
+    {
+        return super.hashCode();
+    }
 
     @Override
-    public abstract boolean equals(Object obj);
+    public final boolean equals(Object obj)
+    {
+        return obj == this;
+    }
 
     /**
      * Represents the Scratch "nil" constant.
@@ -120,18 +126,6 @@ public abstract class ScratchObject
         public ScratchObjectNil()
         {
             super(CLASS_ID);
-        }
-
-        @Override
-        public int hashCode()
-        {
-            return Integer.hashCode(31 + getClassID());
-        }
-
-        @Override
-        public boolean equals(Object obj)
-        {
-            return this == obj;
         }
     }
 }

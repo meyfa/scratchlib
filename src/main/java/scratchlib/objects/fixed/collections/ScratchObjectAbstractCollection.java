@@ -3,7 +3,6 @@ package scratchlib.objects.fixed.collections;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -156,28 +155,5 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
         for (int i = 0; i < size; ++i) {
             entries.add(ScratchObjects.read(in, project));
         }
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + ((entries == null) ? 0 : entries.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectAbstractCollection other = (ScratchObjectAbstractCollection) obj;
-        return Objects.equals(entries, other.entries);
     }
 }

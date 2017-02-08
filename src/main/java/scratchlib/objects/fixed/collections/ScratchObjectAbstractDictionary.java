@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map.Entry;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -167,28 +166,5 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
             entries.put(ScratchObjects.read(in, project),
                     ScratchObjects.read(in, project));
         }
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + ((entries == null) ? 0 : entries.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectAbstractDictionary other = (ScratchObjectAbstractDictionary) obj;
-        return Objects.equals(entries, other.entries);
     }
 }

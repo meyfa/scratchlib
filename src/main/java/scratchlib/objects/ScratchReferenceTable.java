@@ -50,7 +50,7 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      */
     public boolean insert(ScratchObject object)
     {
-        if (references.stream().anyMatch(r -> r == object)) {
+        if (references.contains(object)) {
             return false;
         }
         references.add(object);

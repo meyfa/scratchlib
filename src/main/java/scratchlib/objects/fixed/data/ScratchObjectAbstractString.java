@@ -2,7 +2,6 @@ package scratchlib.objects.fixed.data;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.Objects;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -87,30 +86,5 @@ public abstract class ScratchObjectAbstractString extends ScratchObject
 
         int length = in.read32bitUnsignedInt();
         this.value = new String(in.readFully(length), charset);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + ((charset == null) ? 0 : charset.hashCode());
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectAbstractString other = (ScratchObjectAbstractString) obj;
-        return Objects.equals(charset, other.charset)
-                && Objects.equals(value, other.value);
     }
 }

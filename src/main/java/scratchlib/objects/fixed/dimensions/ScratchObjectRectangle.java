@@ -1,7 +1,6 @@
 package scratchlib.objects.fixed.dimensions;
 
 import java.io.IOException;
-import java.util.Objects;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -85,40 +84,13 @@ public class ScratchObjectRectangle extends ScratchObject
     {
         super.readFrom(id, in, project);
 
-        this.x = (ScratchObjectSmallInteger16) (ScratchObjects.read(in, project)
-                .get());
-        this.y = (ScratchObjectSmallInteger16) (ScratchObjects.read(in, project)
-                .get());
-        this.w = (ScratchObjectSmallInteger16) (ScratchObjects.read(in, project)
-                .get());
-        this.h = (ScratchObjectSmallInteger16) (ScratchObjects.read(in, project)
-                .get());
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + ((h == null) ? 0 : h.hashCode());
-        result = prime * result + ((w == null) ? 0 : w.hashCode());
-        result = prime * result + ((x == null) ? 0 : x.hashCode());
-        result = prime * result + ((y == null) ? 0 : y.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectRectangle other = (ScratchObjectRectangle) obj;
-        return Objects.equals(h, other.h) && Objects.equals(w, other.w)
-                && Objects.equals(x, other.x) && Objects.equals(y, other.y);
+        this.x = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+                .get();
+        this.y = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+                .get();
+        this.w = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+                .get();
+        this.h = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+                .get();
     }
 }

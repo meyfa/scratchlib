@@ -116,29 +116,4 @@ public class ScratchObjectColor extends ScratchObject
         this.g = (num >> 10) & tenBits;
         this.b = num & tenBits;
     }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + b;
-        result = prime * result + g;
-        result = prime * result + r;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectColor other = (ScratchObjectColor) obj;
-        return b == other.b && g == other.g && r == other.r;
-    }
 }

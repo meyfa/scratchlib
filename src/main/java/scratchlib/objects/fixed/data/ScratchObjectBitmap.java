@@ -1,7 +1,6 @@
 package scratchlib.objects.fixed.data;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -72,28 +71,5 @@ public class ScratchObjectBitmap extends ScratchObject
 
         int length = in.read32bitUnsignedInt();
         this.value = in.readFully(length * 4);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + Arrays.hashCode(value);
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectBitmap other = (ScratchObjectBitmap) obj;
-        return Arrays.equals(value, other.value);
     }
 }

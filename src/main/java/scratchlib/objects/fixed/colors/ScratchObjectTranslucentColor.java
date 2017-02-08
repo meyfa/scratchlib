@@ -132,30 +132,4 @@ public class ScratchObjectTranslucentColor extends ScratchObject
 
         this.a = in.read();
     }
-
-    @Override
-    public int hashCode()
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + getClassID();
-        result = prime * result + a;
-        result = prime * result + b;
-        result = prime * result + g;
-        result = prime * result + r;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        ScratchObjectTranslucentColor other = (ScratchObjectTranslucentColor) obj;
-        return a == other.a && b == other.b && g == other.g && r == other.r;
-    }
 }
