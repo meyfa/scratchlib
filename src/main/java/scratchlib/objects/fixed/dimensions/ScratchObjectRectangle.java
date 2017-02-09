@@ -67,6 +67,38 @@ public class ScratchObjectRectangle extends ScratchObject
         this.h = height;
     }
 
+    /**
+     * @return The x coordinate of this rectangle.
+     */
+    public ScratchObjectAbstractNumber getX()
+    {
+        return x;
+    }
+
+    /**
+     * @return The y coordinate of this rectangle.
+     */
+    public ScratchObjectAbstractNumber getY()
+    {
+        return y;
+    }
+
+    /**
+     * @return The width of this rectangle.
+     */
+    public ScratchObjectAbstractNumber getWidth()
+    {
+        return w;
+    }
+
+    /**
+     * @return The height of this rectangle.
+     */
+    public ScratchObjectAbstractNumber getHeight()
+    {
+        return h;
+    }
+
     @Override
     public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
             ScratchProject project) throws IOException
