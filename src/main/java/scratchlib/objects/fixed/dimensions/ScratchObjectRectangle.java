@@ -6,6 +6,7 @@ import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjects;
 import scratchlib.objects.ScratchReferenceTable;
+import scratchlib.objects.inline.ScratchObjectAbstractNumber;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
@@ -24,7 +25,7 @@ public class ScratchObjectRectangle extends ScratchObject
      */
     public static final int CLASS_ID = 33;
 
-    private ScratchObjectSmallInteger16 x, y, w, h;
+    private ScratchObjectAbstractNumber x, y, w, h;
 
     /**
      * Empty constructor for yet-to-be-read instances.
@@ -54,9 +55,9 @@ public class ScratchObjectRectangle extends ScratchObject
      * @param width The width value.
      * @param height The height value.
      */
-    public ScratchObjectRectangle(ScratchObjectSmallInteger16 x,
-            ScratchObjectSmallInteger16 y, ScratchObjectSmallInteger16 width,
-            ScratchObjectSmallInteger16 height)
+    public ScratchObjectRectangle(ScratchObjectAbstractNumber x,
+            ScratchObjectAbstractNumber y, ScratchObjectAbstractNumber width,
+            ScratchObjectAbstractNumber height)
     {
         super(CLASS_ID);
 
@@ -84,13 +85,13 @@ public class ScratchObjectRectangle extends ScratchObject
     {
         super.readFrom(id, in, project);
 
-        this.x = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+        this.x = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
                 .get();
-        this.y = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+        this.y = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
                 .get();
-        this.w = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+        this.w = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
                 .get();
-        this.h = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+        this.h = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
                 .get();
     }
 }

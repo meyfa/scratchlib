@@ -1,6 +1,8 @@
 package scratchlib.objects.inline;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchReferenceTable;
@@ -13,7 +15,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Inline {@link ScratchObject} type for signed 32-bit integer numbers, i.e.
  * {@code int}.
  */
-public class ScratchObjectSmallInteger extends ScratchObject
+public class ScratchObjectSmallInteger extends ScratchObjectAbstractNumber
 {
     /**
      * Class ID in binary files.
@@ -39,12 +41,28 @@ public class ScratchObjectSmallInteger extends ScratchObject
         this.value = value;
     }
 
-    /**
-     * @return The integer value.
-     */
-    public int getValue()
+    @Override
+    public double doubleValue()
     {
         return value;
+    }
+
+    @Override
+    public int intValue()
+    {
+        return value;
+    }
+
+    @Override
+    public BigDecimal toBigDecimal()
+    {
+        return BigDecimal.valueOf(value);
+    }
+
+    @Override
+    public BigInteger toBigInteger()
+    {
+        return BigInteger.valueOf(value);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package scratchlib.objects.inline;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import scratchlib.objects.ScratchObject;
@@ -14,7 +15,8 @@ import scratchlib.writer.ScratchOutputStream;
  * Inline {@link ScratchObject} type for positive integers of arbitrary size,
  * stored by first writing a 16-bit length, followed by that many bytes.
  */
-public class ScratchObjectLargePositiveInteger extends ScratchObject
+public class ScratchObjectLargePositiveInteger
+        extends ScratchObjectAbstractNumber
 {
     /**
      * Class ID in binary files.
@@ -44,10 +46,26 @@ public class ScratchObjectLargePositiveInteger extends ScratchObject
         this.value = value;
     }
 
-    /**
-     * @return The integer value.
-     */
-    public BigInteger getValue()
+    @Override
+    public double doubleValue()
+    {
+        return value.doubleValue();
+    }
+
+    @Override
+    public int intValue()
+    {
+        return value.intValue();
+    }
+
+    @Override
+    public BigDecimal toBigDecimal()
+    {
+        return new BigDecimal(value);
+    }
+
+    @Override
+    public BigInteger toBigInteger()
     {
         return value;
     }

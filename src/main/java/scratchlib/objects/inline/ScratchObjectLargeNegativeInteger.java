@@ -1,6 +1,7 @@
 package scratchlib.objects.inline;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import scratchlib.objects.ScratchObject;
@@ -18,7 +19,8 @@ import scratchlib.writer.ScratchOutputStream;
  * Note that the sign bit is ignored when written, although the class property
  * is the negative integer for convenience.
  */
-public class ScratchObjectLargeNegativeInteger extends ScratchObject
+public class ScratchObjectLargeNegativeInteger
+        extends ScratchObjectAbstractNumber
 {
     /**
      * Class ID in binary files.
@@ -48,10 +50,26 @@ public class ScratchObjectLargeNegativeInteger extends ScratchObject
         this.value = value;
     }
 
-    /**
-     * @return The integer value.
-     */
-    public BigInteger getValue()
+    @Override
+    public double doubleValue()
+    {
+        return value.doubleValue();
+    }
+
+    @Override
+    public int intValue()
+    {
+        return value.intValue();
+    }
+
+    @Override
+    public BigDecimal toBigDecimal()
+    {
+        return new BigDecimal(value);
+    }
+
+    @Override
+    public BigInteger toBigInteger()
     {
         return value;
     }

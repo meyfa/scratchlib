@@ -6,6 +6,7 @@ import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjects;
 import scratchlib.objects.ScratchReferenceTable;
+import scratchlib.objects.inline.ScratchObjectAbstractNumber;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
@@ -23,7 +24,7 @@ public class ScratchObjectPoint extends ScratchObject
      */
     public static final int CLASS_ID = 32;
 
-    private ScratchObjectSmallInteger16 x, y;
+    private ScratchObjectAbstractNumber x, y;
 
     /**
      * Empty constructor for yet-to-be-read instances.
@@ -47,8 +48,8 @@ public class ScratchObjectPoint extends ScratchObject
      * @param x The x value.
      * @param y The y value.
      */
-    public ScratchObjectPoint(ScratchObjectSmallInteger16 x,
-            ScratchObjectSmallInteger16 y)
+    public ScratchObjectPoint(ScratchObjectAbstractNumber x,
+            ScratchObjectAbstractNumber y)
     {
         super(CLASS_ID);
 
@@ -59,7 +60,7 @@ public class ScratchObjectPoint extends ScratchObject
     /**
      * @return The x value.
      */
-    public ScratchObjectSmallInteger16 getX()
+    public ScratchObjectAbstractNumber getX()
     {
         return x;
     }
@@ -67,7 +68,7 @@ public class ScratchObjectPoint extends ScratchObject
     /**
      * @return The y value.
      */
-    public ScratchObjectSmallInteger16 getY()
+    public ScratchObjectAbstractNumber getY()
     {
         return y;
     }
@@ -88,9 +89,9 @@ public class ScratchObjectPoint extends ScratchObject
     {
         super.readFrom(id, in, project);
 
-        this.x = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+        this.x = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
                 .get();
-        this.y = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project)
+        this.y = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
                 .get();
     }
 }

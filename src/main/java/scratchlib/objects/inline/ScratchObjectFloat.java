@@ -1,6 +1,8 @@
 package scratchlib.objects.inline;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchReferenceTable;
@@ -12,7 +14,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Inline {@link ScratchObject} type for decimal numbers, i.e. {@code double}.
  */
-public class ScratchObjectFloat extends ScratchObject
+public class ScratchObjectFloat extends ScratchObjectAbstractNumber
 {
     /**
      * Class ID in binary files.
@@ -38,12 +40,28 @@ public class ScratchObjectFloat extends ScratchObject
         this.value = value;
     }
 
-    /**
-     * @return The decimal value.
-     */
-    public double getValue()
+    @Override
+    public double doubleValue()
     {
         return value;
+    }
+
+    @Override
+    public int intValue()
+    {
+        return (int) value;
+    }
+
+    @Override
+    public BigDecimal toBigDecimal()
+    {
+        return BigDecimal.valueOf(value);
+    }
+
+    @Override
+    public BigInteger toBigInteger()
+    {
+        return BigInteger.valueOf((int) value);
     }
 
     @Override
