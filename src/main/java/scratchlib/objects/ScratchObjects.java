@@ -30,6 +30,7 @@ import scratchlib.objects.inline.ScratchObjectLargeNegativeInteger;
 import scratchlib.objects.inline.ScratchObjectLargePositiveInteger;
 import scratchlib.objects.inline.ScratchObjectSmallInteger;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
+import scratchlib.objects.user.morphs.ScratchObjectMorph;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
 
@@ -138,6 +139,10 @@ public class ScratchObjects
         // fixed-format: forms
         storeConstructor(ScratchObjectForm.CLASS_ID, ScratchObjectForm::new);
         storeConstructor(ScratchObjectColorForm.CLASS_ID, ScratchObjectColorForm::new);
+        
+        // ---- USER-CLASS OBJECTS
+        
+        storeConstructor(ScratchObjectMorph.CLASS_ID, ScratchObjectMorph::new);
 
         //@formatter:on
     }
