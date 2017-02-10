@@ -29,26 +29,30 @@ import scratchlib.writer.ScratchOutputStream;
 public abstract class ScratchUserClassObject extends ScratchObject
         implements IScratchReferenceType
 {
-    private final int version;
+    private final ClassVersion version;
     private final Map<String, FieldDescriptor> fields = new LinkedHashMap<>();
 
     /**
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
-    public ScratchUserClassObject(int classID, int version)
+    public ScratchUserClassObject(int classID, ClassVersion version)
     {
         super(classID);
         this.version = version;
     }
 
     /**
+     * Gets the class version in relation to a given Scratch version, as the
+     * class version may change between those.
      * 
+     * @param projectVersion The Scratch version for which to get the class
+     *            version.
      * @return The version of the class this object belongs to.
      */
-    public int getClassVersion()
+    public int getClassVersion(ScratchVersion projectVersion)
     {
-        return version;
+        return version.get(projectVersion);
     }
 
     /**
@@ -176,7 +180,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
     {
         super.writeTo(out, ref, project);
 
-        out.write(version);
+        out.write(getClassVersion(project.getVersion()));
 
         int length = (int) fields.values().stream()
                 .filter(fd -> fd.isApplicable(project)).count();
@@ -195,9 +199,10 @@ public abstract class ScratchUserClassObject extends ScratchObject
         super.readFrom(id, in, project);
 
         int version = in.read();
-        if (version != this.version) {
+        int expectedVersion = this.getClassVersion(project.getVersion());
+        if (version != expectedVersion) {
             throw new IOException("illegal version " + version + ", expected "
-                    + this.version + " (class ID " + getClassID() + ")");
+                    + expectedVersion + " (class ID " + getClassID() + ")");
         }
 
         int length = in.read();
@@ -244,6 +249,55 @@ public abstract class ScratchUserClassObject extends ScratchObject
         public boolean isApplicable(ScratchProject project)
         {
             return version == null || project.getVersion() == version;
+        }
+    }
+
+    /**
+     * Stores a <b>class</b> version for each existing <b>project</b> version.
+     */
+    public static final class ClassVersion
+    {
+        private final int versionScratch, versionByob;
+
+        /**
+         * One-size-fits-all constructor.
+         * 
+         * @param version The class version to use for all Scratch versions.
+         */
+        public ClassVersion(int version)
+        {
+            this(version, version);
+        }
+
+        /**
+         * Constructor with separate versions for each Scratch version.
+         * 
+         * @param versionScratch The class version for Scratch 1.4.
+         * @param versionByob The class version for BYOB 3.1.1.
+         */
+        public ClassVersion(int versionScratch, int versionByob)
+        {
+            this.versionScratch = versionScratch;
+            this.versionByob = versionByob;
+        }
+
+        /**
+         * Returns the class version as an int for a given project version.
+         * 
+         * @param projectVersion The project's Scratch version.
+         * @return The associated class version.
+         */
+        public int get(ScratchVersion projectVersion)
+        {
+            switch (projectVersion) {
+                case BYOB311:
+                    return versionByob;
+                case SCRATCH14:
+                    return versionScratch;
+                default:
+                    throw new RuntimeException("no case for project version: "
+                            + projectVersion.name());
+            }
         }
     }
 }

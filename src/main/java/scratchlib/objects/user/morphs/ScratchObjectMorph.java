@@ -20,7 +20,7 @@ public class ScratchObjectMorph extends ScratchUserClassObject
     /**
      * Class version in binary files.
      */
-    public static final int CLASS_VERSION = 1;
+    public static final ClassVersion CLASS_VERSION = new ClassVersion(1);
 
     /**
      * Specifies a morph's bounding rectangle.
@@ -69,12 +69,13 @@ public class ScratchObjectMorph extends ScratchUserClassObject
     }
 
     /**
-     * Constructs an instance with the given classID and version.
+     * Constructs an instance with the default values and with the given classID
+     * and version.
      * 
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
-    public ScratchObjectMorph(int classID, int version)
+    public ScratchObjectMorph(int classID, ClassVersion version)
     {
         super(classID, version);
 
