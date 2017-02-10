@@ -30,6 +30,9 @@ import scratchlib.objects.inline.ScratchObjectLargeNegativeInteger;
 import scratchlib.objects.inline.ScratchObjectLargePositiveInteger;
 import scratchlib.objects.inline.ScratchObjectSmallInteger;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
+import scratchlib.objects.user.media.ScratchObjectImageMedia;
+import scratchlib.objects.user.media.ScratchObjectSampledSound;
+import scratchlib.objects.user.media.ScratchObjectSoundMedia;
 import scratchlib.objects.user.morphs.ScratchObjectMorph;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
@@ -143,6 +146,11 @@ public class ScratchObjects
         // ---- USER-CLASS OBJECTS
         
         storeConstructor(ScratchObjectMorph.CLASS_ID, ScratchObjectMorph::new);
+        
+        // media
+        storeConstructor(ScratchObjectSampledSound.CLASS_ID, ScratchObjectSampledSound::new);
+        storeConstructor(ScratchObjectImageMedia.CLASS_ID, ScratchObjectImageMedia::new);
+        storeConstructor(ScratchObjectSoundMedia.CLASS_ID, ScratchObjectSoundMedia::new);
 
         //@formatter:on
     }
