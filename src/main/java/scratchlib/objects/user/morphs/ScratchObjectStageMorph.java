@@ -3,6 +3,7 @@ package scratchlib.objects.user.morphs;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
+import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.inline.ScratchObjectFloat;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
 
@@ -78,7 +79,8 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     public static final String FIELD_SCENE_STATES = "sceneStates";
 
     /**
-     * Specifies the dictionary of global lists.
+     * Specifies the dictionary of global lists (keys:
+     * {@link ScratchObjectUtf8}, values: {@link ScratchObjectListMorph}).
      * 
      * @see ScratchObjectDictionary
      */

@@ -5,6 +5,7 @@ import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectSet;
 import scratchlib.objects.fixed.data.ScratchObjectSymbol;
+import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.fixed.dimensions.ScratchObjectPoint;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.objects.inline.ScratchObjectFloat;
@@ -96,7 +97,8 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     public static final String FIELD_SCENE_STATES = "sceneStates";
 
     /**
-     * Specifies the dictionary of sprite-specific lists.
+     * Specifies the dictionary of sprite-specific lists (keys:
+     * {@link ScratchObjectUtf8}, values: {@link ScratchObjectListMorph}).
      * 
      * @see ScratchObjectDictionary
      */
