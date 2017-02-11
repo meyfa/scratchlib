@@ -37,6 +37,10 @@ import scratchlib.objects.user.morphs.ScratchObjectListMorph;
 import scratchlib.objects.user.morphs.ScratchObjectMorph;
 import scratchlib.objects.user.morphs.ScratchObjectSpriteMorph;
 import scratchlib.objects.user.morphs.ScratchObjectStageMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectAlignmentMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectSimpleSliderMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectStringMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectUpdatingStringMorph;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
 
@@ -159,6 +163,12 @@ public class ScratchObjects
         storeConstructor(ScratchObjectSampledSound.CLASS_ID, ScratchObjectSampledSound::new);
         storeConstructor(ScratchObjectImageMedia.CLASS_ID, ScratchObjectImageMedia::new);
         storeConstructor(ScratchObjectSoundMedia.CLASS_ID, ScratchObjectSoundMedia::new);
+
+        // ui
+        storeConstructor(ScratchObjectAlignmentMorph.CLASS_ID, ScratchObjectAlignmentMorph::new);
+        storeConstructor(ScratchObjectStringMorph.CLASS_ID, ScratchObjectStringMorph::new);
+        storeConstructor(ScratchObjectUpdatingStringMorph.CLASS_ID, ScratchObjectUpdatingStringMorph::new);
+        storeConstructor(ScratchObjectSimpleSliderMorph.CLASS_ID, ScratchObjectSimpleSliderMorph::new);
 
         //@formatter:on
     }
