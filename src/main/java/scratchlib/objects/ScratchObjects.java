@@ -42,6 +42,9 @@ import scratchlib.objects.user.morphs.ui.ScratchObjectImageMorph;
 import scratchlib.objects.user.morphs.ui.ScratchObjectSimpleSliderMorph;
 import scratchlib.objects.user.morphs.ui.ScratchObjectStringMorph;
 import scratchlib.objects.user.morphs.ui.ScratchObjectUpdatingStringMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectWatcherMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectWatcherReadoutFrameMorph;
+import scratchlib.objects.user.morphs.ui.ScratchObjectWatcherSliderMorph;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
 
@@ -171,6 +174,11 @@ public class ScratchObjects
         storeConstructor(ScratchObjectUpdatingStringMorph.CLASS_ID, ScratchObjectUpdatingStringMorph::new);
         storeConstructor(ScratchObjectSimpleSliderMorph.CLASS_ID, ScratchObjectSimpleSliderMorph::new);
         storeConstructor(ScratchObjectImageMorph.CLASS_ID, ScratchObjectImageMorph::new);
+
+        // ui: watcher
+        storeConstructor(ScratchObjectWatcherMorph.CLASS_ID, ScratchObjectWatcherMorph::new);
+        storeConstructor(ScratchObjectWatcherReadoutFrameMorph.CLASS_ID, ScratchObjectWatcherReadoutFrameMorph::new);
+        storeConstructor(ScratchObjectWatcherSliderMorph.CLASS_ID, ScratchObjectWatcherSliderMorph::new);
 
         //@formatter:on
     }

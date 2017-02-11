@@ -6,7 +6,8 @@ import scratchlib.objects.user.morphs.ScratchObjectMorph;
 
 
 /**
- * Class used for displaying images on the stage.
+ * Class used for displaying images on the stage. This is used inside
+ * {@link ScratchObjectWatcherSliderMorph} instances for the knob.
  */
 public class ScratchObjectImageMorph extends ScratchObjectMorph
 {
