@@ -34,6 +34,8 @@ import scratchlib.objects.user.media.ScratchObjectImageMedia;
 import scratchlib.objects.user.media.ScratchObjectSampledSound;
 import scratchlib.objects.user.media.ScratchObjectSoundMedia;
 import scratchlib.objects.user.morphs.ScratchObjectMorph;
+import scratchlib.objects.user.morphs.ScratchObjectSpriteMorph;
+import scratchlib.objects.user.morphs.ScratchObjectStageMorph;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
 
@@ -146,6 +148,10 @@ public class ScratchObjects
         // ---- USER-CLASS OBJECTS
         
         storeConstructor(ScratchObjectMorph.CLASS_ID, ScratchObjectMorph::new);
+        
+        // morphs
+        storeConstructor(ScratchObjectSpriteMorph.CLASS_ID, ScratchObjectSpriteMorph::new);
+        storeConstructor(ScratchObjectStageMorph.CLASS_ID, ScratchObjectStageMorph::new);
         
         // media
         storeConstructor(ScratchObjectSampledSound.CLASS_ID, ScratchObjectSampledSound::new);
