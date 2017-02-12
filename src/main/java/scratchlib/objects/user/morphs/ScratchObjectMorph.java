@@ -52,6 +52,10 @@ public class ScratchObjectMorph extends ScratchUserClassObject
     /**
      * Specifies a morph's 16-bit integer flags.
      * 
+     * <p>
+     * This is relevant for sprites: They store a 0 here if they are visible,
+     * but store a 1 if they are invisible (hidden via the "hide" block).
+     * 
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_FLAGS = "flags";
