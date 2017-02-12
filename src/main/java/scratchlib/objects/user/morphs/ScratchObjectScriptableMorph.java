@@ -5,6 +5,7 @@ import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.inline.ScratchObjectBoolean;
+import scratchlib.objects.user.ScratchObjectCustomBlockDefinition;
 import scratchlib.objects.user.media.ScratchObjectImageMedia;
 import scratchlib.project.ScratchVersion;
 
@@ -40,7 +41,8 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     public static final String FIELD_BLOCKS_BIN = "blocksBin";
 
     /**
-     * BYOB 3.1.1 field. Specifies a morph's custom blocks.
+     * BYOB 3.1.1 field. Specifies a morph's custom blocks
+     * ({@link ScratchObjectCustomBlockDefinition}).
      * 
      * @see ScratchObjectOrderedCollection
      */
