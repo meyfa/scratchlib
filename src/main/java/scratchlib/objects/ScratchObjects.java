@@ -127,7 +127,7 @@ public class ScratchObjects
         storeConstructor(ScratchObjectLargePositiveInteger.CLASS_ID, ScratchObjectLargePositiveInteger::new);
         storeConstructor(ScratchObjectLargeNegativeInteger.CLASS_ID, ScratchObjectLargeNegativeInteger::new);
         storeConstructor(ScratchObjectFloat.CLASS_ID, ScratchObjectFloat::new);
-        
+
         // fixed-format: data (9 ... 14)
         storeConstructor(ScratchObjectString.CLASS_ID, ScratchObjectString::new);
         storeConstructor(ScratchObjectSymbol.CLASS_ID, ScratchObjectSymbol::new);
@@ -135,7 +135,7 @@ public class ScratchObjects
         storeConstructor(ScratchObjectSoundBuffer.CLASS_ID, ScratchObjectSoundBuffer::new);
         storeConstructor(ScratchObjectBitmap.CLASS_ID, ScratchObjectBitmap::new);
         storeConstructor(ScratchObjectUtf8.CLASS_ID, ScratchObjectUtf8::new);
-        
+
         // fixed-format: collections (20 ... 25)
         storeConstructor(ScratchObjectArray.CLASS_ID, ScratchObjectArray::new);
         storeConstructor(ScratchObjectOrderedCollection.CLASS_ID, ScratchObjectOrderedCollection::new);
@@ -143,28 +143,28 @@ public class ScratchObjects
         storeConstructor(ScratchObjectIdentitySet.CLASS_ID, ScratchObjectIdentitySet::new);
         storeConstructor(ScratchObjectDictionary.CLASS_ID, ScratchObjectDictionary::new);
         storeConstructor(ScratchObjectIdentityDictionary.CLASS_ID, ScratchObjectIdentityDictionary::new);
-        
+
         // fixed-format: colors (30, 31)
         storeConstructor(ScratchObjectColor.CLASS_ID, ScratchObjectColor::new);
         storeConstructor(ScratchObjectTranslucentColor.CLASS_ID, ScratchObjectTranslucentColor::new);
-        
+
         // fixed-format: dimensions (32, 33)
         storeConstructor(ScratchObjectPoint.CLASS_ID, ScratchObjectPoint::new);
         storeConstructor(ScratchObjectRectangle.CLASS_ID, ScratchObjectRectangle::new);
-        
+
         // fixed-format: forms
         storeConstructor(ScratchObjectForm.CLASS_ID, ScratchObjectForm::new);
         storeConstructor(ScratchObjectColorForm.CLASS_ID, ScratchObjectColorForm::new);
-        
+
         // ---- USER-CLASS OBJECTS
-        
+
         storeConstructor(ScratchObjectMorph.CLASS_ID, ScratchObjectMorph::new);
-        
+
         // morphs
         storeConstructor(ScratchObjectSpriteMorph.CLASS_ID, ScratchObjectSpriteMorph::new);
         storeConstructor(ScratchObjectStageMorph.CLASS_ID, ScratchObjectStageMorph::new);
         storeConstructor(ScratchObjectListMorph.CLASS_ID, ScratchObjectListMorph::new);
-        
+
         // media
         storeConstructor(ScratchObjectSampledSound.CLASS_ID, ScratchObjectSampledSound::new);
         storeConstructor(ScratchObjectImageMedia.CLASS_ID, ScratchObjectImageMedia::new);
