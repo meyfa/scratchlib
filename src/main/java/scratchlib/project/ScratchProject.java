@@ -5,6 +5,10 @@ import java.io.IOException;
 
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjectStore;
+import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
+import scratchlib.objects.fixed.data.ScratchObjectString;
+import scratchlib.objects.fixed.data.ScratchObjectUtf8;
+import scratchlib.objects.user.morphs.ScratchObjectStageMorph;
 import scratchlib.writer.ScratchOutputStream;
 
 
@@ -25,6 +29,36 @@ public class ScratchProject
     public ScratchProject(ScratchVersion version)
     {
         this.version = version;
+
+        // populate info section
+
+        ScratchObjectDictionary dict = new ScratchObjectDictionary();
+        {
+            dict.put(new ScratchObjectString("os-version"),
+                    new ScratchObjectString("NT"));
+            dict.put(new ScratchObjectString("platform"),
+                    new ScratchObjectString("Win32"));
+            dict.put(new ScratchObjectString("language"),
+                    new ScratchObjectString("en"));
+            dict.put(new ScratchObjectString("history"),
+                    new ScratchObjectUtf8("\r"));
+            dict.put(new ScratchObjectString("scratch-version"),
+                    new ScratchObjectString(version.getVersionString()));
+            // thumbnail omitted (-> ColorForm)
+            dict.put(new ScratchObjectString("comment"), new ScratchObjectUtf8(
+                    "https://github.com/JangoBrick/scratchlib"));
+            dict.put(new ScratchObjectString("author"),
+                    new ScratchObjectUtf8(""));
+            // keepOnStage omitted (-> Boolean)
+            // penTrails omitted (-> Form)
+        }
+        info.set(dict);
+
+        // populate stage section
+
+        ScratchObjectStageMorph stageMorph = new ScratchObjectStageMorph();
+
+        stage.set(stageMorph);
     }
 
     /**
