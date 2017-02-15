@@ -122,12 +122,31 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      * symbols ({@link ScratchObjectSymbol}) describing their types.
      * 
      * <p>
-     * The default is "any". A C-shape corresponds to "loop", and a variable
-     * visible to the caller corresponds to "template".
+     * The default is "any". All possible values are:
+     * 
+     * <ul>
+     * <li>"object" (sprites, stage, etc.)
+     * <li>"number"
+     * <li>"command" (inline)
+     * <li>"loop" (C-Shape)
+     * <li>"text"
+     * <li>"any"
+     * <li>"reporter"
+     * <li>"unevaluated"
+     * <li>"list"
+     * <li>"boolean"
+     * <li>"predicate"
+     * <li>"unevaluatedBoolean"
+     * </ul>
+     * 
+     * <p>
+     * Moreover, every value above can be suffixed with "List" (i.e. "anyList"
+     * or "unevaluatedBooleanList") to form a multiple input parameter.<br>
+     * The special value "template" corresponds to an "internal variable visible
+     * to the caller".
      * 
      * @see ScratchObjectDictionary
      */
-    // TODO figure out more possible values
     public static final String FIELD_DECLARATIONS = "declarations";
     /**
      * Specifies a block's parameter defaults. This is a dictionary where the
