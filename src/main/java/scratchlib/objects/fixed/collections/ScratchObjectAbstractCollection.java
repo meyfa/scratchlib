@@ -2,7 +2,9 @@ package scratchlib.objects.fixed.collections;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -25,7 +27,7 @@ import scratchlib.writer.ScratchOutputStream;
 public abstract class ScratchObjectAbstractCollection extends ScratchObject
         implements IScratchReferenceType
 {
-    private final List<ScratchOptionalField> entries = new ArrayList<>();
+    private final List<ScratchOptionalField> entries;
 
     /**
      * @param classID The ID of the class this object belongs to.
@@ -33,6 +35,21 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
     public ScratchObjectAbstractCollection(int classID)
     {
         super(classID);
+
+        this.entries = new ArrayList<>();
+    }
+
+    /**
+     * @param classID The ID of the class this object belongs to.
+     * @param entries The entries to initialize this collection with.
+     */
+    public ScratchObjectAbstractCollection(int classID,
+            Collection<? extends ScratchObject> entries)
+    {
+        super(classID);
+
+        this.entries = entries.stream().map(ScratchOptionalField::new)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**

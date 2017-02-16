@@ -1,6 +1,7 @@
 package scratchlib.objects.user.morphs;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 import scratchlib.media.ScratchFormEncoder;
 import scratchlib.objects.ScratchObject;
@@ -136,11 +137,8 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
                 (short) 480, (short) 360));
 
         ScratchObjectImageMedia background = getEmptyBackground();
-
-        ScratchObjectOrderedCollection media = new ScratchObjectOrderedCollection();
-        media.add(background);
-        setField(FIELD_MEDIA, media);
-
+        setField(FIELD_MEDIA,
+                new ScratchObjectOrderedCollection(Arrays.asList(background)));
         setField(FIELD_COSTUME, background);
     }
 
