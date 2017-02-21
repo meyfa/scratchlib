@@ -1,9 +1,14 @@
 package scratchlib.objects.user.morphs;
 
+import java.awt.image.BufferedImage;
+import java.util.Arrays;
+
+import scratchlib.media.ScratchFormEncoder;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
+import scratchlib.objects.fixed.forms.ScratchObjectForm;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.objects.user.ScratchObjectCustomBlockDefinition;
 import scratchlib.objects.user.media.ScratchObjectImageMedia;
@@ -91,5 +96,29 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
         specifyField(FIELD_MEDIA, new ScratchObjectOrderedCollection());
         specifyField(FIELD_COSTUME, NIL);
+
+        // populate fields
+
+        ScratchObjectImageMedia background = getEmptyBackground();
+        setField(FIELD_MEDIA,
+                new ScratchObjectOrderedCollection(Arrays.asList(background)));
+        setField(FIELD_COSTUME, background);
+    }
+
+    /**
+     * @return An empty image that can be used as the default background without
+     *         taking up a lot of space.
+     */
+    private static ScratchObjectImageMedia getEmptyBackground()
+    {
+        BufferedImage im = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        ScratchObjectForm form = ScratchFormEncoder.encode(im);
+
+        ScratchObjectImageMedia background = new ScratchObjectImageMedia();
+        background.setField(ScratchObjectImageMedia.FIELD_MEDIA_NAME,
+                new ScratchObjectUtf8("empty"));
+        background.setField(ScratchObjectImageMedia.FIELD_FORM, form);
+
+        return background;
     }
 }
