@@ -225,5 +225,9 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
         specifyField(FIELD_PARENT, NIL, ScratchVersion.BYOB311);
         specifyField(FIELD_INHERITED_MEDIA, new ScratchObjectSet(),
                 ScratchVersion.BYOB311);
+
+        // populate fields
+
+        setField(FIELD_OBJ_NAME, new ScratchObjectUtf8("Sprite1"));
     }
 }
