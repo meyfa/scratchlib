@@ -62,3 +62,90 @@ try {
     e.printStackTrace();
 }
 ```
+
+
+
+## Classes
+
+### Inline: Constants
+
+|  ID | Package                   | Constant Name              |
+| --: | ------------------------- | -------------------------- |
+|   1 | scratchlib.objects        | ScratchObject.NIL          |
+|   2 | scratchlib.objects.inline | ScratchObjectBoolean.TRUE  |
+|   3 | scratchlib.objects.inline | ScratchObjectBoolean.FALSE |
+
+## Inline: Numbers
+
+Package: `scratchlib.objects.inline`
+
+Use the general `ScratchObjectAbstractNumber` for access, the other classes for
+creation.
+
+|  ID | Class Name                          | Use for                      |
+| --: | ----------------------------------- | ---------------------------- |
+|   4 | `ScratchObjectSmallInteger`         | `int` values                 |
+|   5 | `ScratchObjectSmallInteger16`       | `short` values               |
+|   6 | `ScratchObjectLargePositiveInteger` | positive `BigDecimal` values |
+|   7 | `ScratchObjectLargeNegativeInteger` | negative `BigDecimal` values |
+|   8 | `ScratchObjectFloat`                | `double` values              |
+
+## Fixed format: data
+
+Package: `scratchlib.objects.fixed.data`
+
+For the string classes below, use the general `ScratchObjectAbstractString` for
+access, the other classes for creation.
+
+|  ID | Class Name                 | Use for                        |
+| --: | -------------------------- | ------------------------------ |
+|   9 | `ScratchObjectString`      | ASCII strings                  |
+|  10 | `ScratchObjectSymbol`      | ASCII strings fixed by Scratch |
+|  11 | `ScratchObjectByteArray`   | `byte[]` data                  |
+|  12 | `ScratchObjectSoundBuffer` | sound data                     |
+|  13 | `ScratchObjectBitmap`      | image data                     |
+|  14 | `ScratchObjectUtf8`        | UTF-8 strings                  |
+
+## Fixed format: collections
+
+Package: `scratchlib.objects.fixed.collections`
+
+For array, ordered collection, set and identity set, use the general
+`ScratchObjectAbstractCollection` for access, the other classes for creation.
+For dictionary and identity dictionary, use `ScratchObjectAbstractDictionary`.
+
+|  ID | Class Name                        | Use for                          |
+| --: | --------------------------------- | -------------------------------- |
+|  20 | `ScratchObjectArray`              | lists of objects                 |
+|  21 | `ScratchObjectOrderedCollection`  | lists of objects                 |
+|  22 | `ScratchObjectSet`                | lists of objects                 |
+|  23 | `ScratchObjectIdentitySet`        | lists of objects                 |
+|  24 | `ScratchObjectDictionary`         | maps of objects to other objects |
+|  25 | `ScratchObjectIdentityDictionary` | maps of objects to other objects |
+
+## Fixed format: colors
+
+Package: `scratchlib.objects.fixed.colors`
+
+|  ID | Class Name                      | Use for                          |
+| --: | ------------------------------- | -------------------------------- |
+|  30 | `ScratchObjectColor`            | colors without transparency      |
+|  31 | `ScratchObjectTranslucentColor` | colors with transparency (alpha) |
+
+## Fixed format: dimensions
+
+Package: `scratchlib.objects.fixed.dimensions`
+
+|  ID | Class Name               | Use for                             |
+| --: | -------------------------| ----------------------------------- |
+|  32 | `ScratchObjectPoint`     | 2D points (x, y)                    |
+|  33 | `ScratchObjectRectangle` | 2D rectangles (x, y, width, height) |
+
+## Fixed format: forms
+
+Package: `scratchlib.objects.fixed.forms`
+
+|  ID | Class Name               | Use for                  |
+| --: | -------------------------| ------------------------ |
+|  34 | `ScratchObjectForm`      | images                   |
+|  35 | `ScratchObjectColorForm` | images with lookup table |
