@@ -75,7 +75,7 @@ try {
 |   2 | scratchlib.objects.inline | ScratchObjectBoolean.TRUE  |
 |   3 | scratchlib.objects.inline | ScratchObjectBoolean.FALSE |
 
-## Inline: Numbers
+### Inline: Numbers
 
 Package: `scratchlib.objects.inline`
 
@@ -90,7 +90,7 @@ creation.
 |   7 | `ScratchObjectLargeNegativeInteger` | negative `BigDecimal` values |
 |   8 | `ScratchObjectFloat`                | `double` values              |
 
-## Fixed format: data
+### Fixed format: data
 
 Package: `scratchlib.objects.fixed.data`
 
@@ -106,7 +106,7 @@ access, the other classes for creation.
 |  13 | `ScratchObjectBitmap`      | image data                     |
 |  14 | `ScratchObjectUtf8`        | UTF-8 strings                  |
 
-## Fixed format: collections
+### Fixed format: collections
 
 Package: `scratchlib.objects.fixed.collections`
 
@@ -123,7 +123,7 @@ For dictionary and identity dictionary, use `ScratchObjectAbstractDictionary`.
 |  24 | `ScratchObjectDictionary`         | maps of objects to other objects |
 |  25 | `ScratchObjectIdentityDictionary` | maps of objects to other objects |
 
-## Fixed format: colors
+### Fixed format: colors
 
 Package: `scratchlib.objects.fixed.colors`
 
@@ -132,7 +132,7 @@ Package: `scratchlib.objects.fixed.colors`
 |  30 | `ScratchObjectColor`            | colors without transparency      |
 |  31 | `ScratchObjectTranslucentColor` | colors with transparency (alpha) |
 
-## Fixed format: dimensions
+### Fixed format: dimensions
 
 Package: `scratchlib.objects.fixed.dimensions`
 
@@ -141,7 +141,7 @@ Package: `scratchlib.objects.fixed.dimensions`
 |  32 | `ScratchObjectPoint`     | 2D points (x, y)                    |
 |  33 | `ScratchObjectRectangle` | 2D rectangles (x, y, width, height) |
 
-## Fixed format: forms
+### Fixed format: forms
 
 Package: `scratchlib.objects.fixed.forms`
 
