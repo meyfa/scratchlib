@@ -27,7 +27,7 @@ try {
 ```java
 ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 // project is a fully working, albeit empty, Scratch project
-// the following actions are only examples of what's possible
+// the following actions are examples of what's possible
 
 // set metadata
 project.setInfoProperty(ScratchProject.INFO_COMMENT, new ScratchObjectUtf8("My awesome project!"));
@@ -137,7 +137,7 @@ Package: `scratchlib.objects.fixed.colors`
 Package: `scratchlib.objects.fixed.dimensions`
 
 |  ID | Class Name               | Use for                             |
-| --: | -------------------------| ----------------------------------- |
+| --: | ------------------------ | ----------------------------------- |
 |  32 | `ScratchObjectPoint`     | 2D points (x, y)                    |
 |  33 | `ScratchObjectRectangle` | 2D rectangles (x, y, width, height) |
 
@@ -146,6 +146,53 @@ Package: `scratchlib.objects.fixed.dimensions`
 Package: `scratchlib.objects.fixed.forms`
 
 |  ID | Class Name               | Use for                  |
-| --: | -------------------------| ------------------------ |
+| --: | ------------------------ | ------------------------ |
 |  34 | `ScratchObjectForm`      | images                   |
 |  35 | `ScratchObjectColorForm` | images with lookup table |
+
+----
+
+### User-class: morphs
+
+Package: `scratchlib.objects.user.morphs`
+
+|  ID | Class Name                 | Description                            |
+| --: | -------------------------- | -------------------------------------- |
+| 100 | `ScratchObjectMorph`       | base class for all morphs              |
+| 124 | `ScratchObjectSpriteMorph` | sprites                                |
+| 125 | `ScratchObjectStageMorph`  | the stage                              |
+| 125 | `ScratchObjectListMorph`   | user-created list displayable on stage |
+
+### User-class: media
+
+Package: `scratchlib.objects.user.media`
+
+|  ID | Class Name                  | Description                |
+| --: | --------------------------- | -------------------------- |
+| 109 | `ScratchObjectSampledSound` | a sound split into samples |
+| 162 | `ScratchObjectImageMedia`   | media container for images |
+| 164 | `ScratchObjectSoundMedia`   | media container for sounds |
+
+### User-class: UI
+
+Package: `scratchlib.objects.user.morphs.ui`
+
+|  ID | Class Name                              | Description                  |
+| --: | --------------------------------------- | ---------------------------- |
+| 104 | `ScratchObjectAlignmentMorph`           | lays out other morphs stage  |
+| 105 | `ScratchObjectStringMorph`              | fixed string display         |
+| 106 | `ScratchObjectUpdatingStringMorph`      | dynamic string display       |
+| 107 | `ScratchObjectSimpleSliderMorph`        | slider                       |
+| 110 | `ScratchObjectImageMorph`               | slider knob                  |
+| 155 | `ScratchObjectWatcherMorph`             | variable watcher             |
+| 173 | `ScratchObjectWatcherReadoutFrameMorph` | variable watcher readout     |
+| 174 | `ScratchObjectWatcherSliderMorph`       | slider extension for watcher |
+
+### User-class: BYOB objects
+
+Package: `scratchlib.objects.user`
+
+|  ID | Class Name                           | Description                   |
+| --: | ------------------------------------ | ----------------------------- |
+| 201 | `ScratchObjectCustomBlockDefinition` | BYOB's custom blocks          |
+| 205 | `ScratchObjectVariableFrame`         | required for script variables |
