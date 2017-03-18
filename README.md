@@ -65,6 +65,30 @@ try {
 
 
 
+## Image to form conversion
+
+Sprite costumes and stage backgrounds require images to be given as "forms"
+(either `ScratchObjectForm` or `ScratchObjectColorForm`). Conversion to those
+formats is rather involved, which is why `ScratchFormEncoder` exists:
+
+```java
+BufferedImage img = /* obtain source image here */;
+// convert to form
+ScratchObjectForm form = ScratchFormEncoder.encode(img);
+
+// create media object
+ScratchObjectImageMedia cos = new ScratchObjectImageMedia();
+cos.setField(ScratchObjectMedia.FIELD_MEDIA_NAME, new ScratchObjectUtf8("costume name"));
+cos.setField(ScratchObjectImageMedia.FIELD_FORM, form);
+
+// use media object - add to sprite, for example
+ScratchObjectSpriteMorph sprite = new ScratchObjectSpriteMorph();
+sprite.setField(ScratchObjectSpriteMorph.FIELD_MEDIA, new ScratchObjectOrderedCollection(Arrays.asList(cos)));
+sprite.setField(ScratchObjectSpriteMorph.FIELD_COSTUME, cos);
+```
+
+
+
 ## Classes
 
 ### Inline: Constants
@@ -89,6 +113,8 @@ creation.
 |   6 | `ScratchObjectLargePositiveInteger` | positive `BigDecimal` values |
 |   7 | `ScratchObjectLargeNegativeInteger` | negative `BigDecimal` values |
 |   8 | `ScratchObjectFloat`                | `double` values              |
+
+----
 
 ### Fixed format: data
 
