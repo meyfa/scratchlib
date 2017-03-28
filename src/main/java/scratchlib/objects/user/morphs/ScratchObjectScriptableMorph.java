@@ -34,6 +34,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
     /**
      * Specifies a morph's variables (e.g. the stage vars, or a sprite's vars).
+     * Maps their names to their values.
      * 
      * @see ScratchObjectDictionary
      */
