@@ -3,8 +3,10 @@ package scratchlib.objects.fixed.collections;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -25,7 +27,7 @@ import scratchlib.writer.ScratchOutputStream;
  * indices.
  */
 public abstract class ScratchObjectAbstractCollection extends ScratchObject
-        implements IScratchReferenceType
+        implements IScratchReferenceType, Iterable<ScratchObject>
 {
     private final List<ScratchOptionalField> entries;
 
@@ -123,6 +125,20 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
     public void remove(int index)
     {
         entries.remove(index);
+    }
+
+    @Override
+    public Iterator<ScratchObject> iterator()
+    {
+        return entries.stream().map(ScratchOptionalField::get).iterator();
+    }
+
+    /**
+     * @return A sequential stream of all objects in this collection.
+     */
+    public Stream<ScratchObject> stream()
+    {
+        return entries.stream().map(ScratchOptionalField::get);
     }
 
     @Override
