@@ -169,6 +169,32 @@ public class ScratchProject
     }
 
     /**
+     * Convenience method for retrieving the actual stage morph stored in the
+     * stage section.
+     * 
+     * @return The stage morph.
+     * 
+     * @see #getStageSection()
+     */
+    public ScratchObjectStageMorph getStage()
+    {
+        return (ScratchObjectStageMorph) stage.get();
+    }
+
+    /**
+     * Convenience method for changing the stage morph stored in the stage
+     * section.
+     * 
+     * @param stage The new stage morph.
+     * 
+     * @see #setStageSection(ScratchObjectStore)
+     */
+    public void setStage(ScratchObjectStageMorph stage)
+    {
+        this.stage.set(stage);
+    }
+
+    /**
      * Finds the given property in this project's info dictionary.
      * 
      * @param key The property's key.
