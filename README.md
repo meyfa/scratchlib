@@ -33,16 +33,11 @@ ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 project.setInfoProperty(ScratchProject.INFO_COMMENT, new ScratchObjectUtf8("My awesome project!"));
 
 // get the stage
-ScratchObjectStageMorph stage = (ScratchObjectStageMorph) (project.getStageSection().get());
-// get its collections of children
-ScratchObjectAbstractCollection sprites = (ScratchObjectAbstractCollection) stage.getField(ScratchObjectStageMorph.FIELD_SPRITES);
-ScratchObjectAbstractCollection submorphs = (ScratchObjectAbstractCollection) stage.getField(ScratchObjectStageMorph.FIELD_SUBMORPHS);
+ScratchObjectStageMorph stage = project.getStage();
 
 // add a sprite
 ScratchObjectSpriteMorph sprite = new ScratchObjectSpriteMorph();
-sprites.add(sprite);
-submorphs.add(sprite);
-sprite.setField(ScratchObjectSpriteMorph.FIELD_OWNER, stage);
+stage.addSprite(sprite);
 
 // ...
 ```
