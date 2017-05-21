@@ -144,7 +144,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
     /**
      * Obtains a sprite from the stage. Indexes run from 0 to
-     * {@code getSpriteCount(stage)}.
+     * {@code getSpriteCount()}.
      * 
      * @param index The sprite's index.
      * @return The sprite object at the given index.
@@ -186,7 +186,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
     /**
      * Removes a sprite from the stage. Indexes run from 0 to
-     * {@code getSpriteCount(stage)}.
+     * {@code getSpriteCount()}.
      * 
      * @param index The sprite's index.
      */
