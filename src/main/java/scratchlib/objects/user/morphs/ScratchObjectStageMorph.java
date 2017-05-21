@@ -223,4 +223,28 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
         // update sprite owner
         sprite.setField(FIELD_OWNER, ScratchObject.NIL);
     }
+
+    /**
+     * Removes all sprites from the stage.
+     */
+    public void clearSprites()
+    {
+        // clear 'sprites' collection
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        ((ScratchObjectAbstractCollection) spritesObj).clear();
+
+        // filter 'submorphs' collection to only contain non-sprites
+        final ScratchObjectAbstractCollection submorphs = (ScratchObjectAbstractCollection) getField(
+                FIELD_SUBMORPHS);
+        for (int i = submorphs.size() - 1; i >= 0; --i) {
+            final ScratchObject morph = submorphs.get(i);
+            if (morph instanceof ScratchObjectSpriteMorph) {
+                // remove
+                submorphs.remove(i);
+                // update owner
+                ((ScratchObjectSpriteMorph) morph).setField(FIELD_OWNER,
+                        ScratchObject.NIL);
+            }
+        }
+    }
 }

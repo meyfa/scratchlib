@@ -144,6 +144,14 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
         }
     }
 
+    /**
+     * Removes all elements from this collection.
+     */
+    public void clear()
+    {
+        entries.clear();
+    }
+
     @Override
     public Iterator<ScratchObject> iterator()
     {
