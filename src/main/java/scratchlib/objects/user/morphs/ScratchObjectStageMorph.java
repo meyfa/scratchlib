@@ -1,6 +1,7 @@
 package scratchlib.objects.user.morphs;
 
 import scratchlib.objects.ScratchObject;
+import scratchlib.objects.fixed.collections.ScratchObjectAbstractCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
@@ -129,5 +130,97 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
         setField(FIELD_BOUNDS, new ScratchObjectRectangle((short) 0, (short) 0,
                 (short) 480, (short) 360));
+    }
+
+    /**
+     * @return The number of sprites the stage owns.
+     */
+    public int getSpriteCount()
+    {
+        // count number of items in 'sprites' collection
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        return ((ScratchObjectAbstractCollection) spritesObj).size();
+    }
+
+    /**
+     * Obtains a sprite from the stage. Indexes run from 0 to
+     * {@code getSpriteCount(stage)}.
+     * 
+     * @param index The sprite's index.
+     * @return The sprite object at the given index.
+     */
+    public ScratchObjectSpriteMorph getSprite(int index)
+    {
+        // retrieve item at 'index' in 'sprites' collection
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        return (ScratchObjectSpriteMorph) (((ScratchObjectAbstractCollection) spritesObj)
+                .get(index));
+    }
+
+    /**
+     * Adds a sprite to the stage. If the sprite was previously owned by any
+     * other stage, that stage's {@link #removeSprite(ScratchObjectSpriteMorph)}
+     * method is called beforehand.
+     * 
+     * @param sprite The sprite to add.
+     */
+    public void addSprite(ScratchObjectSpriteMorph sprite)
+    {
+        // remove from previous owner
+        final ScratchObject prevOwner = sprite.getField(FIELD_OWNER);
+        if (prevOwner != null && prevOwner instanceof ScratchObjectStageMorph) {
+            ((ScratchObjectStageMorph) prevOwner).removeSprite(sprite);
+        }
+
+        // add sprite to 'sprites' collection
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        ((ScratchObjectAbstractCollection) spritesObj).add(sprite);
+
+        // add sprite to 'submorphs' collection
+        final ScratchObject submorphsObj = getField(FIELD_SUBMORPHS);
+        ((ScratchObjectAbstractCollection) submorphsObj).add(sprite);
+
+        // update sprite owner
+        sprite.setField(FIELD_OWNER, this);
+    }
+
+    /**
+     * Removes a sprite from the stage. Indexes run from 0 to
+     * {@code getSpriteCount(stage)}.
+     * 
+     * @param index The sprite's index.
+     */
+    public void removeSprite(int index)
+    {
+        // remove sprite from 'sprites' collection
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        final ScratchObjectSpriteMorph sprite = (ScratchObjectSpriteMorph) (((ScratchObjectAbstractCollection) spritesObj)
+                .remove(index));
+
+        // remove sprite from 'submorphs' collection
+        final ScratchObject submorphsObj = getField(FIELD_SUBMORPHS);
+        ((ScratchObjectAbstractCollection) submorphsObj).remove(sprite);
+
+        // update sprite owner
+        sprite.setField(FIELD_OWNER, ScratchObject.NIL);
+    }
+
+    /**
+     * Removes a given sprite from the stage.
+     * 
+     * @param sprite The sprite.
+     */
+    public void removeSprite(ScratchObjectSpriteMorph sprite)
+    {
+        // remove sprite from 'sprites' collection
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        ((ScratchObjectAbstractCollection) spritesObj).remove(sprite);
+
+        // remove sprite from 'submorphs' collection
+        final ScratchObject submorphsObj = getField(FIELD_SUBMORPHS);
+        ((ScratchObjectAbstractCollection) submorphsObj).remove(sprite);
+
+        // update sprite owner
+        sprite.setField(FIELD_OWNER, ScratchObject.NIL);
     }
 }

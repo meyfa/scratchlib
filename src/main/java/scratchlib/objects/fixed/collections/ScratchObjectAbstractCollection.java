@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -121,10 +122,26 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
      * Removes an element from this collection.
      * 
      * @param index The index of the element to remove.
+     * @return The removed element.
      */
-    public void remove(int index)
+    public ScratchObject remove(int index)
     {
-        entries.remove(index);
+        return entries.remove(index).get();
+    }
+
+    /**
+     * Removes a given element from this collection.
+     * 
+     * @param object The element to remove.
+     */
+    public void remove(ScratchObject object)
+    {
+        Iterator<ScratchOptionalField> it = entries.iterator();
+        while (it.hasNext()) {
+            if (Objects.equals(it.next().get(), object)) {
+                it.remove();
+            }
+        }
     }
 
     @Override
