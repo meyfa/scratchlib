@@ -7,6 +7,7 @@ import scratchlib.media.ScratchFormEncoder;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
+import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.fixed.forms.ScratchObjectForm;
 import scratchlib.objects.inline.ScratchObjectBoolean;
@@ -121,5 +122,25 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
         background.setField(ScratchObjectImageMedia.FIELD_FORM, form);
 
         return background;
+    }
+
+    /**
+     * @return The morph's name.
+     */
+    public String getName()
+    {
+        return ((ScratchObjectAbstractString) getField(FIELD_OBJ_NAME))
+                .getValue();
+    }
+
+    /**
+     * Updates the morph's name. Note that this change is NOT reflected anywhere
+     * else (when used in blocks, etc).
+     * 
+     * @param name The new name.
+     */
+    public void setName(String name)
+    {
+        setField(FIELD_OBJ_NAME, new ScratchObjectUtf8(name));
     }
 }
