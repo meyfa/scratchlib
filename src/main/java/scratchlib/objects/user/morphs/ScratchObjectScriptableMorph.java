@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 
 import scratchlib.media.ScratchFormEncoder;
+import scratchlib.objects.ScratchObject;
+import scratchlib.objects.fixed.collections.ScratchObjectAbstractCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
@@ -124,6 +126,8 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
         return background;
     }
 
+    // ---- BASIC --------------------------------------------------------------
+
     /**
      * @return The morph's name.
      */
@@ -142,5 +146,74 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     public void setName(String name)
     {
         setField(FIELD_OBJ_NAME, new ScratchObjectUtf8(name));
+    }
+
+    // ---- CUSTOM BLOCKS ------------------------------------------------------
+
+    /**
+     * @return The number of custom blocks the morph owns.
+     */
+    public int getCustomBlockCount()
+    {
+        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        return ((ScratchObjectAbstractCollection) collectionObj).size();
+    }
+
+    /**
+     * Obtains a custom block from the morph. Indexes run from 0 to
+     * {@code getCustomBlockCount(morph)}.
+     * 
+     * @param index The custom block's index.
+     * @return The custom block object at the given index.
+     */
+    public ScratchObjectCustomBlockDefinition getCustomBlock(int index)
+    {
+        final ScratchObjectAbstractCollection collection = (ScratchObjectAbstractCollection) getField(
+                FIELD_CUSTOM_BLOCKS);
+        return (ScratchObjectCustomBlockDefinition) collection.get(0);
+    }
+
+    /**
+     * Adds a custom block to the morph. Note that the block's {@code isGlobal}
+     * flag is not updated.
+     * 
+     * @param block The custom block to add.
+     */
+    public void addCustomBlock(ScratchObjectCustomBlockDefinition block)
+    {
+        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        ((ScratchObjectAbstractCollection) collectionObj).add(block);
+    }
+
+    /**
+     * Removes a custom block from the morph. Indexes run from 0 to
+     * {@code getCustomBlockCount(morph)}.
+     * 
+     * @param index The custom block's index.
+     */
+    public void removeCustomBlock(int index)
+    {
+        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        ((ScratchObjectAbstractCollection) collectionObj).remove(index);
+    }
+
+    /**
+     * Removes a given custom block from the morph.
+     * 
+     * @param block The custom block.
+     */
+    public void removeCustomBlock(ScratchObjectCustomBlockDefinition block)
+    {
+        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        ((ScratchObjectAbstractCollection) collectionObj).remove(block);
+    }
+
+    /**
+     * Removes all custom blocks from this morph.
+     */
+    public void clearCustomBlocks()
+    {
+        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        ((ScratchObjectAbstractCollection) collectionObj).clear();
     }
 }
