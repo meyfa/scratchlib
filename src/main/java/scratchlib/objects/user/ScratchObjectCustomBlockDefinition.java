@@ -1,8 +1,11 @@
 package scratchlib.objects.user;
 
+import scratchlib.objects.ScratchObject;
+import scratchlib.objects.fixed.collections.ScratchObjectAbstractCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectSet;
+import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectString;
 import scratchlib.objects.fixed.data.ScratchObjectSymbol;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
@@ -192,5 +195,57 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
         specifyField(FIELD_DEFAULTS, new ScratchObjectDictionary());
 
         specifyField(FIELD_IS_GLOBAL, ScratchObjectBoolean.TRUE);
+    }
+
+    /**
+     * Obtains the "user spec" ({@link #FIELD_USER_SPEC}), which defines the
+     * block's header, in string form.
+     * 
+     * @return The custom block's user spec.
+     */
+    public String getUserSpec()
+    {
+        final ScratchObject spec = getField(FIELD_USER_SPEC);
+        if (!(spec instanceof ScratchObjectAbstractString)) {
+            return null;
+        }
+        return ((ScratchObjectAbstractString) spec).getValue();
+    }
+
+    /**
+     * Updates the "user spec" ({@link #FIELD_USER_SPEC}). This does not update
+     * usages.
+     * 
+     * @param spec The new user spec.
+     */
+    public void setUserSpec(String spec)
+    {
+        if (spec == null) {
+            setField(FIELD_USER_SPEC, NIL);
+        } else {
+            setField(FIELD_USER_SPEC, new ScratchObjectUtf8(spec));
+        }
+    }
+
+    /**
+     * Obtains the body ({@link #FIELD_BODY}), i.e. the list of blocks executed
+     * when the custom block is run.
+     * 
+     * @return The custom block's body.
+     */
+    public ScratchObjectAbstractCollection getBody()
+    {
+        return (ScratchObjectAbstractCollection) getField(FIELD_BODY);
+    }
+
+    /**
+     * Updates the body ({@link #FIELD_BODY}), i.e. the list of blocks executed
+     * when the custom block is run.
+     * 
+     * @param body The new body.
+     */
+    public void setBody(ScratchObjectAbstractCollection body)
+    {
+        setField(FIELD_BODY, body);
     }
 }
