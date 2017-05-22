@@ -11,6 +11,7 @@ import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
+import scratchlib.objects.fixed.dimensions.ScratchObjectPoint;
 import scratchlib.objects.fixed.forms.ScratchObjectForm;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.objects.user.ScratchObjectCustomBlockDefinition;
@@ -214,6 +215,115 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     public void clearCustomBlocks()
     {
         final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        ((ScratchObjectAbstractCollection) collectionObj).clear();
+    }
+
+    // ---- SCRIPTS ------------------------------------------------------------
+
+    /**
+     * @return The number of scripts the morph owns.
+     */
+    public int getScriptCount()
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
+        return ((ScratchObjectAbstractCollection) collectionObj).size();
+    }
+
+    /**
+     * Obtains a script from the morph. A script is a tuple/collection of its
+     * location (a point) and body (a collection of blocks). Indexes run from 0
+     * to {@code getScriptCount()}.
+     * 
+     * @param index The script's index.
+     * @return The script at the given index.
+     */
+    public ScratchObjectAbstractCollection getScript(int index)
+    {
+        final ScratchObjectAbstractCollection collection = (ScratchObjectAbstractCollection) getField(
+                FIELD_BLOCKS_BIN);
+        return (ScratchObjectAbstractCollection) collection.get(index);
+    }
+
+    /**
+     * Obtains the location of one of the morph's scripts. Indexes run from 0 to
+     * {@code getScriptCount()}.
+     * 
+     * @param index The script's index.
+     * @return The location of the script at the given index.
+     */
+    public ScratchObjectPoint getScriptLocation(int index)
+    {
+        return (ScratchObjectPoint) getScript(index).get(0);
+    }
+
+    /**
+     * Obtains the body of one of the morph's scripts. The body is a collection
+     * of block arrays. Indexes run from 0 to {@code getScriptCount()}.
+     * 
+     * @param index The script's index.
+     * @return The body of the script at the given index.
+     */
+    public ScratchObjectAbstractCollection getScriptBody(int index)
+    {
+        return (ScratchObjectAbstractCollection) getScript(index).get(1);
+    }
+
+    /**
+     * Adds a script to the morph.
+     * 
+     * @param location The script's location.
+     * @param body The script's body (collection of block arrays).
+     */
+    public void addScript(ScratchObjectPoint location,
+            ScratchObjectAbstractCollection body)
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
+        final ScratchObject script = new ScratchObjectArray(
+                Arrays.asList(location, body));
+        ((ScratchObjectAbstractCollection) collectionObj).add(script);
+    }
+
+    /**
+     * Adds a script to the morph. A script is a tuple/collection of its
+     * location (a point) and body (a collection of blocks).
+     * 
+     * @param script The script tuple.
+     */
+    public void addScript(ScratchObjectAbstractCollection script)
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
+        ((ScratchObjectAbstractCollection) collectionObj).add(script);
+    }
+
+    /**
+     * Removes a script from the morph. Indexes run from 0 to
+     * {@code getScriptCount()}.
+     * 
+     * @param index The script's index.
+     */
+    public void removeScript(int index)
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
+        ((ScratchObjectAbstractCollection) collectionObj).remove(index);
+    }
+
+    /**
+     * Removes a given script from the morph.
+     * 
+     * @param script The script.
+     */
+    public void removeScript(ScratchObjectAbstractCollection script)
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
+        ((ScratchObjectAbstractCollection) collectionObj).remove(script);
+    }
+
+    /**
+     * Removes all scripts from this morph.
+     */
+    public void clearScripts()
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
         ((ScratchObjectAbstractCollection) collectionObj).clear();
     }
 }
