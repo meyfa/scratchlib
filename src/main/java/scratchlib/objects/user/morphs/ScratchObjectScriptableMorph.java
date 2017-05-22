@@ -171,7 +171,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     {
         final ScratchObjectAbstractCollection collection = (ScratchObjectAbstractCollection) getField(
                 FIELD_CUSTOM_BLOCKS);
-        return (ScratchObjectCustomBlockDefinition) collection.get(0);
+        return (ScratchObjectCustomBlockDefinition) collection.get(index);
     }
 
     /**
