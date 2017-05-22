@@ -235,7 +235,11 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      */
     public ScratchObjectAbstractCollection getBody()
     {
-        return (ScratchObjectAbstractCollection) getField(FIELD_BODY);
+        final ScratchObject body = getField(FIELD_BODY);
+        if (!(body instanceof ScratchObjectAbstractCollection)) {
+            return null;
+        }
+        return (ScratchObjectAbstractCollection) body;
     }
 
     /**
