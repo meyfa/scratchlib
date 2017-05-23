@@ -74,8 +74,7 @@ public class ScratchObjectImageMedia extends ScratchObjectMedia
         super(classID, version);
 
         specifyField(FIELD_FORM, NIL);
-        specifyField(FIELD_ROTATION_CENTER,
-                new ScratchObjectPoint((short) 0, (short) 0));
+        specifyField(FIELD_ROTATION_CENTER, new ScratchObjectPoint(0, 0));
 
         specifyField(FIELD_TEXT_BOX, NIL);
         specifyField(FIELD_JPEG_BYTES, NIL);

@@ -7,14 +7,15 @@ import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjects;
 import scratchlib.objects.ScratchReferenceTable;
 import scratchlib.objects.inline.ScratchObjectAbstractNumber;
-import scratchlib.objects.inline.ScratchObjectSmallInteger16;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
+import scratchlib.util.ScratchNumbers;
 import scratchlib.writer.ScratchOutputStream;
 
 
 /**
- * Reference type representing a 2D point, consisting of two 16-bit integers.
+ * Reference type representing a 2D point, consisting (in most cases) of two
+ * 16-bit integers.
  */
 public class ScratchObjectPoint extends ScratchObject
         implements IScratchReferenceType
@@ -38,10 +39,9 @@ public class ScratchObjectPoint extends ScratchObject
      * @param x The x value.
      * @param y The y value.
      */
-    public ScratchObjectPoint(short x, short y)
+    public ScratchObjectPoint(int x, int y)
     {
-        this(new ScratchObjectSmallInteger16(x),
-                new ScratchObjectSmallInteger16(y));
+        this(ScratchNumbers.of(x), ScratchNumbers.of(y));
     }
 
     /**

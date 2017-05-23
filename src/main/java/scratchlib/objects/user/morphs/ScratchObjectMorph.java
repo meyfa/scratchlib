@@ -83,8 +83,7 @@ public class ScratchObjectMorph extends ScratchUserClassObject
     {
         super(classID, version);
 
-        specifyField(FIELD_BOUNDS, new ScratchObjectRectangle((short) 0,
-                (short) 0, (short) 0, (short) 0));
+        specifyField(FIELD_BOUNDS, new ScratchObjectRectangle(0, 0, 0, 0));
 
         specifyField(FIELD_OWNER, NIL);
         specifyField(FIELD_SUBMORPHS, new ScratchObjectArray());

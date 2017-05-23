@@ -190,8 +190,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
         specifyField(FIELD_VISIBILITY,
                 new ScratchObjectSmallInteger16((short) 100));
 
-        specifyField(FIELD_SCALE_POINT,
-                new ScratchObjectPoint((short) 1, (short) 1));
+        specifyField(FIELD_SCALE_POINT, new ScratchObjectPoint(1, 1));
 
         specifyField(FIELD_ROTATION_DEGREES, new ScratchObjectFloat(0));
         specifyField(FIELD_ROTATION_STYLE, new ScratchObjectSymbol("normal"));
@@ -218,8 +217,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
         specifyField(FIELD_UNKNOWN2, ScratchObjectBoolean.TRUE,
                 ScratchVersion.BYOB311);
 
-        specifyField(FIELD_MIDPOINT,
-                new ScratchObjectPoint((short) 0, (short) 0),
+        specifyField(FIELD_MIDPOINT, new ScratchObjectPoint(0, 0),
                 ScratchVersion.BYOB311);
 
         specifyField(FIELD_PARENT, NIL, ScratchVersion.BYOB311);

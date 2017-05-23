@@ -7,15 +7,16 @@ import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjects;
 import scratchlib.objects.ScratchReferenceTable;
 import scratchlib.objects.inline.ScratchObjectAbstractNumber;
-import scratchlib.objects.inline.ScratchObjectSmallInteger16;
 import scratchlib.project.ScratchProject;
 import scratchlib.reader.ScratchInputStream;
+import scratchlib.util.ScratchNumbers;
 import scratchlib.writer.ScratchOutputStream;
 
 
 /**
  * Reference type representing a 2D rectangle, consisting of the x and y
- * coordinates as well as width and height values (all four are 16-bit).
+ * coordinates as well as width and height values (all four are, in most cases,
+ * 16-bit).
  */
 public class ScratchObjectRectangle extends ScratchObject
         implements IScratchReferenceType
@@ -41,12 +42,10 @@ public class ScratchObjectRectangle extends ScratchObject
      * @param width The width value.
      * @param height The height value.
      */
-    public ScratchObjectRectangle(short x, short y, short width, short height)
+    public ScratchObjectRectangle(int x, int y, int width, int height)
     {
-        this(new ScratchObjectSmallInteger16(x),
-                new ScratchObjectSmallInteger16(y),
-                new ScratchObjectSmallInteger16(width),
-                new ScratchObjectSmallInteger16(height));
+        this(ScratchNumbers.of(x), ScratchNumbers.of(y),
+                ScratchNumbers.of(width), ScratchNumbers.of(height));
     }
 
     /**

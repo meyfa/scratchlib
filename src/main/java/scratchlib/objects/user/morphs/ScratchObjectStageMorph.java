@@ -128,8 +128,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
         setField(FIELD_OBJ_NAME, new ScratchObjectUtf8("Stage"));
 
-        setField(FIELD_BOUNDS, new ScratchObjectRectangle((short) 0, (short) 0,
-                (short) 480, (short) 360));
+        setField(FIELD_BOUNDS, new ScratchObjectRectangle(0, 0, 480, 360));
     }
 
     /**
