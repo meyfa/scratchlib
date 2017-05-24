@@ -44,12 +44,12 @@ public class ScratchObjectForm extends ScratchObject
      * @param depth The depth of this form.
      * @param bits The byte array containing the pixel values.
      */
-    public ScratchObjectForm(short width, short height, short depth,
+    public ScratchObjectForm(int width, int height, int depth,
             ScratchObjectByteArray bits)
     {
-        this(new ScratchObjectSmallInteger16(width),
-                new ScratchObjectSmallInteger16(height),
-                new ScratchObjectSmallInteger16(depth), bits);
+        this(new ScratchObjectSmallInteger16((short) width),
+                new ScratchObjectSmallInteger16((short) height),
+                new ScratchObjectSmallInteger16((short) depth), bits);
     }
 
     /**

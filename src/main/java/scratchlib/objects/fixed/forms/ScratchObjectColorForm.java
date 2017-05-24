@@ -49,12 +49,12 @@ public class ScratchObjectColorForm extends ScratchObject
      * @param bits The byte array containing the pixel values.
      * @param colorMap The lookup map for color values.
      */
-    public ScratchObjectColorForm(short width, short height, short depth,
+    public ScratchObjectColorForm(int width, int height, int depth,
             ScratchObjectByteArray bits, ScratchObjectArray colorMap)
     {
-        this(new ScratchObjectSmallInteger16(width),
-                new ScratchObjectSmallInteger16(height),
-                new ScratchObjectSmallInteger16(depth), bits, colorMap);
+        this(new ScratchObjectSmallInteger16((short) width),
+                new ScratchObjectSmallInteger16((short) height),
+                new ScratchObjectSmallInteger16((short) depth), bits, colorMap);
     }
 
     /**
