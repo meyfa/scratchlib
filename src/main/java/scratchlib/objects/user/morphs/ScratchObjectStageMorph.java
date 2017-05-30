@@ -1,5 +1,7 @@
 package scratchlib.objects.user.morphs;
 
+import java.util.stream.Stream;
+
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.fixed.collections.ScratchObjectAbstractCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectDictionary;
@@ -245,5 +247,15 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
                         ScratchObject.NIL);
             }
         }
+    }
+
+    /**
+     * @return A stream of all sprites the stage owns.
+     */
+    public Stream<ScratchObjectSpriteMorph> streamSprites()
+    {
+        final ScratchObject spritesObj = getField(FIELD_SPRITES);
+        return ((ScratchObjectAbstractCollection) spritesObj).stream()
+                .map(obj -> (ScratchObjectSpriteMorph) obj);
     }
 }

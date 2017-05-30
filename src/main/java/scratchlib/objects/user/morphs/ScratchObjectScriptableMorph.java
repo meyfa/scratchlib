@@ -2,6 +2,7 @@ package scratchlib.objects.user.morphs;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import scratchlib.media.ScratchFormEncoder;
 import scratchlib.objects.ScratchObject;
@@ -218,6 +219,16 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
         ((ScratchObjectAbstractCollection) collectionObj).clear();
     }
 
+    /**
+     * @return A stream of all custom blocks the morph owns.
+     */
+    public Stream<ScratchObjectCustomBlockDefinition> streamCustomBlocks()
+    {
+        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        return ((ScratchObjectAbstractCollection) collectionObj).stream()
+                .map(obj -> (ScratchObjectCustomBlockDefinition) obj);
+    }
+
     // ---- SCRIPTS ------------------------------------------------------------
 
     /**
@@ -325,5 +336,24 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     {
         final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
         ((ScratchObjectAbstractCollection) collectionObj).clear();
+    }
+
+    /**
+     * @return A stream of all scripts the morph owns.
+     */
+    public Stream<ScratchObjectAbstractCollection> streamScripts()
+    {
+        final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
+        return ((ScratchObjectAbstractCollection) collectionObj).stream()
+                .map(obj -> (ScratchObjectAbstractCollection) obj);
+    }
+
+    /**
+     * @return A stream of the bodies of all scripts the morph owns.
+     */
+    public Stream<ScratchObjectAbstractCollection> streamScriptBodies()
+    {
+        return streamScripts()
+                .map(script -> (ScratchObjectAbstractCollection) script.get(1));
     }
 }
