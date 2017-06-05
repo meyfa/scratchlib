@@ -158,6 +158,9 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     public int getCustomBlockCount()
     {
         final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        if (collectionObj == ScratchObject.NIL) {
+            return 0;
+        }
         return ((ScratchObjectAbstractCollection) collectionObj).size();
     }
 
