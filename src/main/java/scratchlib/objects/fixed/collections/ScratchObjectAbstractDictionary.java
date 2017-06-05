@@ -1,13 +1,10 @@
 package scratchlib.objects.fixed.collections;
 
 import java.io.IOException;
-import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -30,7 +27,8 @@ import scratchlib.writer.ScratchOutputStream;
 public abstract class ScratchObjectAbstractDictionary extends ScratchObject
         implements IScratchReferenceType
 {
-    private final LinkedHashMap<ScratchOptionalField, ScratchOptionalField> entries = new LinkedHashMap<>();
+    private final LinkedHashMap<ScratchOptionalField, ScratchOptionalField> entriesBeforeResolve = new LinkedHashMap<>();
+    private final LinkedHashMap<ScratchObject, ScratchObject> entries = new LinkedHashMap<>();
 
     /**
      * @param classID The ID of the class this object belongs to.
@@ -48,8 +46,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
      */
     public ScratchObject get(ScratchObject key)
     {
-        // TODO implement without instantiation
-        return entries.get(new ScratchOptionalField(key)).get();
+        return entries.get(key);
     }
 
     /**
@@ -68,8 +65,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
             throw new IllegalArgumentException("value may not be null");
         }
 
-        entries.put(new ScratchOptionalField(key),
-                new ScratchOptionalField(value));
+        entries.put(key, value);
     }
 
     /**
@@ -79,37 +75,31 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
      */
     public void remove(ScratchObject key)
     {
-        // TODO implement without instantiation
-        entries.remove(new ScratchOptionalField(key));
+        entries.remove(key);
     }
 
     /**
-     * @return A set of all keys in this dictionary.
+     * @return A writable set of all keys in this dictionary.
      */
     public Set<ScratchObject> keySet()
     {
-        return entries.keySet().stream().map(ScratchOptionalField::get)
-                .collect(Collectors.toCollection(LinkedHashSet::new));
+        return entries.keySet();
     }
 
     /**
-     * @return A collection of all values in this dictionary.
+     * @return A writable collection of all values in this dictionary.
      */
     public Collection<ScratchObject> values()
     {
-        return entries.values().stream().map(ScratchOptionalField::get)
-                .collect(Collectors.toList());
+        return entries.values();
     }
 
     /**
-     * @return A set of all mappings in this dictionary.
+     * @return A writable set of all mappings in this dictionary.
      */
     public Set<Entry<ScratchObject, ScratchObject>> entrySet()
     {
-        return entries.entrySet().stream()
-                .map(e -> new AbstractMap.SimpleImmutableEntry<>(
-                        e.getKey().get(), e.getValue().get()))
-                .collect(Collectors.toCollection(LinkedHashSet::new));
+        return entries.entrySet();
     }
 
     @Override
@@ -120,10 +110,9 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
             return false;
         }
 
-        for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entries
-                .entrySet()) {
-            entry.getKey().get().createReferences(ref, project);
-            entry.getValue().get().createReferences(ref, project);
+        for (Entry<ScratchObject, ScratchObject> entry : entries.entrySet()) {
+            entry.getKey().createReferences(ref, project);
+            entry.getValue().createReferences(ref, project);
         }
 
         return true;
@@ -134,11 +123,15 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     {
         super.resolveReferences(ref);
 
-        for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entries
+        entries.clear();
+        for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entriesBeforeResolve
                 .entrySet()) {
             entry.getKey().resolve(ref);
             entry.getValue().resolve(ref);
+
+            entries.put(entry.getKey().get(), entry.getValue().get());
         }
+        entriesBeforeResolve.clear();
     }
 
     @Override
@@ -148,10 +141,9 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
         super.writeTo(out, ref, project);
 
         out.write32bitUnsignedInt(entries.size());
-        for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entries
-                .entrySet()) {
-            ref.writeField(entry.getKey().get(), out, project);
-            ref.writeField(entry.getValue().get(), out, project);
+        for (Entry<ScratchObject, ScratchObject> entry : entries.entrySet()) {
+            ref.writeField(entry.getKey(), out, project);
+            ref.writeField(entry.getValue(), out, project);
         }
     }
 
@@ -163,7 +155,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
 
         int size = in.read32bitUnsignedInt();
         for (int i = 0; i < size; ++i) {
-            entries.put(ScratchObjects.read(in, project),
+            entriesBeforeResolve.put(ScratchObjects.read(in, project),
                     ScratchObjects.read(in, project));
         }
     }
