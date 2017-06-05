@@ -186,7 +186,11 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
      */
     public void addCustomBlock(ScratchObjectCustomBlockDefinition block)
     {
-        final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        if (collectionObj == ScratchObject.NIL) {
+            collectionObj = new ScratchObjectOrderedCollection();
+            setField(FIELD_CUSTOM_BLOCKS, collectionObj);
+        }
         ((ScratchObjectAbstractCollection) collectionObj).add(block);
     }
 
@@ -219,6 +223,9 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     public void clearCustomBlocks()
     {
         final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        if (collectionObj == ScratchObject.NIL) {
+            return;
+        }
         ((ScratchObjectAbstractCollection) collectionObj).clear();
     }
 
@@ -228,6 +235,9 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     public Stream<ScratchObjectCustomBlockDefinition> streamCustomBlocks()
     {
         final ScratchObject collectionObj = getField(FIELD_CUSTOM_BLOCKS);
+        if (collectionObj == ScratchObject.NIL) {
+            return Stream.empty();
+        }
         return ((ScratchObjectAbstractCollection) collectionObj).stream()
                 .map(obj -> (ScratchObjectCustomBlockDefinition) obj);
     }
