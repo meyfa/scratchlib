@@ -133,4 +133,25 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
 
         specifyField(FIELD_IS_LARGE, ScratchObjectBoolean.FALSE);
     }
+
+    /**
+     * @return The {@link ScratchObjectStringMorph} displaying the title string.
+     * 
+     * @see #FIELD_TITLE_MORPH
+     */
+    public ScratchObjectStringMorph getTitleMorph()
+    {
+        return (ScratchObjectStringMorph) getField(FIELD_TITLE_MORPH);
+    }
+
+    /**
+     * @return The {@link ScratchObjectUpdatingStringMorph} used for displaying
+     *         the watched value.
+     * 
+     * @see #FIELD_READOUT
+     */
+    public ScratchObjectUpdatingStringMorph getReadoutMorph()
+    {
+        return (ScratchObjectUpdatingStringMorph) getField(FIELD_READOUT);
+    }
 }

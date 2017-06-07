@@ -1,6 +1,7 @@
 package scratchlib.objects.user.morphs.ui;
 
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
+import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectSymbol;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
@@ -72,5 +73,24 @@ public class ScratchObjectStringMorph extends ScratchObjectMorph
                 new ScratchObjectSmallInteger16((short) 0));
 
         specifyField(FIELD_CONTENTS, new ScratchObjectUtf8(""));
+    }
+
+    /**
+     * @return This morph's text contents (the displayed string).
+     */
+    public String getContents()
+    {
+        return ((ScratchObjectAbstractString) getField(FIELD_CONTENTS))
+                .getValue();
+    }
+
+    /**
+     * Sets this morph's text contents (the displayed string).
+     * 
+     * @param contents The new contents.
+     */
+    public void setContents(String contents)
+    {
+        setField(FIELD_CONTENTS, new ScratchObjectUtf8(contents));
     }
 }

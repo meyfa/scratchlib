@@ -1,5 +1,6 @@
 package scratchlib.objects.user.morphs.ui;
 
+import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectSymbol;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.inline.ScratchObjectBoolean;
@@ -63,7 +64,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
      * them. If this is a variable display, the value of this field is the
      * variable name.
      * 
-     * @see ScratchObjectSymbol
+     * @see ScratchObjectUtf8
      */
     public static final String FIELD_PARAMETER = "parameter";
 
@@ -119,5 +120,28 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
         specifyField(FIELD_GROWABLE, ScratchObjectBoolean.TRUE);
         specifyField(FIELD_STEP_TIME,
                 new ScratchObjectSmallInteger16((short) 100));
+    }
+
+    /**
+     * @return This morph's parameter string.
+     * 
+     * @see #FIELD_PARAMETER
+     */
+    public String getParameter()
+    {
+        return ((ScratchObjectAbstractString) getField(FIELD_PARAMETER))
+                .getValue();
+    }
+
+    /**
+     * Sets this morph's parameter string.
+     * 
+     * @param parameter The new parameter string.
+     * 
+     * @see #FIELD_PARAMETER
+     */
+    public void setParameter(String parameter)
+    {
+        setField(FIELD_PARAMETER, new ScratchObjectUtf8(parameter));
     }
 }
