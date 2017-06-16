@@ -166,7 +166,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
     /**
      * Obtains a custom block from the morph. Indexes run from 0 to
-     * {@code getCustomBlockCount(morph)}.
+     * {@code getCustomBlockCount()}.
      * 
      * @param index The custom block's index.
      * @return The custom block object at the given index.
@@ -196,7 +196,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
     /**
      * Removes a custom block from the morph. Indexes run from 0 to
-     * {@code getCustomBlockCount(morph)}.
+     * {@code getCustomBlockCount()}.
      * 
      * @param index The custom block's index.
      */
