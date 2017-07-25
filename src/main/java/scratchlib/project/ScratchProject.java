@@ -107,7 +107,7 @@ public class ScratchProject
             // thumbnail omitted (-> ColorForm)
             dict.put(new ScratchObjectString(INFO_COMMENT),
                     new ScratchObjectUtf8(
-                            "https://github.com/JangoBrick/scratchlib"));
+                            "https://github.com/meyfa/scratchlib"));
             dict.put(new ScratchObjectString(INFO_AUTHOR),
                     new ScratchObjectUtf8(""));
             dict.put(new ScratchObjectString(INFO_PEN_TRAILS),
