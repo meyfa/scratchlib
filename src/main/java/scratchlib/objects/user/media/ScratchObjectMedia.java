@@ -1,5 +1,6 @@
 package scratchlib.objects.user.media;
 
+import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.user.ScratchUserClassObject;
 
@@ -28,5 +29,25 @@ public class ScratchObjectMedia extends ScratchUserClassObject
         super(classID, version);
 
         specifyField(FIELD_MEDIA_NAME, new ScratchObjectUtf8(""));
+    }
+
+    /**
+     * @return The media's name.
+     */
+    public String getName()
+    {
+        return ((ScratchObjectAbstractString) getField(FIELD_MEDIA_NAME))
+                .getValue();
+    }
+
+    /**
+     * Updates the media's name. Note that this change is NOT reflected anywhere
+     * else (when used in blocks, etc).
+     * 
+     * @param name The new name.
+     */
+    public void setName(String name)
+    {
+        setField(FIELD_MEDIA_NAME, new ScratchObjectUtf8(name));
     }
 }
