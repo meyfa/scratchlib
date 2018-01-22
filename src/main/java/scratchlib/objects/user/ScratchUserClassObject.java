@@ -20,7 +20,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Base class for all Scratch objects that are neither inline nor fixed-format,
  * i.e. the objects with class IDs 100 to 255 that can change their attributes
  * between Scratch versions.
- * 
+ *
  * <p>
  * Fields are stored in a map and can be accessed with their string keys, which
  * subclasses should make available as {@code public static final} properties
@@ -45,7 +45,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
     /**
      * Gets the class version in relation to a given Scratch version, as the
      * class version may change between those.
-     * 
+     *
      * @param projectVersion The Scratch version for which to get the class
      *            version.
      * @return The version of the class this object belongs to.
@@ -58,7 +58,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
     /**
      * Specifies a new field on this class. The field has the given name, and is
      * initialized to the given value.
-     * 
+     *
      * @param name The field's name.
      * @param defaultValue The field's initial value.
      * @throws IllegalArgumentException If the name is null, already specified,
@@ -74,12 +74,12 @@ public abstract class ScratchUserClassObject extends ScratchObject
     /**
      * Specifies a new field on this class. The field has the given name, and is
      * initialized to the given value.
-     * 
+     *
      * <p>
      * As opposed to {@link #specifyField(String, ScratchObject)}, this
      * specifies a field that is version-dependent. In other words, the field is
      * only written or read if the project has a matching version.
-     * 
+     *
      * @param name The field's name.
      * @param defaultValue The field's initial value.
      * @param version The Scratch version this field applies to.
@@ -115,7 +115,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
 
     /**
      * Retrieves the field's value.
-     * 
+     *
      * @param name The field's name.
      * @return The field's value.
      */
@@ -126,7 +126,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
 
     /**
      * Sets the field's value to the given object.
-     * 
+     *
      * @param name The field's name.
      * @param value The field's new value.
      * @throws IllegalArgumentException If the value is null.
@@ -242,7 +242,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
         /**
          * Checks whether this field is applicable for the given project by
          * comparing its version with this field's constructor version.
-         * 
+         *
          * @param project The project.
          * @return Whether the project version matches.
          */
@@ -261,7 +261,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
 
         /**
          * One-size-fits-all constructor.
-         * 
+         *
          * @param version The class version to use for all Scratch versions.
          */
         public ClassVersion(int version)
@@ -271,7 +271,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
 
         /**
          * Constructor with separate versions for each Scratch version.
-         * 
+         *
          * @param versionScratch The class version for Scratch 1.4.
          * @param versionByob The class version for BYOB 3.1.1.
          */
@@ -283,7 +283,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
 
         /**
          * Returns the class version as an int for a given project version.
-         * 
+         *
          * @param projectVersion The project's Scratch version.
          * @return The associated class version.
          */

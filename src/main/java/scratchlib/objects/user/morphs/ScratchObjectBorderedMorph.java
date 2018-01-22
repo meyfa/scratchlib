@@ -14,13 +14,13 @@ public class ScratchObjectBorderedMorph extends ScratchObjectMorph
 {
     /**
      * Specifies a bordered morph's border width.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_BORDER_WIDTH = "borderWidth";
     /**
      * Specifies a bordered morph's border color.
-     * 
+     *
      * @see ScratchObjectColor
      * @see ScratchObjectTranslucentColor
      */
@@ -29,7 +29,7 @@ public class ScratchObjectBorderedMorph extends ScratchObjectMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

@@ -3,7 +3,7 @@ package scratchlib.objects.fixed.collections;
 /**
  * Fixed-format reference type that behaves roughly like a {@code Map}, allowing
  * other objects to be associated many-to-one (key -&gt; value).
- * 
+ *
  * <p>
  * Functionally equivalent to {@link ScratchObjectDictionary}.
  */

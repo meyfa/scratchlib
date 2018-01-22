@@ -20,40 +20,40 @@ public class ScratchObjectSoundMedia extends ScratchObjectMedia
 
     /**
      * Specifies the sampled sound object this media uses.
-     * 
+     *
      * @see ScratchObjectSampledSound
      */
     public static final String FIELD_ORIGINAL_SOUND = "originalSound";
 
     /**
      * Specifies the sound's volume. 100 is full volume, 0 is silenced.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_VOLUME = "volume";
     /**
      * Specifies the sound's balance. 0 is fully left, 100 is fully right, 50
      * (default) is centered.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_BALANCE = "balance";
 
     /**
      * Seems to serve no purpose (is always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_COMPRESSED_SAMPLE_RATE = "compressedSampleRate";
     /**
      * Seems to serve no purpose (is always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_COMPRESSED_BITS_PER_SAMPLE = "compressedBitsPerSample";
     /**
      * Seems to serve no purpose (is always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_COMPRESSED_DATA = "compressedData";
@@ -69,7 +69,7 @@ public class ScratchObjectSoundMedia extends ScratchObjectMedia
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

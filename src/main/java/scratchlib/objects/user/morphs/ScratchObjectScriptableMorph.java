@@ -23,7 +23,7 @@ import scratchlib.project.ScratchVersion;
 /**
  * Represents a morph that has a name, media, variables, and - most importantly
  * - can contain scripts.
- * 
+ *
  * <p>
  * The only known subclasses are the stage ({@link ScratchObjectStageMorph}) and
  * its sprites ({@link ScratchObjectSpriteMorph}).
@@ -32,7 +32,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 {
     /**
      * Specifies a morph's name.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_OBJ_NAME = "objName";
@@ -40,13 +40,13 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Specifies a morph's variables (e.g. the stage vars, or a sprite's vars).
      * Maps their names to their values.
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_VARS = "vars";
     /**
      * Specifies a morph's scripting bin (array of (point, blocksArray) tuples).
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_BLOCKS_BIN = "blocksBin";
@@ -54,27 +54,27 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * BYOB 3.1.1 field. Specifies a morph's custom blocks
      * ({@link ScratchObjectCustomBlockDefinition}).
-     * 
+     *
      * @see ScratchObjectOrderedCollection
      */
     public static final String FIELD_CUSTOM_BLOCKS = "customBlocks";
 
     /**
      * Specifies whether a morph is just a clone of another morph.
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_CLONE = "isClone";
 
     /**
      * Specifies all of the morph's media.
-     * 
+     *
      * @see ScratchObjectOrderedCollection
      */
     public static final String FIELD_MEDIA = "media";
     /**
      * Specifies the morph's current costume.
-     * 
+     *
      * @see ScratchObjectImageMedia
      */
     public static final String FIELD_COSTUME = "costume";
@@ -82,7 +82,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
@@ -142,7 +142,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Updates the morph's name. Note that this change is NOT reflected anywhere
      * else (when used in blocks, etc).
-     * 
+     *
      * @param name The new name.
      */
     public void setName(String name)
@@ -167,7 +167,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Obtains a custom block from the morph. Indexes run from 0 to
      * {@code getCustomBlockCount()}.
-     * 
+     *
      * @param index The custom block's index.
      * @return The custom block object at the given index.
      */
@@ -181,7 +181,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Adds a custom block to the morph. Note that the block's {@code isGlobal}
      * flag is not updated.
-     * 
+     *
      * @param block The custom block to add.
      */
     public void addCustomBlock(ScratchObjectCustomBlockDefinition block)
@@ -197,7 +197,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Removes a custom block from the morph. Indexes run from 0 to
      * {@code getCustomBlockCount()}.
-     * 
+     *
      * @param index The custom block's index.
      */
     public void removeCustomBlock(int index)
@@ -208,7 +208,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
     /**
      * Removes a given custom block from the morph.
-     * 
+     *
      * @param block The custom block.
      */
     public void removeCustomBlock(ScratchObjectCustomBlockDefinition block)
@@ -257,7 +257,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
      * Obtains a script from the morph. A script is a tuple/collection of its
      * location (a point) and body (a collection of blocks). Indexes run from 0
      * to {@code getScriptCount()}.
-     * 
+     *
      * @param index The script's index.
      * @return The script at the given index.
      */
@@ -271,7 +271,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Obtains the location of one of the morph's scripts. Indexes run from 0 to
      * {@code getScriptCount()}.
-     * 
+     *
      * @param index The script's index.
      * @return The location of the script at the given index.
      */
@@ -283,7 +283,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Obtains the body of one of the morph's scripts. The body is a collection
      * of block arrays. Indexes run from 0 to {@code getScriptCount()}.
-     * 
+     *
      * @param index The script's index.
      * @return The body of the script at the given index.
      */
@@ -294,7 +294,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
     /**
      * Adds a script to the morph.
-     * 
+     *
      * @param location The script's location.
      * @param body The script's body (collection of block arrays).
      */
@@ -310,7 +310,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Adds a script to the morph. A script is a tuple/collection of its
      * location (a point) and body (a collection of blocks).
-     * 
+     *
      * @param script The script tuple.
      */
     public void addScript(ScratchObjectAbstractCollection script)
@@ -322,7 +322,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
     /**
      * Removes a script from the morph. Indexes run from 0 to
      * {@code getScriptCount()}.
-     * 
+     *
      * @param index The script's index.
      */
     public void removeScript(int index)
@@ -333,7 +333,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
 
     /**
      * Removes a given script from the morph.
-     * 
+     *
      * @param script The script.
      */
     public void removeScript(ScratchObjectAbstractCollection script)

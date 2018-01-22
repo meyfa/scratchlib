@@ -24,7 +24,7 @@ public class ScratchWriter
 
     /**
      * Writes the given {@link ScratchProject} to the file.
-     * 
+     *
      * @param project The project to write.
      * @throws IOException
      */

@@ -23,13 +23,13 @@ public class ScratchObjectWatcherSliderMorph
 
     /**
      * Use unknown. Seems to always be equal to the Boolean 'true'.
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_UNKNOWN0 = "unknown0";
     /**
      * Use unknown. Seems to always be equal to the 16-bit integer 0.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_UNKNOWN1 = "unknown1";
@@ -45,7 +45,7 @@ public class ScratchObjectWatcherSliderMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

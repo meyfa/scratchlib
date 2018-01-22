@@ -25,7 +25,7 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
 
     /**
      * Specifies the sound's envelopes. Usually just an empty array.
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_ENVELOPES = "envelopes";
@@ -33,7 +33,7 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
     /**
      * Specifies the scaled volume (whatever "scaled" means). Usually 32768
      * (2^15).
-     * 
+     *
      * @see ScratchObjectSmallInteger
      */
     public static final String FIELD_SCALED_VOL = "scaledVol";
@@ -43,7 +43,7 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
      * the "samples" buffer length in bytes if the "original sampling rate"
      * equals 11025, or half the buffer length if the "original sampling rate"
      * equals 22050.
-     * 
+     *
      * @see ScratchObjectSmallInteger
      * @see ScratchObjectSmallInteger16
      */
@@ -51,21 +51,21 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
 
     /**
      * Specifies the sound buffer containing the samples.
-     * 
+     *
      * @see ScratchObjectSoundBuffer
      */
     public static final String FIELD_SAMPLES = "samples";
     /**
      * Specifies the original sampling rate (in Hertz). Usually either 11025 or
      * 22050. Apparently has an influence on the "initial count".
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_ORIGINAL_SAMPLING_RATE = "originalSamplingRate";
     /**
      * Specifies the number of samples there are, which is always half the
      * "samples" sound buffer byte length.
-     * 
+     *
      * @see ScratchObjectSmallInteger
      * @see ScratchObjectSmallInteger16
      */
@@ -75,13 +75,13 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
      * Specifies the scaled increment (whatever that means). Appears to be 32768
      * (2^15) for an "original sampling rate" of 11025, and 65536 (2^16) for an
      * "original sampling rate" of 22050.
-     * 
+     *
      * @see ScratchObjectSmallInteger
      */
     public static final String FIELD_SCALED_INCREMENT = "scaledIncrement";
     /**
      * Specifies the scaled initial index (whatever that means). Usually nil.
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_SCALED_INITIAL_INDEX = "scaledInitialIndex";
@@ -97,7 +97,7 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

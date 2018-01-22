@@ -19,7 +19,7 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
 
     /**
      * Performs a reference lookup for the given {@link ScratchObject}.
-     * 
+     *
      * @param object The object to look up.
      * @return The object's reference ID, or -1 if not found.
      */
@@ -31,7 +31,7 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
 
     /**
      * Performs an object lookup for the given reference ID.
-     * 
+     *
      * @param referenceID The ID to look up.
      * @return The referenced object, or null if not found.
      */
@@ -44,7 +44,7 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      * Inserts the given {@link ScratchObject} into this reference table. The ID
      * is determined automatically. True is returned if the object was newly
      * inserted, false otherwise.
-     * 
+     *
      * @param object The object to insert.
      * @return Whether the element was newly inserted (true), or not (false).
      */
@@ -75,10 +75,10 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      * Convenience method. If the object is inline, it is written out directly
      * via its {@code writeTo(...)} method; otherwise, the reference stored for
      * it in this table is written instead.
-     * 
+     *
      * <p>
      * This is useful for fields of other objects.
-     * 
+     *
      * @param o The object to write.
      * @param out The stream to write to.
      * @param project The project the object is part of.

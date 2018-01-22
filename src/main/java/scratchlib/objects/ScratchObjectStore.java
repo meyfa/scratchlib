@@ -12,17 +12,17 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Main container for project data: both the project's information and its stage
  * are wrapped in this structure.
- * 
+ *
  * <p>
  * Object stores have one root object, followed by zero or more reference types
  * required by that root object. In other words, they simply wrap one main
  * object, but in a way that flattens its structure.
- * 
+ *
  * <p>
  * They start with the header: "ObjS" + 0x01 + "Stch" + 0x01. Next, there is a
  * 32-bit integer describing the store's flattened size (number of elements).
  * Finally, the main object and its referenced objects are written out.
- * 
+ *
  * <p>
  * Due to some undocumented reason, Scratch and BYOB include "orphaned" objects
  * after the main object and its referenced fields for the project's info store.
@@ -70,7 +70,7 @@ public class ScratchObjectStore
 
     /**
      * Changes the object contained in this store.
-     * 
+     *
      * @param object The new object.
      */
     public void set(ScratchObject object)
@@ -90,7 +90,7 @@ public class ScratchObjectStore
     /**
      * Sets this store's list of "orphaned" fields (fields not referenced from
      * the root).
-     * 
+     *
      * @param orphans The new list of orphaned fields.
      */
     public void setOrphanedFields(List<ScratchObject> orphans)
@@ -100,7 +100,7 @@ public class ScratchObjectStore
 
     /**
      * Writes this object store to the given {@link ScratchOutputStream}.
-     * 
+     *
      * @param out The stream to write to.
      * @param project The project this store belongs to, for version info.
      * @throws IOException
@@ -130,7 +130,7 @@ public class ScratchObjectStore
     /**
      * Reads an object store from the given input stream. The stream must be
      * positioned <b>before</b> the object store header.
-     * 
+     *
      * @param in The input stream to read from.
      * @param project The project reading for.
      * @return The instance read.

@@ -19,7 +19,7 @@ public class ScratchReader
     /**
      * Reads a {@link ScratchProject} from the given project file. The version
      * is determined automatically.
-     * 
+     *
      * @param file The project file to read.
      * @return The project that was read.
      * @throws IOException If an I/O error occurs.
@@ -34,7 +34,7 @@ public class ScratchReader
     /**
      * Reads a {@link ScratchProject} from the given input stream. The version
      * is determined automatically.
-     * 
+     *
      * @param in The input stream to read from.
      * @return The project that was read.
      * @throws IOException If an I/O error occurs.

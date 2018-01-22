@@ -27,20 +27,20 @@ public class ScratchObjectStringMorph extends ScratchObjectMorph
      * Specifies the font and font size to use when displaying this string. This
      * is an array where the first element is a symbol (default "VerdanaBold")
      * and the second is a 16-bit integer (default 10).
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_FONT = "font";
     /**
      * Specifies the amount of "emphasis" to put on the displayed string.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_EMPHASIS = "emphasis";
 
     /**
      * Specifies the actual string value to display.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_CONTENTS = "contents";
@@ -56,7 +56,7 @@ public class ScratchObjectStringMorph extends ScratchObjectMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
@@ -86,7 +86,7 @@ public class ScratchObjectStringMorph extends ScratchObjectMorph
 
     /**
      * Sets this morph's text contents (the displayed string).
-     * 
+     *
      * @param contents The new contents.
      */
     public void setContents(String contents)

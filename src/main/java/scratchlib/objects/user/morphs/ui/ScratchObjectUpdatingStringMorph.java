@@ -29,7 +29,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
     /**
      * Specifies the format to use when displaying the string. Usually
      * "default".
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_FORMAT = "format";
@@ -37,7 +37,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
     /**
      * Specifies the target to invoke the get/put selectors on. Usually the
      * stage or the sprite that the displayed variable belongs to.
-     * 
+     *
      * @see ScratchObjectStageMorph
      * @see ScratchObjectSpriteMorph
      */
@@ -47,7 +47,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
      * Specifies the selector (i.e. function) to invoke for getting the value to
      * display. If this is a variable display, the value of this field is
      * "getVar:".
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_GET_SELECTOR = "getSelector";
@@ -55,7 +55,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
      * Specifies the selector (i.e. function) to invoke for updating the
      * string's source. If this is a variable display, the value of this field
      * is nil.
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_PUT_SELECTOR = "putSelector";
@@ -63,7 +63,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
      * Specifies the parameter to pass to the get/put selectors when invoking
      * them. If this is a variable display, the value of this field is the
      * variable name.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_PARAMETER = "parameter";
@@ -71,20 +71,20 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
     /**
      * Specifies the precision with which to display decimals returned by the
      * get selector. Default '0.1'.
-     * 
+     *
      * @see ScratchObjectFloat
      */
     public static final String FIELD_FLOAT_PRECISION = "floatPrecision";
     /**
      * Specifies whether this morph may be grown to accommodate longer strings.
      * Default true.
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_GROWABLE = "growable";
     /**
      * Specifies the interval between updates. Default 100.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_STEP_TIME = "stepTime";
@@ -100,7 +100,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
@@ -124,7 +124,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
 
     /**
      * @return This morph's parameter string.
-     * 
+     *
      * @see #FIELD_PARAMETER
      */
     public String getParameter()
@@ -135,9 +135,9 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
 
     /**
      * Sets this morph's parameter string.
-     * 
+     *
      * @param parameter The new parameter string.
-     * 
+     *
      * @see #FIELD_PARAMETER
      */
     public void setParameter(String parameter)

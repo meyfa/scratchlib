@@ -22,7 +22,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Base class for all {@code List}-like Scratch collection classes, e.g.
  * {@link ScratchObjectArray} or {@link ScratchObjectOrderedCollection}.
- * 
+ *
  * <p>
  * Allows objects to be stored, retrieved, replaced, inserted and removed via
  * indices.
@@ -65,7 +65,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
 
     /**
      * Retrieves an element from this collection.
-     * 
+     *
      * @param index The object's index.
      * @return The object at the given index.
      */
@@ -76,7 +76,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
 
     /**
      * Replaces an element in this collection with a different object.
-     * 
+     *
      * @param index The object's index.
      * @param object The object to replace the current one with.
      */
@@ -90,7 +90,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
 
     /**
      * Adds an element to this collection.
-     * 
+     *
      * @param object The element to add.
      * @throws IllegalArgumentException If object is null.
      */
@@ -105,7 +105,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
     /**
      * Inserts an element into this collection, shifting the current and all
      * subsequent elements to the right (adding one to their indices).
-     * 
+     *
      * @param index The position at which to insert.
      * @param object The element to add.
      * @throws IllegalArgumentException If object is null.
@@ -120,7 +120,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
 
     /**
      * Removes an element from this collection.
-     * 
+     *
      * @param index The index of the element to remove.
      * @return The removed element.
      */
@@ -131,7 +131,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
 
     /**
      * Removes a given element from this collection.
-     * 
+     *
      * @param object The element to remove.
      */
     public void remove(ScratchObject object)

@@ -14,7 +14,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Inline {@link ScratchObject} type for negative integers of arbitrary size,
  * stored by first writing a 16-bit length, followed by that many bytes.
- * 
+ *
  * <p>
  * Note that the sign bit is ignored when written, although the class property
  * is the negative integer for convenience.

@@ -21,14 +21,14 @@ public class ScratchObjectAlignmentMorph extends ScratchObjectRectangleMorph
     /**
      * Specifies the morph's orientation, which is either "vertical" or
      * "horizontal" (a symbol).
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_ORIENTATION = "orientation";
     /**
      * Specifies the morph's centering behavior. Usually just "center". Another
      * possible value (there could be, and probably are, more) is "topLeft".
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_CENTERING = "centering";
@@ -36,21 +36,21 @@ public class ScratchObjectAlignmentMorph extends ScratchObjectRectangleMorph
     /**
      * Specifies the morph's horizontal resize behavior. Usually "shrinkWrap".
      * Other possible values (there could be more) are "rigid" and "spaceFill".
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_H_RESIZING = "hResizing";
     /**
      * Specifies the morph's vertical resize behavior. Usually "shrinkWrap".
      * Other possible values (there could be more) are "rigid" and "spaceFill".
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_V_RESIZING = "vResizing";
 
     /**
      * Specifies the morph's inset. This is an integer number.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_INSET = "inset";
@@ -66,7 +66,7 @@ public class ScratchObjectAlignmentMorph extends ScratchObjectRectangleMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

@@ -21,7 +21,7 @@ public class ScratchFormEncoder
 
     /**
      * Encodes the given image as a Scratch form object.
-     * 
+     *
      * @param img The image to encode.
      * @return The image encoded as a form.
      */
@@ -38,7 +38,7 @@ public class ScratchFormEncoder
     /**
      * Encodes the given image with Scratch's encoding algorithm and returns a
      * byte array containing the resulting bytes.
-     * 
+     *
      * @param img The image to encode.
      * @return The encoded byte array.
      */
@@ -55,7 +55,7 @@ public class ScratchFormEncoder
     /**
      * Encodes an array of pixel values with Scratch's integer array encoding
      * algorithm and returns the resulting bytes.
-     * 
+     *
      * @param pixels The array of pixel values to encode.
      * @return The encoded bytes.
      */
@@ -63,10 +63,10 @@ public class ScratchFormEncoder
     {
         /*
          * Algorithm purpose: Compress an array of ints.
-         * 
+         *
          * Note that this implementation here is pretty lazy, in that it just
          * writes one bulk of literal words without that much compression.
-         * 
+         *
          * General steps:
          * 1) write amount of actual pixels
          * 2) write pairs of N and D:
@@ -79,7 +79,7 @@ public class ScratchFormEncoder
          *          to form a word, and then that word is repeated L times.
          *      If C = 2, then D is a 4-byte word.
          *      If C = 3, then D is L consecutive words.
-         * 
+         *
          * As stated above, this implementation only writes one N (with
          * L = pixel array length and C = 3), and then writes L words.
          */
@@ -115,7 +115,7 @@ public class ScratchFormEncoder
     /**
      * Encodes a single positive integer with Scratch's integer encoding
      * algorithm and returns the resulting bytes.
-     * 
+     *
      * @param i The positive integer to encode.
      * @return The byte representation of the given integer.
      */
@@ -124,10 +124,10 @@ public class ScratchFormEncoder
         /*
          * Algorithm purpose: Compress a given int as much as possible in the
          * binary representation by taking shortcuts for small values.
-         * 
+         *
          * The algorithm is best described by specifying the three possible
          * output categories.
-         * 
+         *
          * 1) 1 byte:  This is the int converted to a byte. Happens if i < 224.
          * 2) 2 bytes: This happens when the value is 224 or larger, but not too
          *             large. 224 has to be subtracted from the first byte, then

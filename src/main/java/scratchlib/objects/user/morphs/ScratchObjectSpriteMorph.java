@@ -30,7 +30,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies a sprite's visibility. 100 is full visibility, 0 is basically
      * hidden.
-     * 
+     *
      * <p>
      * Note that this is NOT the toggleable visibility (for that, see
      * {@link ScratchObjectMorph#FIELD_FLAGS}), but rather the "ghost" graphic
@@ -38,14 +38,14 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
      * Moreover, note that Scratch fails to store this on its own, and so it is
      * always 100 when read. Yet, loading it is fully supported, so this CAN
      * safely be changed for a given sprite and WILL have an effect.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_VISIBILITY = "visibility";
 
     /**
      * Specifies a sprite's scaling point.
-     * 
+     *
      * @see ScratchObjectPoint
      */
     public static final String FIELD_SCALE_POINT = "scalePoint";
@@ -54,7 +54,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
      * Specifies the number of degrees a sprite is rotated. A displayed
      * direction of 90 equals 0 degrees, while 180 equals 90 degrees, and going
      * further in the clockwise direction increases the rotation similarly.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_ROTATION_DEGREES = "rotationDegrees";
@@ -62,7 +62,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
      * Specifies a sprite's rotation style, as a symbol. One of "normal" (full
      * 360 degrees), "leftRight" (only mirroring allowed), or "none" (no
      * rotation at all).
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_ROTATION_STYLE = "rotationStyle";
@@ -70,13 +70,13 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies a sprite's sound volume. 100 (default) is full volume, 0 is
      * silence.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_VOLUME = "volume";
     /**
      * Specifies a sprite's sound tempo in beats per minute. Default is 60.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_TEMPO_BPM = "tempoBPM";
@@ -84,14 +84,14 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies whether a sprite can be dragged by the user even in
      * presentation mode (see lock icon next to name input field).
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_DRAGGABLE = "draggable";
 
     /**
      * Use unknown. Always an empty dictionary.
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_SCENE_STATES = "sceneStates";
@@ -99,7 +99,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies the dictionary of sprite-specific lists (keys:
      * {@link ScratchObjectUtf8}, values: {@link ScratchObjectListMorph}).
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_LISTS = "lists";
@@ -109,10 +109,10 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * BYOB 3.1.1 field. Specifies the amount by which a sprite is scaled, where
      * 100 is no scaling and 200 is double the unscaled size.
-     * 
+     *
      * <p>
      * Non-BYOB versions calculate this dynamically from the bounds field.
-     * 
+     *
      * @see ScratchObjectFloat
      * @see ScratchObjectSmallInteger16
      */
@@ -120,29 +120,29 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
 
     /**
      * BYOB 3.1.1 field. Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_UNKNOWN0 = "unknown0";
     /**
      * BYOB 3.1.1 field. Seems to be unused (always an empty collection).
-     * 
+     *
      * @see ScratchObjectOrderedCollection
      */
     public static final String FIELD_UNKNOWN1 = "unknown1";
     /**
      * BYOB 3.1.1 field. Seems to be unused (always the Boolean 'true').
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_UNKNOWN2 = "unknown2";
 
     /**
      * BYOB 3.1.1 field. Specifies a sprite's midpoint / center coordinates.
-     * 
+     *
      * <p>
      * Non-BYOB versions calculate this dynamically from the bounds field.
-     * 
+     *
      * @see ScratchObjectPoint
      */
     public static final String FIELD_MIDPOINT = "midpoint";
@@ -150,7 +150,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * BYOB 3.1.1 field. Specifies a sprite's parent sprite (the one that was
      * cloned to make this sprite).
-     * 
+     *
      * @see ScratchObjectSpriteMorph
      */
     public static final String FIELD_PARENT = "parent";
@@ -158,12 +158,12 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
      * BYOB 3.1.1 field. Specifies the types of media that a sprite inherits
      * without change from its parent (see {@link #FIELD_PARENT}). This is a set
      * of none, or any number of, the symbols "sounds" and "costumes".
-     * 
+     *
      * <p>
      * Note that even the inherited media items are still contained in a
      * sprite's media collection, so this is probably just an informational
      * field.
-     * 
+     *
      * @see ScratchObjectSet
      */
     public static final String FIELD_INHERITED_MEDIA = "inheritedMedia";
@@ -179,7 +179,7 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

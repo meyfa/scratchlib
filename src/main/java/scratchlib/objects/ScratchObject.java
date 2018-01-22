@@ -40,7 +40,7 @@ public abstract class ScratchObject
     /**
      * Inserts this object and all its reference fields into the given table,
      * provided this object and the fields are reference types.
-     * 
+     *
      * @param ref The reference table.
      * @param project The project this object belongs to, for version info.
      * @return Whether anything was inserted.
@@ -57,7 +57,7 @@ public abstract class ScratchObject
     /**
      * Replaces all unresolved reference fields this instance has by looking
      * them up in the given reference table.
-     * 
+     *
      * @param ref The reference table to use for field lookup.
      */
     public void resolveReferences(ScratchReferenceTable ref)
@@ -68,15 +68,15 @@ public abstract class ScratchObject
      * Writes this object to the given {@link ScratchOutputStream}, using the
      * already populated {@link ScratchReferenceTable} for writing out reference
      * fields.
-     * 
+     *
      * <p>
      * Subclasses MUST override this if they store any (additional) data.
-     * 
+     *
      * @param out The stream to write to.
      * @param ref The populated reference table.
      * @param project The project this object belongs to, for version info.
      * @throws IOException
-     * 
+     *
      * @see #createReferences(ScratchReferenceTable, ScratchProject)
      */
     public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
@@ -87,10 +87,10 @@ public abstract class ScratchObject
 
     /**
      * Initializes this object's fields by reading from the given stream.
-     * 
+     *
      * <p>
      * Subclasses MUST override this if they store any (additional) data.
-     * 
+     *
      * @param id This object's class ID.
      * @param in The input stream to read from.
      * @param project The project this object belongs to, for version info.

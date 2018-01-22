@@ -29,26 +29,26 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
     /**
      * Specifies the zoom. Is always a float of 1.0f.
-     * 
+     *
      * @see ScratchObjectFloat
      */
     public static final String FIELD_ZOOM = "zoom";
     /**
      * Specifies the horizontal panning. Is always 0.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_H_PAN = "hPan";
     /**
      * Specifies the vertical panning. Is always 0.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_V_PAN = "vPan";
 
     /**
      * Seems to serve no purpose (is always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_OBSOLETE_SAVED_STATE = "obsoleteSavedState";
@@ -56,7 +56,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies an ordered collection of all sprite morphs
      * ({@link ScratchObjectSpriteMorph}).
-     * 
+     *
      * @see ScratchObjectOrderedCollection
      */
     public static final String FIELD_SPRITES = "sprites";
@@ -64,20 +64,20 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies the stage's sound volume. 100 (default) is full volume, 0 is
      * silence.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_VOLUME = "volume";
     /**
      * Specifies the stage's sound tempo in beats per minute. Default is 60.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_TEMPO_BPM = "tempoBPM";
 
     /**
      * Use unknown. Always an empty dictionary.
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_SCENE_STATES = "sceneStates";
@@ -85,7 +85,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     /**
      * Specifies the dictionary of global lists (keys:
      * {@link ScratchObjectUtf8}, values: {@link ScratchObjectListMorph}).
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_LISTS = "lists";
@@ -101,7 +101,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
@@ -146,7 +146,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     /**
      * Obtains a sprite from the stage. Indexes run from 0 to
      * {@code getSpriteCount()}.
-     * 
+     *
      * @param index The sprite's index.
      * @return The sprite object at the given index.
      */
@@ -162,7 +162,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
      * Adds a sprite to the stage. If the sprite was previously owned by any
      * other stage, that stage's {@link #removeSprite(ScratchObjectSpriteMorph)}
      * method is called beforehand.
-     * 
+     *
      * @param sprite The sprite to add.
      */
     public void addSprite(ScratchObjectSpriteMorph sprite)
@@ -188,7 +188,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     /**
      * Removes a sprite from the stage. Indexes run from 0 to
      * {@code getSpriteCount()}.
-     * 
+     *
      * @param index The sprite's index.
      */
     public void removeSprite(int index)
@@ -208,7 +208,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
     /**
      * Removes a given sprite from the stage.
-     * 
+     *
      * @param sprite The sprite.
      */
     public void removeSprite(ScratchObjectSpriteMorph sprite)

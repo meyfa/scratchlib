@@ -142,7 +142,7 @@ public class ScratchProject
 
     /**
      * Sets the project's info section.
-     * 
+     *
      * @param info The new info section.
      */
     public void setInfoSection(ScratchObjectStore info)
@@ -160,7 +160,7 @@ public class ScratchProject
 
     /**
      * Sets the project's stage / content section.
-     * 
+     *
      * @param stage The new stage section.
      */
     public void setStageSection(ScratchObjectStore stage)
@@ -171,9 +171,9 @@ public class ScratchProject
     /**
      * Convenience method for retrieving the actual stage morph stored in the
      * stage section.
-     * 
+     *
      * @return The stage morph.
-     * 
+     *
      * @see #getStageSection()
      */
     public ScratchObjectStageMorph getStage()
@@ -184,9 +184,9 @@ public class ScratchProject
     /**
      * Convenience method for changing the stage morph stored in the stage
      * section.
-     * 
+     *
      * @param stage The new stage morph.
-     * 
+     *
      * @see #setStageSection(ScratchObjectStore)
      */
     public void setStage(ScratchObjectStageMorph stage)
@@ -196,7 +196,7 @@ public class ScratchProject
 
     /**
      * Finds the given property in this project's info dictionary.
-     * 
+     *
      * @param key The property's key.
      * @return The associated value.
      */
@@ -209,7 +209,7 @@ public class ScratchProject
     /**
      * Associates the given value with the given property name in this project's
      * info dictionary.
-     * 
+     *
      * @param key The property's key.
      * @param value The value to associate with the key.
      */
@@ -224,7 +224,7 @@ public class ScratchProject
     /**
      * Finds the info dictionary entry for the given key string. If no such
      * entry exists, returns {@code null}.
-     * 
+     *
      * @param key The entry's key.
      * @return The entry.
      */
@@ -250,7 +250,7 @@ public class ScratchProject
 
     /**
      * Writes this project to the given output stream.
-     * 
+     *
      * @param out The stream to write to.
      * @throws IOException
      */
@@ -270,7 +270,7 @@ public class ScratchProject
 
     /**
      * Writes the given object store into a byte array output stream.
-     * 
+     *
      * @param section The section to write.
      * @return A {@code ByteArrayOutputStream} containing the written bytes.
      * @throws IOException

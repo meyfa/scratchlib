@@ -14,7 +14,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Base class for all Scratch reference types that store strings. They differ
  * only in the charset they use, and in their purpose.
- * 
+ *
  * <p>
  * <b>US-ASCII</b>: {@link ScratchObjectString} (most used),
  * {@link ScratchObjectSymbol} (for internally-defined values).<br>

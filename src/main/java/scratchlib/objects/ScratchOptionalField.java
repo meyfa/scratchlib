@@ -13,7 +13,7 @@ public class ScratchOptionalField
 
     /**
      * Constructor for when the reference is not yet resolved.
-     * 
+     *
      * @param referenceID The unresolved reference ID.
      * @throws IllegalArgumentException If referenceID &lt; 1.
      */
@@ -27,7 +27,7 @@ public class ScratchOptionalField
 
     /**
      * Constructor for when there already is a value.
-     * 
+     *
      * @param value The field value.
      * @throws IllegalArgumentException If value is null.
      */
@@ -70,7 +70,7 @@ public class ScratchOptionalField
     /**
      * If this field has an associated reference ID, looks up the object it
      * points to from the given table and stores it as this field's value.
-     * 
+     *
      * @param ref The reference lookup table.
      */
     public void resolve(ScratchReferenceTable ref)

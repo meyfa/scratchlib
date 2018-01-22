@@ -26,48 +26,48 @@ public class ScratchObjectSimpleSliderMorph extends ScratchObjectRectangleMorph
 
     /**
      * Specifies the image morph used as the slider.
-     * 
+     *
      * @see ScratchObjectImageMorph
      */
     public static final String FIELD_SLIDER = "slider";
 
     /**
      * Specifies the percentage the slider has been moved to (as a float 0 - 1).
-     * 
+     *
      * @see ScratchObjectFloat
      */
     public static final String FIELD_VALUE = "value";
     /**
      * Specifies the selector (i.e. function) called to set the backing value.
      * For variable watcher sliders, this is usually "setVar:to:".
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_SET_VALUE_SELECTOR = "setValueSelector";
 
     /**
      * Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_SLIDER_SHADOW = "sliderShadow";
     /**
      * Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_SLIDER_COLOR = "sliderColor";
 
     /**
      * Specifies whether the slider generates descending values. Usually false.
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_DESCENDING = "descending";
 
     /**
      * Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_MODEL = "model";
@@ -76,7 +76,7 @@ public class ScratchObjectSimpleSliderMorph extends ScratchObjectRectangleMorph
      * Specifies the target this slider calls the setValueSelector on (usually
      * the stage or a sprite). For variable watcher sliders, this is the morph
      * holding the variable.
-     * 
+     *
      * @see ScratchObjectStageMorph
      * @see ScratchObjectSpriteMorph
      */
@@ -84,19 +84,19 @@ public class ScratchObjectSimpleSliderMorph extends ScratchObjectRectangleMorph
 
     /**
      * Specifies the name of the variable this slider is showing / manipulating.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_ACTION_SELECTOR = "actionSelector";
     /**
      * Seems to be unused (always 0).
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_ARGUMENTS = "arguments";
     /**
      * Seems to be unused (always 100).
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_ACT_WHEN = "actWhen";
@@ -112,7 +112,7 @@ public class ScratchObjectSimpleSliderMorph extends ScratchObjectRectangleMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

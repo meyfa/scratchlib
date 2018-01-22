@@ -24,38 +24,38 @@ public class ScratchObjectMorph extends ScratchUserClassObject
 
     /**
      * Specifies a morph's bounding rectangle.
-     * 
+     *
      * @see ScratchObjectRectangle
      */
     public static final String FIELD_BOUNDS = "bounds";
 
     /**
      * Specifies a morph's parent morph.
-     * 
+     *
      * @see ScratchObjectMorph
      */
     public static final String FIELD_OWNER = "owner";
     /**
      * Specifies a morph's child morphs.
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_SUBMORPHS = "submorphs";
 
     /**
      * Specifies a morph's color.
-     * 
+     *
      * @see ScratchObjectColor
      */
     public static final String FIELD_COLOR = "color";
 
     /**
      * Specifies a morph's 16-bit integer flags.
-     * 
+     *
      * <p>
      * This is relevant for sprites: They store a 0 here if they are visible,
      * but store a 1 if they are invisible (hidden via the "hide" block).
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_FLAGS = "flags";
@@ -75,7 +75,7 @@ public class ScratchObjectMorph extends ScratchUserClassObject
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

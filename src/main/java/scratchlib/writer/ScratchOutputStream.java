@@ -44,7 +44,7 @@ public class ScratchOutputStream extends OutputStream
 
     /**
      * Converts the string to US-ASCII bytes and writes them out.
-     * 
+     *
      * @param s The string to write.
      * @throws IOException
      */
@@ -55,7 +55,7 @@ public class ScratchOutputStream extends OutputStream
 
     /**
      * Converts the int to 4 bytes (big-endian) and writes them out.
-     * 
+     *
      * @param i The int to write.
      * @throws IOException
      */
@@ -67,7 +67,7 @@ public class ScratchOutputStream extends OutputStream
     /**
      * Converts the int to 3 bytes (big-endian) and writes them out. The fourth
      * byte is discarded in the process, effectively reducing the number range.
-     * 
+     *
      * @param i The int to write.
      * @throws IOException
      */
@@ -80,7 +80,7 @@ public class ScratchOutputStream extends OutputStream
      * Converts the int to 2 bytes (big-endian) and writes them out. The third
      * and fourth bytes are discarded in the process, and so the number is
      * equivalent to a short.
-     * 
+     *
      * @param i The int to write.
      * @throws IOException
      */
@@ -91,7 +91,7 @@ public class ScratchOutputStream extends OutputStream
 
     /**
      * Converts the double to 8 bytes (big-endian) and writes them out.
-     * 
+     *
      * @param d The double to write.
      * @throws IOException
      */

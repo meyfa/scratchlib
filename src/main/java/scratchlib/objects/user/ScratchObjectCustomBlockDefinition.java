@@ -29,21 +29,21 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * The block specification. This is a string version of the block header,
      * where parameter names are prefixed with a percentage sign ('%').
-     * 
+     *
      * <p>
      * Example: The block "letter (1) of [world]" might have the specification
      * "letter %index of %string".
-     * 
+     *
      * <p>
      * Note that there is sometimes more than one space between labels/params.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_USER_SPEC = "userSpec";
 
     /**
      * Seems to be unused (always an empty set).
-     * 
+     *
      * @see ScratchObjectSet
      */
     public static final String FIELD_BLOCKS_VAR = "blocksVar";
@@ -51,20 +51,20 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Specifies whether a block is atomic, i.e. runs in an instant without
      * intermediate graphics updates.
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_ATOMIC = "isAtomic";
 
     /**
      * Seems to be unused (always false). Use {@link #FIELD_TYPE} instead!
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_REPORTER = "isReporter";
     /**
      * Seems to be unused (always false). Use {@link #FIELD_TYPE} instead!
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_BOOLEAN = "isBoolean";
@@ -72,14 +72,14 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Specifies a block's script. This follows the usual script standards,
      * which means that it is an array of block arrays.
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_BODY = "body";
     /**
      * Specifies a reporter block's default answer, i.e. the value inside the
      * field at the dialog's bottom.
-     * 
+     *
      * @see ScratchObjectUtf8
      * @see ScratchObjectArray
      */
@@ -89,19 +89,19 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      * Specifies a block's return value type. This is "none" for command blocks,
      * "any" for normal reporter blocks, and "boolean" for predicate reporter
      * blocks.
-     * 
+     *
      * <p>
      * It might be possible to achieve strictly type-compatible blocks by
      * inserting values like "number", but this is untested (and would be
      * useless, since "any" does just fine).
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_TYPE = "type";
     /**
      * Specifies a block's block category. This is a symbol and one of the
      * following:
-     * 
+     *
      * <ul>
      * <li>"motion" (dark blue)
      * <li>"control" (yellow)
@@ -114,7 +114,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      * <li>"list" (dark orange)
      * <li>"none" (gray)
      * </ul>
-     * 
+     *
      * @see ScratchObjectSymbol
      */
     public static final String FIELD_CATEGORY = "category";
@@ -123,10 +123,10 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      * Specifies a block's parameter types. This is a dictionary where the keys
      * are the parameter names ({@link ScratchObjectUtf8}), and the values are
      * symbols ({@link ScratchObjectSymbol}) describing their types.
-     * 
+     *
      * <p>
      * The default is "any". All possible values are:
-     * 
+     *
      * <ul>
      * <li>"object" (sprites, stage, etc.)
      * <li>"number"
@@ -141,13 +141,13 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      * <li>"predicate"
      * <li>"unevaluatedBoolean"
      * </ul>
-     * 
+     *
      * <p>
      * Moreover, every value above can be suffixed with "List" (i.e. "anyList"
      * or "unevaluatedBooleanList") to form a multiple input parameter.<br>
      * The special value "template" corresponds to an "internal variable visible
      * to the caller".
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_DECLARATIONS = "declarations";
@@ -156,7 +156,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
      * keys are the parameter names ({@link ScratchObjectUtf8}), and the values
      * are some sort of string (either {@link ScratchObjectUtf8} or
      * {@link ScratchObjectString}) containing their respective default values.
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_DEFAULTS = "defaults";
@@ -164,7 +164,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Specifies whether a block is global (stage-owned) instead of
      * sprite-owned.
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_GLOBAL = "isGlobal";
@@ -200,7 +200,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Obtains the "user spec" ({@link #FIELD_USER_SPEC}), which defines the
      * block's header, in string form.
-     * 
+     *
      * @return The custom block's user spec.
      */
     public String getUserSpec()
@@ -215,7 +215,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Updates the "user spec" ({@link #FIELD_USER_SPEC}). This does not update
      * usages.
-     * 
+     *
      * @param spec The new user spec.
      */
     public void setUserSpec(String spec)
@@ -230,7 +230,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Obtains the body ({@link #FIELD_BODY}), i.e. the list of blocks executed
      * when the custom block is run.
-     * 
+     *
      * @return The custom block's body.
      */
     public ScratchObjectAbstractCollection getBody()
@@ -245,7 +245,7 @@ public class ScratchObjectCustomBlockDefinition extends ScratchUserClassObject
     /**
      * Updates the body ({@link #FIELD_BODY}), i.e. the list of blocks executed
      * when the custom block is run.
-     * 
+     *
      * @param body The new body.
      */
     public void setBody(ScratchObjectAbstractCollection body)

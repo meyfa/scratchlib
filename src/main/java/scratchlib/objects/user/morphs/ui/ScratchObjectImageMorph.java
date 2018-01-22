@@ -22,13 +22,13 @@ public class ScratchObjectImageMorph extends ScratchObjectMorph
 
     /**
      * Specifies this image's form.
-     * 
+     *
      * @see ScratchObjectColorForm
      */
     public static final String FIELD_FORM = "form";
     /**
      * Specifies this image's transparency as a float.
-     * 
+     *
      * @see ScratchObjectFloat
      */
     public static final String FIELD_TRANSPARENCY = "transparency";
@@ -44,7 +44,7 @@ public class ScratchObjectImageMorph extends ScratchObjectMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

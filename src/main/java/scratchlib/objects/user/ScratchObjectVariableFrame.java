@@ -20,7 +20,7 @@ public class ScratchObjectVariableFrame extends ScratchUserClassObject
     /**
      * Specifies the single field of this class. Stores an empty dictionary. Its
      * name and use are unknown.
-     * 
+     *
      * @see ScratchObjectDictionary
      */
     public static final String FIELD_UNKNOWN0 = "unknown0";
@@ -36,7 +36,7 @@ public class ScratchObjectVariableFrame extends ScratchUserClassObject
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

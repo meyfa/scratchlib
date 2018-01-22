@@ -22,20 +22,20 @@ public class ScratchObjectListMorph extends ScratchObjectBorderedMorph
 
     /**
      * Specifies a list's name.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_LIST_NAME = "listName";
     /**
      * Specifies a list's content array, which stores string entries.
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_CELL_MORPHS = "cellMorphs";
     /**
      * Specifies a list's so-called "target", which is nothing but its owner
      * morph (either the stage, or a sprite).
-     * 
+     *
      * @see ScratchObjectStageMorph
      * @see ScratchObjectSpriteMorph
      */
@@ -45,11 +45,11 @@ public class ScratchObjectListMorph extends ScratchObjectBorderedMorph
      * {@link #FIELD_CELL_MORPHS} for storing values; while the other field
      * stores primitive values, this one contains object entries (e.g.
      * references to sprites that are in a list).
-     * 
+     *
      * <p>
      * The sprites are serialized to arrays with two entries ("sprite" followed
      * by the respective sprite's name), making this an array of 2-tuples.
-     * 
+     *
      * @see ScratchObjectArray
      */
     public static final String FIELD_OBJECT_ENTRIES = "objectEntries";
@@ -65,7 +65,7 @@ public class ScratchObjectListMorph extends ScratchObjectBorderedMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

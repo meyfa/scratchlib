@@ -22,20 +22,20 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
 
     /**
      * Specifies the morph used for displaying the title string.
-     * 
+     *
      * @see ScratchObjectStringMorph
      */
     public static final String FIELD_TITLE_MORPH = "titleMorph";
 
     /**
      * Specifies the morph used for displaying the watched value.
-     * 
+     *
      * @see ScratchObjectUpdatingStringMorph
      */
     public static final String FIELD_READOUT = "readout";
     /**
      * Specifies the morph used for displaying the frame around the readout.
-     * 
+     *
      * @see ScratchObjectWatcherReadoutFrameMorph
      */
     public static final String FIELD_READOUT_FRAME = "readoutFrame";
@@ -43,14 +43,14 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
     /**
      * Specifies the morph used for displaying the slider, if this is a watcher
      * that has one.
-     * 
+     *
      * @see ScratchObjectWatcherSliderMorph
      */
     public static final String FIELD_SCRATCH_SLIDER = "scratchSlider";
 
     /**
      * Specifies the alignment morph containing all child elements.
-     * 
+     *
      * @see ScratchObjectAlignmentMorph
      */
     public static final String FIELD_WATCHER = "watcher";
@@ -58,27 +58,27 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
     /**
      * Specifies whether the watched variable is a sprite-specific variable (as
      * opposed to global).
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_SPRITE_SPECIFIC = "isSpriteSpecific";
 
     /**
      * Unused.
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_UNUSED = "unused";
 
     /**
      * Specifies the minimum value for the slider morph. Default 0.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_SLIDER_MIN = "sliderMin";
     /**
      * Specifies the maximum value for the slider morph. Default 100.
-     * 
+     *
      * @see ScratchObjectSmallInteger16
      */
     public static final String FIELD_SLIDER_MAX = "sliderMax";
@@ -87,7 +87,7 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
      * Specifies whether this is a large watcher. There are three types of
      * watchers: normal, normal with slider, and large (only value is displayed
      * in big font on a completely orange background).
-     * 
+     *
      * @see ScratchObjectBoolean
      */
     public static final String FIELD_IS_LARGE = "isLarge";
@@ -103,7 +103,7 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
@@ -136,7 +136,7 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
 
     /**
      * @return The {@link ScratchObjectStringMorph} displaying the title string.
-     * 
+     *
      * @see #FIELD_TITLE_MORPH
      */
     public ScratchObjectStringMorph getTitleMorph()
@@ -147,7 +147,7 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
     /**
      * @return The {@link ScratchObjectUpdatingStringMorph} used for displaying
      *         the watched value.
-     * 
+     *
      * @see #FIELD_READOUT
      */
     public ScratchObjectUpdatingStringMorph getReadoutMorph()

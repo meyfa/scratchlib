@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Standard string reference type. Uses the US-ASCII charset.
- * 
+ *
  * <p>
  * This is the most widely used string class.
  */

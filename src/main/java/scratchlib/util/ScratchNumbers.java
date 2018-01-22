@@ -24,7 +24,7 @@ public class ScratchNumbers
      * Converts the given number into a Scratch number type. The result may or
      * may not be a floating-point number type, depending on whether the input
      * is close to a mathematical integer.
-     * 
+     *
      * @param value The number.
      * @return The number converted to a Scratch number type.
      */
@@ -40,7 +40,7 @@ public class ScratchNumbers
     /**
      * Converts the given number into a Scratch number type. The class is chosen
      * to be the smallest still able to contain the input.
-     * 
+     *
      * @param value The number.
      * @return The number converted to a Scratch number type.
      */
@@ -71,7 +71,7 @@ public class ScratchNumbers
      * Converts the given {@code BigInteger} into a Scratch number type. This is
      * either {@link ScratchObjectLargeNegativeInteger} or
      * {@link ScratchObjectLargePositiveInteger}, depending on the input's sign.
-     * 
+     *
      * @param value The number.
      * @return The number converted to a Scratch number type.
      */

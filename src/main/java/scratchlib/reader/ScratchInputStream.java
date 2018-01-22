@@ -67,7 +67,7 @@ public class ScratchInputStream extends InputStream
 
     /**
      * Reads the given amount of bytes into an array of exactly that length.
-     * 
+     *
      * @param length The amount of bytes to read.
      * @return The bytes read.
      * @throws IOException
@@ -82,7 +82,7 @@ public class ScratchInputStream extends InputStream
 
     /**
      * Reads a US-ASCII string of the given length, measured in bytes.
-     * 
+     *
      * @param length The string length in bytes.
      * @return The string read.
      * @throws IOException
@@ -94,7 +94,7 @@ public class ScratchInputStream extends InputStream
 
     /**
      * Reads 4 bytes (big-endian) and converts them to an int.
-     * 
+     *
      * @return The int read.
      * @throws IOException
      */
@@ -105,7 +105,7 @@ public class ScratchInputStream extends InputStream
 
     /**
      * Reads 3 bytes (big-endian) and converts them to an int.
-     * 
+     *
      * @return The int read.
      * @throws IOException
      */
@@ -120,7 +120,7 @@ public class ScratchInputStream extends InputStream
 
     /**
      * Reads 2 bytes (big-endian) and converts them to an int.
-     * 
+     *
      * @return The int read.
      * @throws IOException
      */
@@ -131,7 +131,7 @@ public class ScratchInputStream extends InputStream
 
     /**
      * Reads 8 bytes (big-endian) and converts them to a double.
-     * 
+     *
      * @return The double read.
      * @throws IOException
      */

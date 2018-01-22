@@ -19,7 +19,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Base class for all {@code Map}-like Scratch collection classes, that is,
  * {@link ScratchObjectDictionary} and {@link ScratchObjectIdentityDictionary}.
- * 
+ *
  * <p>
  * Allows elements (values) to be associated with other elements (keys), and
  * later retrieved, updated or removed through the same keys again.
@@ -40,7 +40,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
 
     /**
      * Finds the object associated with the given key.
-     * 
+     *
      * @param key The key whose associated value shall be found.
      * @return The associated value.
      */
@@ -52,7 +52,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     /**
      * Associates the given key with the given value. Behaves exactly like the
      * equivalent Java Map operation.
-     * 
+     *
      * @param key The entry's key.
      * @param value The entry's value.
      */
@@ -70,7 +70,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
 
     /**
      * Removes the entry with the given key from this dictionary.
-     * 
+     *
      * @param key The entry's key.
      */
     public void remove(ScratchObject key)

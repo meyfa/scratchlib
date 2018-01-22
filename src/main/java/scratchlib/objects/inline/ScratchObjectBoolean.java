@@ -39,7 +39,7 @@ public class ScratchObjectBoolean extends ScratchObject
     /**
      * Given a boolean, returns the appropriate Scratch constant {@link #TRUE}
      * or {@link #FALSE}.
-     * 
+     *
      * @param val The boolean under consideration.
      * @return The appropriate constant.
      */

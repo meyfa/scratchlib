@@ -22,7 +22,7 @@ public class ScratchObjectImageMedia extends ScratchObjectMedia
 
     /**
      * Specifies the media's form containing the actual image data.
-     * 
+     *
      * @see ScratchObjectForm
      * @see ScratchObjectColorForm
      */
@@ -30,26 +30,26 @@ public class ScratchObjectImageMedia extends ScratchObjectMedia
 
     /**
      * Specifies the media's rotation center.
-     * 
+     *
      * @see ScratchObjectPoint
      */
     public static final String FIELD_ROTATION_CENTER = "rotationCenter";
 
     /**
      * Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_TEXT_BOX = "textBox";
     /**
      * Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_JPEG_BYTES = "jpegBytes";
     /**
      * Seems to be unused (always nil).
-     * 
+     *
      * @see ScratchObject#NIL
      */
     public static final String FIELD_COMPOSITE_FORM = "compositeForm";
@@ -65,7 +65,7 @@ public class ScratchObjectImageMedia extends ScratchObjectMedia
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */

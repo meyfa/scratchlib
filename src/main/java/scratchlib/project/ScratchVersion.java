@@ -47,7 +47,7 @@ public enum ScratchVersion
 
     /**
      * Performs a header lookup and returns the matching {@code ScratchVersion}.
-     * 
+     *
      * @param header The header string to lookup.
      * @return The matching version.
      */

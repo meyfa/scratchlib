@@ -61,7 +61,7 @@ public class ScratchObjects
 
     /**
      * Stores the given constructor for the given class ID.
-     * 
+     *
      * @param id The class ID.
      * @param con The class constructor.
      */
@@ -75,7 +75,7 @@ public class ScratchObjects
 
     /**
      * Finds the constructor for the given class ID.
-     * 
+     *
      * @param id The class ID.
      * @return The respective class constructor.
      */
@@ -87,7 +87,7 @@ public class ScratchObjects
     /**
      * Convenience method for reading an object or reference from the given
      * input stream.
-     * 
+     *
      * @param in The stream to read from.
      * @param project The project reading for.
      * @return The object that was read.

@@ -12,7 +12,7 @@ public class ScratchObjectMedia extends ScratchUserClassObject
 {
     /**
      * Specifies a media's user-assigned name.
-     * 
+     *
      * @see ScratchObjectUtf8
      */
     public static final String FIELD_MEDIA_NAME = "mediaName";
@@ -20,7 +20,7 @@ public class ScratchObjectMedia extends ScratchUserClassObject
     /**
      * Constructs an instance with the default values and with the given classID
      * and version.
-     * 
+     *
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
@@ -43,7 +43,7 @@ public class ScratchObjectMedia extends ScratchUserClassObject
     /**
      * Updates the media's name. Note that this change is NOT reflected anywhere
      * else (when used in blocks, etc).
-     * 
+     *
      * @param name The new name.
      */
     public void setName(String name)
