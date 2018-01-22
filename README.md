@@ -1,5 +1,7 @@
 # scratchlib
 
+[![Build Status](https://travis-ci.org/meyfa/scratchlib.svg?branch=master)](https://travis-ci.org/meyfa/scratchlib)
+
 This is a Java library for working with
 [Scratch](https://scratch.mit.edu/scratch_1.4/) (up to v1.4) and
 [BYOB](http://snap.berkeley.edu/old-byob.html) project files. You can load
