@@ -37,6 +37,9 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      */
     public ScratchObject lookup(int referenceID)
     {
+        if (referenceID < 1 || referenceID > references.size()) {
+            return null;
+        }
         return references.get(referenceID - 1);
     }
 
