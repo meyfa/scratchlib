@@ -39,6 +39,14 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     }
 
     /**
+     * @return The number of elements in this dictionary.
+     */
+    public int size()
+    {
+        return entries.size() + entriesBeforeResolve.size();
+    }
+
+    /**
      * Finds the object associated with the given key.
      *
      * @param key The key whose associated value shall be found.
