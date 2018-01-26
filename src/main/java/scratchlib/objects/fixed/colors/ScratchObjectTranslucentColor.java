@@ -58,9 +58,9 @@ public class ScratchObjectTranslucentColor extends ScratchObject
     {
         super(CLASS_ID);
 
-        this.r = source.getRed() * 4;
-        this.g = source.getGreen() * 4;
-        this.b = source.getBlue() * 4;
+        this.r = source.getRed() * 1023 / 255;
+        this.g = source.getGreen() * 1023 / 255;
+        this.b = source.getBlue() * 1023 / 255;
         this.a = source.getAlpha();
     }
 
@@ -101,7 +101,7 @@ public class ScratchObjectTranslucentColor extends ScratchObject
      */
     public Color toAwtColor()
     {
-        return new Color(r / 4, g / 4, b / 4, a);
+        return new Color(r * 255 / 1023, g * 255 / 1023, b * 255 / 1023, a);
     }
 
     @Override
