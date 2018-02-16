@@ -1,6 +1,11 @@
 package scratchlib.project;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,12 +13,6 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 import scratchlib.objects.ScratchObjectStore;
 import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
@@ -106,17 +105,15 @@ public class ScratchProjectTest
         assertArrayRange(header, actual, 0);
 
         // follows with info section length
-        ByteArrayOutputStream is = getSectionBytes(obj, obj.getInfoSection());
-        byte[] infoLength = ByteBuffer.allocate(4).putInt(is.size()).array();
+        byte[] info = getSectionBytes(obj, obj.getInfoSection());
+        byte[] infoLength = ByteBuffer.allocate(4).putInt(info.length).array();
         assertArrayRange(infoLength, actual, header.length);
 
         // follows with info section bytes
-        byte[] info = is.toByteArray();
         assertArrayRange(info, actual, header.length + infoLength.length);
 
         // ends with stage section bytes
-        ByteArrayOutputStream ss = getSectionBytes(obj, obj.getStageSection());
-        byte[] stage = ss.toByteArray();
+        byte[] stage = getSectionBytes(obj, obj.getStageSection());
         assertArrayRange(stage, actual,
                 header.length + infoLength.length + info.length);
 
@@ -134,7 +131,7 @@ public class ScratchProjectTest
         }
     }
 
-    private ByteArrayOutputStream getSectionBytes(ScratchProject project,
+    private byte[] getSectionBytes(ScratchProject project,
             ScratchObjectStore section) throws IOException
     {
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
@@ -142,6 +139,6 @@ public class ScratchProjectTest
 
         section.writeTo(out, project);
 
-        return bout;
+        return bout.toByteArray();
     }
 }
