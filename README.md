@@ -1,6 +1,6 @@
 # scratchlib
 
-[![Build Status](https://travis-ci.org/meyfa/scratchlib.svg?branch=master)](https://travis-ci.org/meyfa/scratchlib)
+[![Build Status](https://travis-ci.com/meyfa/scratchlib.svg?branch=master)](https://travis-ci.com/meyfa/scratchlib)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2906ba15e9327520e462/test_coverage)](https://codeclimate.com/github/meyfa/scratchlib/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/2906ba15e9327520e462/maintainability)](https://codeclimate.com/github/meyfa/scratchlib/maintainability)
 
