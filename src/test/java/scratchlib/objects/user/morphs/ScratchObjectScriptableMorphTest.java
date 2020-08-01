@@ -1,13 +1,9 @@
 package scratchlib.objects.user.morphs;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
@@ -16,6 +12,8 @@ import scratchlib.objects.fixed.data.ScratchObjectUtf8;
 import scratchlib.objects.fixed.dimensions.ScratchObjectPoint;
 import scratchlib.objects.user.ScratchObjectCustomBlockDefinition;
 import scratchlib.objects.user.ScratchUserClassObject.ClassVersion;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectScriptableMorphTest

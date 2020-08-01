@@ -1,19 +1,13 @@
 package scratchlib.objects;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Collections;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.data.ScratchObjectString;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
@@ -22,6 +16,8 @@ import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectStoreTest
@@ -33,8 +29,7 @@ public class ScratchObjectStoreTest
 
         ScratchObjectArray arr = new ScratchObjectArray();
         ScratchObjectUtf8 orphan = new ScratchObjectUtf8("foo");
-        ScratchObjectStore obj = new ScratchObjectStore(arr,
-                Arrays.asList(orphan));
+        ScratchObjectStore obj = new ScratchObjectStore(arr, Collections.singletonList(orphan));
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         obj.writeTo(new ScratchOutputStream(bout), project);
@@ -52,15 +47,17 @@ public class ScratchObjectStoreTest
         }, bout.toByteArray());
     }
 
-    @Test(expected = IOException.class)
-    public void throwsWhenReadingIncorrectHeader() throws IOException
+    @Test
+    public void throwsWhenReadingIncorrectHeader()
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
         ByteArrayInputStream bin = new ByteArrayInputStream(
                 "ObjS\1Stttt".getBytes(StandardCharsets.UTF_8));
 
-        ScratchObjectStore.readFrom(new ScratchInputStream(bin), project);
+        assertThrows(IOException.class, () -> {
+            ScratchObjectStore.readFrom(new ScratchInputStream(bin), project);
+        });
     }
 
     @Test
@@ -112,14 +109,14 @@ public class ScratchObjectStoreTest
         ScratchObjectStore obj = ScratchObjectStore
                 .readFrom(new ScratchInputStream(bin), project);
 
-        assertThat(obj.get(), instanceOf(ScratchObjectArray.class));
+        assertTrue(obj.get() instanceof ScratchObjectArray);
         ScratchObjectArray arr = (ScratchObjectArray) obj.get();
 
         assertEquals(3, arr.size());
 
-        assertThat(arr.get(0), instanceOf(ScratchObjectString.class));
+        assertTrue(arr.get(0) instanceof ScratchObjectString);
         assertSame(ScratchObject.NIL, arr.get(1));
-        assertThat(arr.get(2), instanceOf(ScratchObjectString.class));
+        assertTrue(arr.get(2) instanceof ScratchObjectString);
     }
 
     @Test
@@ -144,13 +141,11 @@ public class ScratchObjectStoreTest
         ScratchObjectStore obj = ScratchObjectStore
                 .readFrom(new ScratchInputStream(bin), project);
 
-        assertThat(obj.get(), instanceOf(ScratchObjectArray.class));
+        assertTrue(obj.get() instanceof ScratchObjectArray);
 
         assertEquals(2, obj.getOrphanedFields().size());
 
-        assertThat(obj.getOrphanedFields().get(0),
-                instanceOf(ScratchObjectString.class));
-        assertThat(obj.getOrphanedFields().get(1),
-                instanceOf(ScratchObjectString.class));
+        assertTrue(obj.getOrphanedFields().get(0) instanceof ScratchObjectString);
+        assertTrue(obj.getOrphanedFields().get(1) instanceof ScratchObjectString);
     }
 }

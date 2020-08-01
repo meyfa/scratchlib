@@ -1,17 +1,15 @@
 package scratchlib.objects.user.morphs;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.fixed.collections.ScratchObjectAbstractCollection;
 import scratchlib.objects.fixed.collections.ScratchObjectOrderedCollection;
 import scratchlib.objects.user.morphs.ui.ScratchObjectStringMorph;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectStageMorphTest

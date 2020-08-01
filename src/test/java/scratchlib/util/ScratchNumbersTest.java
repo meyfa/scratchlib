@@ -1,13 +1,8 @@
 package scratchlib.util;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
 import java.math.BigInteger;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.inline.ScratchObjectAbstractNumber;
 import scratchlib.objects.inline.ScratchObjectFloat;
 import scratchlib.objects.inline.ScratchObjectLargeNegativeInteger;
@@ -15,13 +10,15 @@ import scratchlib.objects.inline.ScratchObjectLargePositiveInteger;
 import scratchlib.objects.inline.ScratchObjectSmallInteger;
 import scratchlib.objects.inline.ScratchObjectSmallInteger16;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ScratchNumbersTest
 {
     private void assertNumber(Class<? extends ScratchObjectAbstractNumber> type,
             double value, ScratchObjectAbstractNumber actual)
     {
-        assertThat(actual, instanceOf(type));
+        assertTrue(type.isInstance(actual));
         assertEquals(value, actual.doubleValue(), 0.00000001);
     }
 

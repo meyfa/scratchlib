@@ -1,15 +1,10 @@
 package scratchlib.objects.fixed.forms;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchReferenceTable;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.fixed.data.ScratchObjectByteArray;
@@ -17,6 +12,8 @@ import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectColorFormTest

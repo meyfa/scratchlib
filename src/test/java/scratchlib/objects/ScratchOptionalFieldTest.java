@@ -1,36 +1,33 @@
 package scratchlib.objects;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
 import scratchlib.objects.inline.ScratchObjectBoolean;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchOptionalFieldTest
 {
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void throwsForInvalidReferenceID()
     {
-        new ScratchOptionalField(0);
+        assertThrows(IllegalArgumentException.class, () -> new ScratchOptionalField(0));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void throwsForNullValue()
     {
-        new ScratchOptionalField(null);
+        assertThrows(IllegalArgumentException.class, () -> new ScratchOptionalField(null));
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void getThrowsWhenStillUnresolved()
     {
         ScratchOptionalField obj = new ScratchOptionalField(1);
 
         assertFalse(obj.isResolved());
-        obj.get();
+        assertThrows(IllegalStateException.class, obj::get);
     }
 
     @Test
@@ -56,13 +53,13 @@ public class ScratchOptionalFieldTest
         ScratchOptionalField obj0 = new ScratchOptionalField(1);
         ScratchOptionalField obj1 = new ScratchOptionalField(1);
 
-        assertTrue(obj0.hashCode() == obj1.hashCode());
+        assertEquals(obj1.hashCode(), obj0.hashCode());
 
         ScratchObjectArray val = new ScratchObjectArray();
         ScratchOptionalField obj2 = new ScratchOptionalField(val);
         ScratchOptionalField obj3 = new ScratchOptionalField(val);
 
-        assertTrue(obj2.hashCode() == obj3.hashCode());
+        assertEquals(obj3.hashCode(), obj2.hashCode());
     }
 
     @Test
@@ -71,29 +68,27 @@ public class ScratchOptionalFieldTest
         ScratchOptionalField obj0 = new ScratchOptionalField(1);
         ScratchOptionalField obj1 = new ScratchOptionalField(1);
 
-        assertTrue("obj0 not considered equal to itself", obj0.equals(obj0));
+        assertEquals(obj0, obj0, "obj0 not considered equal to itself");
 
-        assertTrue("obj1 not considered equal to obj0", obj0.equals(obj1));
-        assertTrue("obj0 not considered equal to obj1", obj1.equals(obj0));
+        assertEquals(obj1, obj0, "obj1 not considered equal to obj0");
+        assertEquals(obj0, obj1, "obj0 not considered equal to obj1");
 
-        assertFalse("another type considered equal to obj0",
-                obj0.equals(new Object()));
-        assertFalse("null considered equal to obj0", obj0.equals(null));
+        assertNotEquals(new Object(), obj0, "another type considered equal to obj0");
+        assertNotEquals(obj0, null, "null considered equal to obj0");
 
         ScratchObjectArray val = new ScratchObjectArray();
         ScratchOptionalField obj2 = new ScratchOptionalField(val);
         ScratchOptionalField obj3 = new ScratchOptionalField(val);
 
-        assertFalse("obj2 considered equal to obj0", obj0.equals(obj2));
-        assertFalse("obj0 considered equal to obj2", obj2.equals(obj0));
+        assertNotEquals(obj2, obj0, "obj2 considered equal to obj0");
+        assertNotEquals(obj0, obj2, "obj0 considered equal to obj2");
 
-        assertTrue("obj2 not considered equal to itself", obj3.equals(obj2));
+        assertEquals(obj2, obj3, "obj2 not considered equal to itself");
 
-        assertTrue("obj3 not considered equal to obj2", obj2.equals(obj3));
-        assertTrue("obj2 not considered equal to obj3", obj3.equals(obj2));
+        assertEquals(obj3, obj2, "obj3 not considered equal to obj2");
+        assertEquals(obj2, obj3, "obj2 not considered equal to obj3");
 
-        ScratchOptionalField obj4 = new ScratchOptionalField(
-                ScratchObjectBoolean.TRUE);
-        assertFalse("obj4 considered equal to obj2", obj2.equals(obj4));
+        ScratchOptionalField obj4 = new ScratchOptionalField(ScratchObjectBoolean.TRUE);
+        assertNotEquals(obj4, obj2, "obj4 considered equal to obj2");
     }
 }

@@ -1,21 +1,19 @@
 package scratchlib.objects.inline;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchReferenceTable;
 import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectLargeNegativeIntegerTest
@@ -32,10 +30,12 @@ public class ScratchObjectLargeNegativeIntegerTest
         assertEquals(new BigInteger("-1337"), obj.toBigInteger());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void throwsForPositiveSign()
     {
-        new ScratchObjectLargeNegativeInteger(new BigInteger("1337"));
+        assertThrows(IllegalArgumentException.class, () -> {
+            new ScratchObjectLargeNegativeInteger(new BigInteger("1337"));
+        });
     }
 
     @Test

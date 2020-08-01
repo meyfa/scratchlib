@@ -1,24 +1,17 @@
 package scratchlib.project;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchObjectStore;
 import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
-import scratchlib.objects.user.morphs.ScratchObjectStageMorph;
 import scratchlib.writer.ScratchOutputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchProjectTest
@@ -35,20 +28,13 @@ public class ScratchProjectTest
     {
         ScratchProject obj = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_OS_VERSION),
-                instanceOf(ScratchObjectAbstractString.class));
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_PLATFORM),
-                instanceOf(ScratchObjectAbstractString.class));
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_LANGUAGE),
-                instanceOf(ScratchObjectAbstractString.class));
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_HISTORY),
-                instanceOf(ScratchObjectAbstractString.class));
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_SCRATCH_VERSION),
-                instanceOf(ScratchObjectAbstractString.class));
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_COMMENT),
-                instanceOf(ScratchObjectAbstractString.class));
-        assertThat(obj.getInfoProperty(ScratchProject.INFO_AUTHOR),
-                instanceOf(ScratchObjectAbstractString.class));
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_OS_VERSION) instanceof ScratchObjectAbstractString);
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_PLATFORM) instanceof ScratchObjectAbstractString);
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_LANGUAGE) instanceof ScratchObjectAbstractString);
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_HISTORY) instanceof ScratchObjectAbstractString);
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_SCRATCH_VERSION) instanceof ScratchObjectAbstractString);
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_COMMENT) instanceof ScratchObjectAbstractString);
+        assertTrue(obj.getInfoProperty(ScratchProject.INFO_AUTHOR) instanceof ScratchObjectAbstractString);
     }
 
     @Test
@@ -56,7 +42,7 @@ public class ScratchProjectTest
     {
         ScratchProject obj = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        assertThat(obj.getStage(), instanceOf(ScratchObjectStageMorph.class));
+        assertNotNull(obj.getStage());
         assertSame(obj.getStage(), obj.getStageSection().get());
     }
 
@@ -76,15 +62,12 @@ public class ScratchProjectTest
         obj.setInfoProperty(ScratchProject.INFO_COMMENT,
                 new ScratchObjectUtf8("unit-test-comment"));
         assertEquals("unit-test-comment",
-                ((ScratchObjectUtf8) obj
-                        .getInfoProperty(ScratchProject.INFO_COMMENT))
-                                .getValue());
+                ((ScratchObjectUtf8) obj.getInfoProperty(ScratchProject.INFO_COMMENT)).getValue());
 
         obj.setInfoProperty("unknownproperty",
                 new ScratchObjectUtf8("unit-test-comment"));
         assertEquals("unit-test-comment",
-                ((ScratchObjectUtf8) obj.getInfoProperty("unknownproperty"))
-                        .getValue());
+                ((ScratchObjectUtf8) obj.getInfoProperty("unknownproperty")).getValue());
     }
 
     @Test

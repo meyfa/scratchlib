@@ -1,18 +1,12 @@
 package scratchlib.objects.user;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchReferenceTable;
 import scratchlib.objects.fixed.collections.ScratchObjectArray;
@@ -22,6 +16,8 @@ import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchUserClassObjectTest

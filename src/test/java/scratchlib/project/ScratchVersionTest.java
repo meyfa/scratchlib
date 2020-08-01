@@ -1,9 +1,8 @@
 package scratchlib.project;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchVersionTest

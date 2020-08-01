@@ -1,17 +1,15 @@
 package scratchlib.reader;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchReaderTest

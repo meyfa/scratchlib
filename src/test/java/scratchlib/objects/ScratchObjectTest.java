@@ -1,20 +1,16 @@
 package scratchlib.objects;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 import scratchlib.reader.ScratchInputStream;
 import scratchlib.writer.ScratchOutputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectTest
@@ -71,13 +67,15 @@ public class ScratchObjectTest
         assertArrayEquals(new byte[] { 42 }, bout.toByteArray());
     }
 
-    @Test(expected = IOException.class)
-    public void readThrowsForWrongClassID() throws IOException
+    @Test
+    public void readThrowsForWrongClassID()
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
         ScratchInputStream in = new ScratchInputStream(
                 new ByteArrayInputStream(new byte[0]));
 
-        new ReferenceType(42).readFrom(37, in, project);
+        assertThrows(IOException.class, () -> {
+            new ReferenceType(42).readFrom(37, in, project);
+        });
     }
 }

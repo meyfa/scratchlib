@@ -1,12 +1,11 @@
 package scratchlib.objects.user.morphs.ui;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.fixed.data.ScratchObjectAbstractString;
 import scratchlib.objects.fixed.data.ScratchObjectUtf8;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectStringMorphTest

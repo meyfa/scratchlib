@@ -1,22 +1,16 @@
 package scratchlib.objects;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import scratchlib.objects.fixed.data.ScratchObjectString;
 import scratchlib.objects.inline.ScratchObjectBoolean;
 import scratchlib.project.ScratchProject;
 import scratchlib.project.ScratchVersion;
 import scratchlib.reader.ScratchInputStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectsTest
@@ -29,8 +23,7 @@ public class ScratchObjectsTest
         assertSame(ScratchObjectBoolean.FALSE,
                 ScratchObjects.lookupConstructor(3).get());
 
-        assertThat(ScratchObjects.lookupConstructor(9).get(),
-                instanceOf(ScratchObjectString.class));
+        assertTrue(ScratchObjects.lookupConstructor(9).get() instanceof ScratchObjectString);
     }
 
     @Test
@@ -60,17 +53,19 @@ public class ScratchObjectsTest
                 .read(new ScratchInputStream(bin), project);
 
         assertTrue(result.isResolved());
-        assertThat(result.get(), instanceOf(ScratchObjectString.class));
+        assertTrue(result.get() instanceof ScratchObjectString);
     }
 
-    @Test(expected = IOException.class)
-    public void throwsForUnknownClassID() throws IOException
+    @Test
+    public void throwsForUnknownClassID()
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
         ByteArrayInputStream bin = new ByteArrayInputStream(
                 new byte[] { (byte) 255, 0, 0, 0, 0 });
 
-        ScratchObjects.read(new ScratchInputStream(bin), project);
+        assertThrows(IOException.class, () -> {
+            ScratchObjects.read(new ScratchInputStream(bin), project);
+        });
     }
 }

@@ -1,9 +1,8 @@
 package scratchlib.objects.user.morphs.ui;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchObjectWatcherMorphTest
@@ -13,8 +12,7 @@ public class ScratchObjectWatcherMorphTest
     {
         ScratchObjectWatcherMorph obj = new ScratchObjectWatcherMorph();
 
-        assertThat(obj.getTitleMorph(),
-                instanceOf(ScratchObjectStringMorph.class));
+        assertNotNull(obj.getTitleMorph());
     }
 
     @Test
@@ -22,7 +20,6 @@ public class ScratchObjectWatcherMorphTest
     {
         ScratchObjectWatcherMorph obj = new ScratchObjectWatcherMorph();
 
-        assertThat(obj.getReadoutMorph(),
-                instanceOf(ScratchObjectUpdatingStringMorph.class));
+        assertNotNull(obj.getReadoutMorph());
     }
 }

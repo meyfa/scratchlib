@@ -1,12 +1,11 @@
 package scratchlib.writer;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ScratchOutputStreamTest
