@@ -65,19 +65,19 @@ public class ScratchUserClassObjectTest
         };
 
         // null name
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             obj.specifyField(null, ScratchObject.NIL);
+        });
+
+        // null value
+        assertThrows(NullPointerException.class, () -> {
+            obj.specifyField("otherfield", null);
         });
 
         // duplicate name
         obj.specifyField("testfield", ScratchObject.NIL);
         assertThrows(IllegalArgumentException.class, () -> {
             obj.specifyField("testfield", ScratchObject.NIL);
-        });
-
-        // null value
-        assertThrows(IllegalArgumentException.class, () -> {
-            obj.specifyField("otherfield", null);
         });
     }
 

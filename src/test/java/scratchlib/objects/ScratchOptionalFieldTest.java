@@ -18,7 +18,7 @@ public class ScratchOptionalFieldTest
     @Test
     public void throwsForNullValue()
     {
-        assertThrows(IllegalArgumentException.class, () -> new ScratchOptionalField(null));
+        assertThrows(NullPointerException.class, () -> new ScratchOptionalField(null));
     }
 
     @Test
