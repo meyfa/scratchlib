@@ -33,8 +33,7 @@ public class ScratchObjectCustomBlockDefinitionTest
         ScratchObjectCustomBlockDefinition obj = new ScratchObjectCustomBlockDefinition();
 
         obj.setUserSpec("foo %bar");
-        assertEquals("foo %bar",
-                ((ScratchObjectAbstractString) obj.getField(field)).getValue());
+        assertEquals("foo %bar", ((ScratchObjectAbstractString) obj.getField(field)).getValue());
     }
 
     @Test

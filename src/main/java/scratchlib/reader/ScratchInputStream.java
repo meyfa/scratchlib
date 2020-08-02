@@ -19,8 +19,7 @@ public class ScratchInputStream extends InputStream
      */
     public ScratchInputStream(InputStream in)
     {
-        this.in = in instanceof DataInputStream ? (DataInputStream) in
-                : new DataInputStream(in);
+        this.in = in instanceof DataInputStream ? (DataInputStream) in : new DataInputStream(in);
     }
 
     @Override

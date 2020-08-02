@@ -45,8 +45,7 @@ public abstract class ScratchObject
      * @param project The project this object belongs to, for version info.
      * @return Whether anything was inserted.
      */
-    public boolean createReferences(ScratchReferenceTable ref,
-            ScratchProject project)
+    public boolean createReferences(ScratchReferenceTable ref, ScratchProject project)
     {
         if (this instanceof IScratchReferenceType) {
             return ref.insert(this);
@@ -79,8 +78,7 @@ public abstract class ScratchObject
      *
      * @see #createReferences(ScratchReferenceTable, ScratchProject)
      */
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         out.write(classID);
     }
@@ -96,11 +94,10 @@ public abstract class ScratchObject
      * @param project The project this object belongs to, for version info.
      * @throws IOException
      */
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         if (id != classID) {
-            throw new IOException("illegal ID " + id + ", expected " + classID);
+            throw new IOException(String.format("illegal ID %d, expected %d", id, classID));
         }
     }
 
@@ -113,7 +110,7 @@ public abstract class ScratchObject
     @Override
     public final boolean equals(Object obj)
     {
-        return obj == this;
+        return super.equals(obj);
     }
 
     /**

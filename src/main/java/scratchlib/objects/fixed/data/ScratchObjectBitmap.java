@@ -13,8 +13,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Byte array reference type with 4 * length bytes (i.e. 4 bytes per pixel).
  */
-public class ScratchObjectBitmap extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectBitmap extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -54,8 +53,7 @@ public class ScratchObjectBitmap extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -64,8 +62,7 @@ public class ScratchObjectBitmap extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

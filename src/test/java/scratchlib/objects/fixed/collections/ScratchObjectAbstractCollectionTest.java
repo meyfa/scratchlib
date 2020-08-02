@@ -23,9 +23,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void returnsElements()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
 
         assertSame(ScratchObjectBoolean.TRUE, obj.get(0));
@@ -35,9 +34,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void setsElements()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
         obj.set(1, ScratchObject.NIL);
 
@@ -47,8 +45,7 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void addsElementsAtEnd()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42) {
         };
 
         obj.add(ScratchObjectBoolean.TRUE);
@@ -62,8 +59,7 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void addsElementsAtPosition()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42) {
         };
 
         obj.add(0, ScratchObjectBoolean.TRUE);
@@ -77,9 +73,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void removesElements()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
         obj.remove(1);
 
@@ -90,9 +85,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void removesElementsByValue()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
         obj.remove(ScratchObjectBoolean.FALSE);
 
@@ -103,9 +97,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void clearsElements()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
         obj.clear();
 
@@ -115,9 +108,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void iteratesOverAllElements()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
         Iterator<ScratchObject> it = obj.iterator();
 
@@ -129,9 +121,8 @@ public class ScratchObjectAbstractCollectionTest
     @Test
     public void streamsAllElements()
     {
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42, Arrays.asList(ScratchObjectBoolean.TRUE,
-                        ScratchObjectBoolean.FALSE)) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42,
+                Arrays.asList(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.FALSE)) {
         };
 
         assertArrayEquals(new ScratchObject[] { ScratchObjectBoolean.TRUE,
@@ -143,8 +134,7 @@ public class ScratchObjectAbstractCollectionTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42) {
         };
         obj.add(new ScratchObjectArray());
         obj.add(new ScratchObjectArray());
@@ -160,8 +150,7 @@ public class ScratchObjectAbstractCollectionTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42) {
         };
         obj.add(new ScratchObjectArray());
         obj.add(ScratchObjectBoolean.TRUE);
@@ -190,8 +179,7 @@ public class ScratchObjectAbstractCollectionTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(
-                42) {
+        ScratchObjectAbstractCollection obj = new ScratchObjectAbstractCollection(42) {
         };
 
         ByteArrayInputStream bin = new ByteArrayInputStream(new byte[] {

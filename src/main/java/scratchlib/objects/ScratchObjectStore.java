@@ -105,8 +105,7 @@ public class ScratchObjectStore
      * @param project The project this store belongs to, for version info.
      * @throws IOException
      */
-    public void writeTo(ScratchOutputStream out, ScratchProject project)
-            throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchProject project) throws IOException
     {
         // create reference table
         ScratchReferenceTable refTable = new ScratchReferenceTable();
@@ -136,8 +135,7 @@ public class ScratchObjectStore
      * @return The instance read.
      * @throws IOException
      */
-    public static ScratchObjectStore readFrom(ScratchInputStream in,
-            ScratchProject project) throws IOException
+    public static ScratchObjectStore readFrom(ScratchInputStream in, ScratchProject project) throws IOException
     {
         String header = in.readString(10);
         if (!header.equals(HEADER)) {

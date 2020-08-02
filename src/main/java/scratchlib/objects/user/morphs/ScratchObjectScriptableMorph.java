@@ -2,7 +2,9 @@ package scratchlib.objects.user.morphs;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import scratchlib.media.ScratchFormEncoder;
 import scratchlib.objects.ScratchObject;
@@ -95,8 +97,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
         specifyField(FIELD_VARS, new ScratchObjectDictionary());
         specifyField(FIELD_BLOCKS_BIN, new ScratchObjectArray());
 
-        specifyField(FIELD_CUSTOM_BLOCKS, new ScratchObjectOrderedCollection(),
-                ScratchVersion.BYOB311);
+        specifyField(FIELD_CUSTOM_BLOCKS, new ScratchObjectOrderedCollection(), ScratchVersion.BYOB311);
 
         specifyField(FIELD_IS_CLONE, ScratchObjectBoolean.FALSE);
 
@@ -106,8 +107,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
         // populate fields
 
         ScratchObjectImageMedia background = getEmptyBackground();
-        setField(FIELD_MEDIA,
-                new ScratchObjectOrderedCollection(Arrays.asList(background)));
+        setField(FIELD_MEDIA, new ScratchObjectOrderedCollection(Collections.singletonList(background)));
         setField(FIELD_COSTUME, background);
     }
 
@@ -121,8 +121,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
         ScratchObjectForm form = ScratchFormEncoder.encode(im);
 
         ScratchObjectImageMedia background = new ScratchObjectImageMedia();
-        background.setField(ScratchObjectImageMedia.FIELD_MEDIA_NAME,
-                new ScratchObjectUtf8("empty"));
+        background.setField(ScratchObjectImageMedia.FIELD_MEDIA_NAME, new ScratchObjectUtf8("empty"));
         background.setField(ScratchObjectImageMedia.FIELD_FORM, form);
 
         return background;
@@ -135,8 +134,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
      */
     public String getName()
     {
-        return ((ScratchObjectAbstractString) getField(FIELD_OBJ_NAME))
-                .getValue();
+        return ((ScratchObjectAbstractString) getField(FIELD_OBJ_NAME)).getValue();
     }
 
     /**
@@ -263,8 +261,7 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
      */
     public ScratchObjectAbstractCollection getScript(int index)
     {
-        final ScratchObjectAbstractCollection collection = (ScratchObjectAbstractCollection) getField(
-                FIELD_BLOCKS_BIN);
+        final ScratchObjectAbstractCollection collection = (ScratchObjectAbstractCollection) getField(FIELD_BLOCKS_BIN);
         return (ScratchObjectAbstractCollection) collection.get(index);
     }
 
@@ -298,12 +295,10 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
      * @param location The script's location.
      * @param body The script's body (collection of block arrays).
      */
-    public void addScript(ScratchObjectPoint location,
-            ScratchObjectAbstractCollection body)
+    public void addScript(ScratchObjectPoint location, ScratchObjectAbstractCollection body)
     {
         final ScratchObject collectionObj = getField(FIELD_BLOCKS_BIN);
-        final ScratchObject script = new ScratchObjectArray(
-                Arrays.asList(location, body));
+        final ScratchObject script = new ScratchObjectArray(Arrays.asList(location, body));
         ((ScratchObjectAbstractCollection) collectionObj).add(script);
     }
 
@@ -366,7 +361,6 @@ public class ScratchObjectScriptableMorph extends ScratchObjectMorph
      */
     public Stream<ScratchObjectAbstractCollection> streamScriptBodies()
     {
-        return streamScripts()
-                .map(script -> (ScratchObjectAbstractCollection) script.get(1));
+        return streamScripts().map(script -> (ScratchObjectAbstractCollection) script.get(1));
     }
 }

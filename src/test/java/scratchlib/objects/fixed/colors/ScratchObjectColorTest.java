@@ -26,8 +26,7 @@ public class ScratchObjectColorTest
         assertEquals(0, col0.getGreen());
         assertEquals(0, col0.getBlue());
 
-        ScratchObjectColor col1 = new ScratchObjectColor(
-                new Color(255, 255, 255));
+        ScratchObjectColor col1 = new ScratchObjectColor(new Color(255, 255, 255));
 
         assertEquals(1023, col1.getRed());
         assertEquals(1023, col1.getGreen());

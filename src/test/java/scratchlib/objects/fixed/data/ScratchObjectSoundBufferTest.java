@@ -38,8 +38,9 @@ public class ScratchObjectSoundBufferTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectSoundBuffer obj = new ScratchObjectSoundBuffer(
-                new byte[] { 0, 1, 100, 101, (byte) 200, (byte) 201 });
+        ScratchObjectSoundBuffer obj = new ScratchObjectSoundBuffer(new byte[] {
+                0, 1, 100, 101, (byte) 200, (byte) 201
+        });
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchReferenceTable ref = new ScratchReferenceTable();
@@ -73,7 +74,6 @@ public class ScratchObjectSoundBufferTest
         });
         obj.readFrom(12, new ScratchInputStream(bin), project);
 
-        assertArrayEquals(new byte[] { 0, 1, 100, 101, (byte) 200, (byte) 201 },
-                obj.getValue());
+        assertArrayEquals(new byte[] { 0, 1, 100, 101, (byte) 200, (byte) 201 }, obj.getValue());
     }
 }

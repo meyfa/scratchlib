@@ -21,8 +21,7 @@ public class ScratchObjectLargePositiveIntegerTest
     @Test
     public void performsTypeConversions()
     {
-        ScratchObjectLargePositiveInteger obj = new ScratchObjectLargePositiveInteger(
-                new BigInteger("1337"));
+        ScratchObjectLargePositiveInteger obj = new ScratchObjectLargePositiveInteger(new BigInteger("1337"));
 
         assertEquals(1337, obj.doubleValue(), 0.000000001);
         assertEquals(1337, obj.intValue());
@@ -42,12 +41,10 @@ public class ScratchObjectLargePositiveIntegerTest
     public void writesCorrectly() throws IOException
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
-        ScratchObjectLargePositiveInteger obj = new ScratchObjectLargePositiveInteger(
-                new BigInteger("1337"));
+        ScratchObjectLargePositiveInteger obj = new ScratchObjectLargePositiveInteger(new BigInteger("1337"));
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(),
-                project);
+        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(), project);
 
         assertArrayEquals(new byte[] {
                 // class id

@@ -118,8 +118,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
 
         specifyField(FIELD_FLOAT_PRECISION, new ScratchObjectFloat(0.1));
         specifyField(FIELD_GROWABLE, ScratchObjectBoolean.TRUE);
-        specifyField(FIELD_STEP_TIME,
-                new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_STEP_TIME, new ScratchObjectSmallInteger16((short) 100));
     }
 
     /**
@@ -129,8 +128,7 @@ public class ScratchObjectUpdatingStringMorph extends ScratchObjectStringMorph
      */
     public String getParameter()
     {
-        return ((ScratchObjectAbstractString) getField(FIELD_PARAMETER))
-                .getValue();
+        return ((ScratchObjectAbstractString) getField(FIELD_PARAMETER)).getValue();
     }
 
     /**

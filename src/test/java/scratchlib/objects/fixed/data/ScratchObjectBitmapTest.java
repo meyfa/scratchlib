@@ -27,8 +27,7 @@ public class ScratchObjectBitmapTest
     @Test
     public void returnsValue()
     {
-        byte[] val = new byte[] { 0, 1, 2, 3, (byte) 200, (byte) 201,
-                (byte) 202, (byte) 203 };
+        byte[] val = new byte[] { 0, 1, 2, 3, (byte) 200, (byte) 201, (byte) 202, (byte) 203 };
         ScratchObjectBitmap obj = new ScratchObjectBitmap(val);
 
         assertSame(val, obj.getValue());
@@ -39,8 +38,9 @@ public class ScratchObjectBitmapTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectBitmap obj = new ScratchObjectBitmap(new byte[] { 0, 1, 2,
-                3, (byte) 200, (byte) 201, (byte) 202, (byte) 203 });
+        ScratchObjectBitmap obj = new ScratchObjectBitmap(new byte[] {
+                0, 1, 2, 3, (byte) 200, (byte) 201, (byte) 202, (byte) 203
+        });
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchReferenceTable ref = new ScratchReferenceTable();
@@ -74,7 +74,8 @@ public class ScratchObjectBitmapTest
         });
         obj.readFrom(13, new ScratchInputStream(bin), project);
 
-        assertArrayEquals(new byte[] { 0, 1, 2, 3, (byte) 200, (byte) 201,
-                (byte) 202, (byte) 203 }, obj.getValue());
+        assertArrayEquals(new byte[] {
+                0, 1, 2, 3, (byte) 200, (byte) 201, (byte) 202, (byte) 203
+        }, obj.getValue());
     }
 }

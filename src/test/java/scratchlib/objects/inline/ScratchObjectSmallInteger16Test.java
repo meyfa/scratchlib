@@ -21,8 +21,7 @@ public class ScratchObjectSmallInteger16Test
     @Test
     public void performsTypeConversions()
     {
-        ScratchObjectSmallInteger16 obj = new ScratchObjectSmallInteger16(
-                (short) -42);
+        ScratchObjectSmallInteger16 obj = new ScratchObjectSmallInteger16((short) -42);
 
         assertEquals(-42, obj.doubleValue(), 0.000000001);
         assertEquals(-42, obj.intValue());
@@ -34,12 +33,10 @@ public class ScratchObjectSmallInteger16Test
     public void writesCorrectly() throws IOException
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
-        ScratchObjectSmallInteger16 obj = new ScratchObjectSmallInteger16(
-                (short) -42);
+        ScratchObjectSmallInteger16 obj = new ScratchObjectSmallInteger16((short) -42);
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(),
-                project);
+        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(), project);
 
         assertArrayEquals(new byte[] {
                 // class id

@@ -3,6 +3,7 @@ package scratchlib.project;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 import scratchlib.objects.ScratchObject;
 import scratchlib.objects.ScratchObjectStore;
@@ -80,8 +81,7 @@ public class ScratchProject
 
     private final ScratchVersion version;
     private ScratchObjectStore info = new ScratchObjectStore(ScratchObject.NIL);
-    private ScratchObjectStore stage = new ScratchObjectStore(
-            ScratchObject.NIL);
+    private ScratchObjectStore stage = new ScratchObjectStore(ScratchObject.NIL);
 
     /**
      * @param version This project's version.
@@ -93,28 +93,16 @@ public class ScratchProject
         // populate info section
 
         ScratchObjectDictionary dict = new ScratchObjectDictionary();
-        {
-            dict.put(new ScratchObjectString(INFO_OS_VERSION),
-                    new ScratchObjectString("NT"));
-            dict.put(new ScratchObjectString(INFO_PLATFORM),
-                    new ScratchObjectString("Win32"));
-            dict.put(new ScratchObjectString(INFO_LANGUAGE),
-                    new ScratchObjectString("en"));
-            dict.put(new ScratchObjectString(INFO_HISTORY),
-                    new ScratchObjectUtf8("\r"));
-            dict.put(new ScratchObjectString(INFO_SCRATCH_VERSION),
-                    new ScratchObjectString(version.getVersionString()));
-            // thumbnail omitted (-> ColorForm)
-            dict.put(new ScratchObjectString(INFO_COMMENT),
-                    new ScratchObjectUtf8(
-                            "https://github.com/meyfa/scratchlib"));
-            dict.put(new ScratchObjectString(INFO_AUTHOR),
-                    new ScratchObjectUtf8(""));
-            dict.put(new ScratchObjectString(INFO_PEN_TRAILS),
-                    ScratchObject.NIL);
-            dict.put(new ScratchObjectString(INFO_KEEP_ON_STAGE),
-                    ScratchObjectBoolean.TRUE);
-        }
+        dict.put(new ScratchObjectString(INFO_OS_VERSION), new ScratchObjectString("NT"));
+        dict.put(new ScratchObjectString(INFO_PLATFORM), new ScratchObjectString("Win32"));
+        dict.put(new ScratchObjectString(INFO_LANGUAGE), new ScratchObjectString("en"));
+        dict.put(new ScratchObjectString(INFO_HISTORY), new ScratchObjectUtf8("\r"));
+        dict.put(new ScratchObjectString(INFO_SCRATCH_VERSION), new ScratchObjectString(version.getVersionString()));
+        // thumbnail omitted (-> ColorForm)
+        dict.put(new ScratchObjectString(INFO_COMMENT), new ScratchObjectUtf8("https://github.com/meyfa/scratchlib"));
+        dict.put(new ScratchObjectString(INFO_AUTHOR), new ScratchObjectUtf8(""));
+        dict.put(new ScratchObjectString(INFO_PEN_TRAILS), ScratchObject.NIL);
+        dict.put(new ScratchObjectString(INFO_KEEP_ON_STAGE), ScratchObjectBoolean.TRUE);
         info.set(dict);
 
         // populate stage section
@@ -202,8 +190,8 @@ public class ScratchProject
      */
     public ScratchObject getInfoProperty(String key)
     {
-        Entry<ScratchObject, ScratchObject> e = findInfoEntry(key);
-        return e != null ? e.getValue() : null;
+        Optional<Entry<ScratchObject, ScratchObject>> e = findInfoEntry(key);
+        return e.map(Entry::getValue).orElse(null);
     }
 
     /**
@@ -215,9 +203,9 @@ public class ScratchProject
      */
     public void setInfoProperty(String key, ScratchObject value)
     {
-        Entry<ScratchObject, ScratchObject> e = findInfoEntry(key);
+        Optional<Entry<ScratchObject, ScratchObject>> e = findInfoEntry(key);
 
-        ScratchObject k = e != null ? e.getKey() : new ScratchObjectString(key);
+        ScratchObject k = e.map(Entry::getKey).orElseGet(() -> new ScratchObjectString(key));
         ((ScratchObjectAbstractDictionary) info.get()).put(k, value);
     }
 
@@ -228,24 +216,15 @@ public class ScratchProject
      * @param key The entry's key.
      * @return The entry.
      */
-    private Entry<ScratchObject, ScratchObject> findInfoEntry(String key)
+    private Optional<Entry<ScratchObject, ScratchObject>> findInfoEntry(String key)
     {
         ScratchObject i = this.info.get();
         ScratchObjectAbstractDictionary d = (ScratchObjectAbstractDictionary) i;
 
-        for (Entry<ScratchObject, ScratchObject> e : d.entrySet()) {
-            ScratchObject k = e.getKey();
-            if (!(k instanceof ScratchObjectAbstractString)) {
-                continue;
-            }
-            ScratchObjectAbstractString ks = (ScratchObjectAbstractString) k;
-            if (!ks.getValue().equals(key)) {
-                continue;
-            }
-            return e;
-        }
-
-        return null;
+        return d.entrySet().stream().filter(e -> {
+            return e.getKey() instanceof ScratchObjectAbstractString
+                    && ((ScratchObjectAbstractString) e.getKey()).getValue().equals(key);
+        }).findAny();
     }
 
     /**
@@ -275,8 +254,7 @@ public class ScratchProject
      * @return A {@code ByteArrayOutputStream} containing the written bytes.
      * @throws IOException
      */
-    private ByteArrayOutputStream getSectionBytes(ScratchObjectStore section)
-            throws IOException
+    private ByteArrayOutputStream getSectionBytes(ScratchObjectStore section) throws IOException
     {
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchOutputStream out = new ScratchOutputStream(bout);

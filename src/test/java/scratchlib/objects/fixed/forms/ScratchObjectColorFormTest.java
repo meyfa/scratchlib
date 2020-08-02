@@ -35,8 +35,7 @@ public class ScratchObjectColorFormTest
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
         ScratchObjectColorForm obj = new ScratchObjectColorForm(10, 20, 32,
-                new ScratchObjectByteArray(
-                        new byte[] { 0x01, 0x02, 0x03, 0x04 }),
+                new ScratchObjectByteArray(new byte[] { 0x01, 0x02, 0x03, 0x04 }),
                 new ScratchObjectArray());
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();

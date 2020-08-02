@@ -9,8 +9,7 @@ import scratchlib.objects.inline.ScratchObjectSmallInteger16;
  * a part of {@link ScratchObjectWatcherMorph}, can be used to modify the
  * variable.
  */
-public class ScratchObjectWatcherSliderMorph
-        extends ScratchObjectSimpleSliderMorph
+public class ScratchObjectWatcherSliderMorph extends ScratchObjectSimpleSliderMorph
 {
     /**
      * Class ID in binary files.
@@ -54,7 +53,6 @@ public class ScratchObjectWatcherSliderMorph
         super(classID, version);
 
         specifyField(FIELD_UNKNOWN0, ScratchObjectBoolean.TRUE);
-        specifyField(FIELD_UNKNOWN1,
-                new ScratchObjectSmallInteger16((short) 0));
+        specifyField(FIELD_UNKNOWN1, new ScratchObjectSmallInteger16((short) 0));
     }
 }

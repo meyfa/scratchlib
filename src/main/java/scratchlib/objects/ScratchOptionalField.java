@@ -29,14 +29,11 @@ public class ScratchOptionalField
      * Constructor for when there already is a value.
      *
      * @param value The field value.
-     * @throws IllegalArgumentException If value is null.
+     * @throws NullPointerException If value is null.
      */
     public ScratchOptionalField(ScratchObject value)
     {
-        if (value == null) {
-            throw new IllegalArgumentException("value may not be null");
-        }
-        this.value = value;
+        this.value = Objects.requireNonNull(value);
     }
 
     /**
@@ -45,7 +42,7 @@ public class ScratchOptionalField
      */
     public ScratchObject get()
     {
-        if (value == null) {
+        if (!isResolved()) {
             throw new IllegalStateException("reference field unresolved");
         }
         return value;
@@ -84,11 +81,7 @@ public class ScratchOptionalField
     @Override
     public int hashCode()
     {
-        final int prime = 31;
-        int result = 1;
-        // result = prime * result + referenceID;
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
-        return result;
+        return Objects.hashCode(value);
     }
 
     @Override
@@ -96,9 +89,6 @@ public class ScratchOptionalField
     {
         if (this == obj) {
             return true;
-        }
-        if (obj == null) {
-            return false;
         }
         if (!(obj instanceof ScratchOptionalField)) {
             return false;

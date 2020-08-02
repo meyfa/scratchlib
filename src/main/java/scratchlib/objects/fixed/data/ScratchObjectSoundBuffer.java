@@ -13,8 +13,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Byte array reference type with 2 * length bytes, for sounds.
  */
-public class ScratchObjectSoundBuffer extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectSoundBuffer extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -54,8 +53,7 @@ public class ScratchObjectSoundBuffer extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -64,8 +62,7 @@ public class ScratchObjectSoundBuffer extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

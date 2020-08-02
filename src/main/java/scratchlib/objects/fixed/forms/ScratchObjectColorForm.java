@@ -21,8 +21,7 @@ import scratchlib.writer.ScratchOutputStream;
  * are usually 32-bit, have a bitmap instead of a byte array, and use a lookup
  * table for their colors.
  */
-public class ScratchObjectColorForm extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectColorForm extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -49,11 +48,10 @@ public class ScratchObjectColorForm extends ScratchObject
      * @param bits The byte array containing the pixel values.
      * @param colorMap The lookup map for color values.
      */
-    public ScratchObjectColorForm(int width, int height, int depth,
-            ScratchObjectByteArray bits, ScratchObjectArray colorMap)
+    public ScratchObjectColorForm(int width, int height, int depth, ScratchObjectByteArray bits,
+                                  ScratchObjectArray colorMap)
     {
-        this(new ScratchObjectSmallInteger16((short) width),
-                new ScratchObjectSmallInteger16((short) height),
+        this(new ScratchObjectSmallInteger16((short) width), new ScratchObjectSmallInteger16((short) height),
                 new ScratchObjectSmallInteger16((short) depth), bits, colorMap);
     }
 
@@ -64,10 +62,8 @@ public class ScratchObjectColorForm extends ScratchObject
      * @param bits The byte array containing the pixel values.
      * @param colorMap The lookup map for color values.
      */
-    public ScratchObjectColorForm(ScratchObjectSmallInteger16 width,
-            ScratchObjectSmallInteger16 height,
-            ScratchObjectSmallInteger16 depth, ScratchObjectByteArray bits,
-            ScratchObjectArray colorMap)
+    public ScratchObjectColorForm(ScratchObjectSmallInteger16 width, ScratchObjectSmallInteger16 height,
+            ScratchObjectSmallInteger16 depth, ScratchObjectByteArray bits, ScratchObjectArray colorMap)
     {
         super(CLASS_ID);
 
@@ -127,8 +123,7 @@ public class ScratchObjectColorForm extends ScratchObject
     }
 
     @Override
-    public boolean createReferences(ScratchReferenceTable ref,
-            ScratchProject project)
+    public boolean createReferences(ScratchReferenceTable ref, ScratchProject project)
     {
         if (!super.createReferences(ref, project)) {
             return false;
@@ -152,8 +147,7 @@ public class ScratchObjectColorForm extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -166,17 +160,13 @@ public class ScratchObjectColorForm extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 
-        this.width = (ScratchObjectSmallInteger16) ScratchObjects
-                .read(in, project).get();
-        this.height = (ScratchObjectSmallInteger16) ScratchObjects
-                .read(in, project).get();
-        this.depth = (ScratchObjectSmallInteger16) ScratchObjects
-                .read(in, project).get();
+        this.width = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project).get();
+        this.height = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project).get();
+        this.depth = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project).get();
         this.privateOffset = ScratchObjects.read(in, project);
         this.bits = ScratchObjects.read(in, project);
         this.colorMap = ScratchObjects.read(in, project);

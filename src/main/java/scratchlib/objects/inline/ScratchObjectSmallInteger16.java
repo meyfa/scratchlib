@@ -66,16 +66,14 @@ public class ScratchObjectSmallInteger16 extends ScratchObjectAbstractNumber
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
         out.write16bitUnsignedInt(Short.toUnsignedInt(value));
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
         this.value = (short) in.read16bitUnsignedInt();

@@ -69,8 +69,7 @@ public class ScratchObjectStringMorph extends ScratchObjectMorph
         font.add(new ScratchObjectSmallInteger16((short) 10));
 
         specifyField(FIELD_FONT, font);
-        specifyField(FIELD_EMPHASIS,
-                new ScratchObjectSmallInteger16((short) 0));
+        specifyField(FIELD_EMPHASIS, new ScratchObjectSmallInteger16((short) 0));
 
         specifyField(FIELD_CONTENTS, new ScratchObjectUtf8(""));
     }
@@ -80,8 +79,7 @@ public class ScratchObjectStringMorph extends ScratchObjectMorph
      */
     public String getContents()
     {
-        return ((ScratchObjectAbstractString) getField(FIELD_CONTENTS))
-                .getValue();
+        return ((ScratchObjectAbstractString) getField(FIELD_CONTENTS)).getValue();
     }
 
     /**

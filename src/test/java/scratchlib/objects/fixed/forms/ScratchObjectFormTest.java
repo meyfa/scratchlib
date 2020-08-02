@@ -20,8 +20,7 @@ public class ScratchObjectFormTest
     @Test
     public void convertsJavaIntegers()
     {
-        ScratchObjectForm obj = new ScratchObjectForm(10, 20, 32,
-                new ScratchObjectByteArray());
+        ScratchObjectForm obj = new ScratchObjectForm(10, 20, 32, new ScratchObjectByteArray());
 
         assertEquals(10, obj.getWidth().intValue());
         assertEquals(20, obj.getHeight().intValue());
@@ -34,8 +33,7 @@ public class ScratchObjectFormTest
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
         ScratchObjectForm obj = new ScratchObjectForm(10, 20, 32,
-                new ScratchObjectByteArray(
-                        new byte[] { 0x01, 0x02, 0x03, 0x04 }));
+                new ScratchObjectByteArray(new byte[] { 0x01, 0x02, 0x03, 0x04 }));
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchReferenceTable ref = new ScratchReferenceTable();

@@ -25,8 +25,7 @@ public class ScratchObjectAbstractDictionaryTest
     @Test
     public void putsEntries()
     {
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         assertEquals(0, obj.size());
@@ -46,8 +45,7 @@ public class ScratchObjectAbstractDictionaryTest
     @Test
     public void getsCorrectValue()
     {
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         ScratchObject key0 = new ScratchObjectString("foobar");
@@ -70,8 +68,7 @@ public class ScratchObjectAbstractDictionaryTest
     @Test
     public void removesEntry()
     {
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         ScratchObject key0 = new ScratchObjectString("foobar");
@@ -93,8 +90,7 @@ public class ScratchObjectAbstractDictionaryTest
     @Test
     public void returnsKeySet()
     {
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         ScratchObject key0 = new ScratchObjectString("foobar");
@@ -111,8 +107,7 @@ public class ScratchObjectAbstractDictionaryTest
     @Test
     public void returnsValues()
     {
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         ScratchObject key0 = new ScratchObjectString("foobar");
@@ -123,15 +118,13 @@ public class ScratchObjectAbstractDictionaryTest
         ScratchObject val1 = new ScratchObjectArray();
         obj.put(key1, val1);
 
-        assertEquals(new HashSet<>(Arrays.asList(val0, val1)),
-                new HashSet<>(obj.values()));
+        assertEquals(new HashSet<>(Arrays.asList(val0, val1)), new HashSet<>(obj.values()));
     }
 
     @Test
     public void returnsEntrySet()
     {
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         ScratchObject key0 = new ScratchObjectString("foobar");
@@ -155,8 +148,7 @@ public class ScratchObjectAbstractDictionaryTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
         obj.put(new ScratchObjectString("foobar"), new ScratchObjectArray());
         obj.put(new ScratchObjectString("foobar"), new ScratchObjectArray());
@@ -172,8 +164,7 @@ public class ScratchObjectAbstractDictionaryTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
         obj.put(new ScratchObjectString("foo"), new ScratchObjectArray());
         obj.put(new ScratchObjectString("bar"), ScratchObject.NIL);
@@ -206,8 +197,7 @@ public class ScratchObjectAbstractDictionaryTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(
-                42) {
+        ScratchObjectAbstractDictionary obj = new ScratchObjectAbstractDictionary(42) {
         };
 
         ByteArrayInputStream bin = new ByteArrayInputStream(new byte[] {

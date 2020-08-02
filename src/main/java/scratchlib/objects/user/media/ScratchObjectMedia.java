@@ -36,8 +36,7 @@ public class ScratchObjectMedia extends ScratchUserClassObject
      */
     public String getName()
     {
-        return ((ScratchObjectAbstractString) getField(FIELD_MEDIA_NAME))
-                .getValue();
+        return ((ScratchObjectAbstractString) getField(FIELD_MEDIA_NAME)).getValue();
     }
 
     /**

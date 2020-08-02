@@ -1,10 +1,8 @@
 package scratchlib.objects.fixed.collections;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.LinkedHashMap;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import scratchlib.objects.IScratchReferenceType;
 import scratchlib.objects.ScratchObject;
@@ -24,11 +22,10 @@ import scratchlib.writer.ScratchOutputStream;
  * Allows elements (values) to be associated with other elements (keys), and
  * later retrieved, updated or removed through the same keys again.
  */
-public abstract class ScratchObjectAbstractDictionary extends ScratchObject
-        implements IScratchReferenceType
+public abstract class ScratchObjectAbstractDictionary extends ScratchObject implements IScratchReferenceType
 {
-    private final LinkedHashMap<ScratchOptionalField, ScratchOptionalField> entriesBeforeResolve = new LinkedHashMap<>();
-    private final LinkedHashMap<ScratchObject, ScratchObject> entries = new LinkedHashMap<>();
+    private final Map<ScratchOptionalField, ScratchOptionalField> entriesBeforeResolve = new LinkedHashMap<>();
+    private final Map<ScratchObject, ScratchObject> entries = new LinkedHashMap<>();
 
     /**
      * @param classID The ID of the class this object belongs to.
@@ -63,15 +60,12 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
      *
      * @param key The entry's key.
      * @param value The entry's value.
+     * @throws NullPointerException If key or value are null.
      */
     public void put(ScratchObject key, ScratchObject value)
     {
-        if (key == null) {
-            throw new IllegalArgumentException("key may not be null");
-        }
-        if (value == null) {
-            throw new IllegalArgumentException("value may not be null");
-        }
+        Objects.requireNonNull(key);
+        Objects.requireNonNull(value);
 
         entries.put(key, value);
     }
@@ -111,8 +105,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     }
 
     @Override
-    public boolean createReferences(ScratchReferenceTable ref,
-            ScratchProject project)
+    public boolean createReferences(ScratchReferenceTable ref, ScratchProject project)
     {
         if (!super.createReferences(ref, project)) {
             return false;
@@ -132,8 +125,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
         super.resolveReferences(ref);
 
         entries.clear();
-        for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entriesBeforeResolve
-                .entrySet()) {
+        for (Entry<ScratchOptionalField, ScratchOptionalField> entry : entriesBeforeResolve.entrySet()) {
             entry.getKey().resolve(ref);
             entry.getValue().resolve(ref);
 
@@ -143,8 +135,7 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -156,15 +147,15 @@ public abstract class ScratchObjectAbstractDictionary extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 
         int size = in.read32bitUnsignedInt();
         for (int i = 0; i < size; ++i) {
-            entriesBeforeResolve.put(ScratchObjects.read(in, project),
-                    ScratchObjects.read(in, project));
+            ScratchOptionalField key = ScratchObjects.read(in, project);
+            ScratchOptionalField value = ScratchObjects.read(in, project);
+            entriesBeforeResolve.put(key, value);
         }
     }
 }

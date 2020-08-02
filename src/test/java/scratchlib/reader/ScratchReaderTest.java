@@ -26,8 +26,7 @@ public class ScratchReaderTest
         assertEquals(ScratchVersion.SCRATCH14, proj.getVersion());
 
         ScratchObject c = proj.getInfoProperty(ScratchProject.INFO_COMMENT);
-        assertEquals("test project",
-                ((ScratchObjectAbstractString) c).getValue());
+        assertEquals("test project", ((ScratchObjectAbstractString) c).getValue());
     }
 
     @Test
@@ -35,14 +34,12 @@ public class ScratchReaderTest
     {
         ScratchReader obj = new ScratchReader();
 
-        ScratchProject proj = obj.read(
-                getClass().getClassLoader().getResourceAsStream("empty.sb"));
+        ScratchProject proj = obj.read(getClass().getClassLoader().getResourceAsStream("empty.sb"));
 
         assertNotNull(proj);
         assertEquals(ScratchVersion.SCRATCH14, proj.getVersion());
 
         ScratchObject c = proj.getInfoProperty(ScratchProject.INFO_COMMENT);
-        assertEquals("test project",
-                ((ScratchObjectAbstractString) c).getValue());
+        assertEquals("test project", ((ScratchObjectAbstractString) c).getValue());
     }
 }

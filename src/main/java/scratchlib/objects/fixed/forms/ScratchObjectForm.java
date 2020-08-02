@@ -18,8 +18,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Fixed-format reference type for storing so-called "forms", i.e. image
  * containers with dimension data and a bits array.
  */
-public class ScratchObjectForm extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectForm extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -44,11 +43,9 @@ public class ScratchObjectForm extends ScratchObject
      * @param depth The depth of this form.
      * @param bits The byte array containing the pixel values.
      */
-    public ScratchObjectForm(int width, int height, int depth,
-            ScratchObjectByteArray bits)
+    public ScratchObjectForm(int width, int height, int depth, ScratchObjectByteArray bits)
     {
-        this(new ScratchObjectSmallInteger16((short) width),
-                new ScratchObjectSmallInteger16((short) height),
+        this(new ScratchObjectSmallInteger16((short) width), new ScratchObjectSmallInteger16((short) height),
                 new ScratchObjectSmallInteger16((short) depth), bits);
     }
 
@@ -58,8 +55,7 @@ public class ScratchObjectForm extends ScratchObject
      * @param depth The depth of this form.
      * @param bits The byte array containing the pixel values.
      */
-    public ScratchObjectForm(ScratchObjectSmallInteger16 width,
-            ScratchObjectSmallInteger16 height,
+    public ScratchObjectForm(ScratchObjectSmallInteger16 width, ScratchObjectSmallInteger16 height,
             ScratchObjectSmallInteger16 depth, ScratchObjectByteArray bits)
     {
         super(CLASS_ID);
@@ -111,8 +107,7 @@ public class ScratchObjectForm extends ScratchObject
     }
 
     @Override
-    public boolean createReferences(ScratchReferenceTable ref,
-            ScratchProject project)
+    public boolean createReferences(ScratchReferenceTable ref, ScratchProject project)
     {
         if (!super.createReferences(ref, project)) {
             return false;
@@ -134,8 +129,7 @@ public class ScratchObjectForm extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -147,17 +141,13 @@ public class ScratchObjectForm extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 
-        this.width = (ScratchObjectSmallInteger16) ScratchObjects
-                .read(in, project).get();
-        this.height = (ScratchObjectSmallInteger16) ScratchObjects
-                .read(in, project).get();
-        this.depth = (ScratchObjectSmallInteger16) ScratchObjects
-                .read(in, project).get();
+        this.width = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project).get();
+        this.height = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project).get();
+        this.depth = (ScratchObjectSmallInteger16) ScratchObjects.read(in, project).get();
         this.privateOffset = ScratchObjects.read(in, project);
         this.bits = ScratchObjects.read(in, project);
     }

@@ -20,8 +20,7 @@ import scratchlib.writer.ScratchOutputStream;
  * {@link ScratchObjectSymbol} (for internally-defined values).<br>
  * <b>UTF-8</b>: {@link ScratchObjectUtf8} (for user input).
  */
-public abstract class ScratchObjectAbstractString extends ScratchObject
-        implements IScratchReferenceType
+public abstract class ScratchObjectAbstractString extends ScratchObject implements IScratchReferenceType
 {
     private final Charset charset;
     private String value;
@@ -41,8 +40,7 @@ public abstract class ScratchObjectAbstractString extends ScratchObject
      * @param charset The charset to use when reading/writing.
      * @param value The String value.
      */
-    public ScratchObjectAbstractString(int classID, Charset charset,
-            String value)
+    public ScratchObjectAbstractString(int classID, Charset charset, String value)
     {
         super(classID);
 
@@ -67,8 +65,7 @@ public abstract class ScratchObjectAbstractString extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -79,8 +76,7 @@ public abstract class ScratchObjectAbstractString extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

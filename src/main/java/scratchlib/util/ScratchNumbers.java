@@ -48,8 +48,7 @@ public class ScratchNumbers
     {
         if (value < 0) {
             if (value < Integer.MIN_VALUE) {
-                return new ScratchObjectLargeNegativeInteger(
-                        BigInteger.valueOf(value));
+                return new ScratchObjectLargeNegativeInteger(BigInteger.valueOf(value));
             } else if (value < Short.MIN_VALUE) {
                 return new ScratchObjectSmallInteger((int) value);
             } else {
@@ -57,8 +56,7 @@ public class ScratchNumbers
             }
         } else {
             if (value > Integer.MAX_VALUE) {
-                return new ScratchObjectLargePositiveInteger(
-                        BigInteger.valueOf(value));
+                return new ScratchObjectLargePositiveInteger(BigInteger.valueOf(value));
             } else if (value > Short.MAX_VALUE) {
                 return new ScratchObjectSmallInteger((int) value);
             } else {

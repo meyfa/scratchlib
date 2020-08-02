@@ -15,8 +15,7 @@ public class ScratchObjectStringMorphTest
     {
         ScratchObjectStringMorph obj = new ScratchObjectStringMorph();
 
-        obj.setField(ScratchObjectStringMorph.FIELD_CONTENTS,
-                new ScratchObjectUtf8("foobar"));
+        obj.setField(ScratchObjectStringMorph.FIELD_CONTENTS, new ScratchObjectUtf8("foobar"));
         assertEquals("foobar", obj.getContents());
     }
 

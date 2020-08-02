@@ -71,8 +71,7 @@ public class ScratchObjectTest
     public void readThrowsForWrongClassID()
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
-        ScratchInputStream in = new ScratchInputStream(
-                new ByteArrayInputStream(new byte[0]));
+        ScratchInputStream in = new ScratchInputStream(new ByteArrayInputStream(new byte[0]));
 
         assertThrows(IOException.class, () -> {
             new ReferenceType(42).readFrom(37, in, project);

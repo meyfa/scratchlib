@@ -12,16 +12,15 @@ import scratchlib.reader.ScratchInputStream;
  */
 public class ScratchObjectBoolean extends ScratchObject
 {
-    //@formatter:off
     /**
      * The singleton object representing a value of {@code true}.
      */
     public static final ScratchObjectBoolean TRUE = new ScratchObjectBoolean(2);
+
     /**
      * The singleton object representing a value of {@code false}.
      */
     public static final ScratchObjectBoolean FALSE = new ScratchObjectBoolean(3);
-    //@formatter:on
 
     private ScratchObjectBoolean(int classID)
     {
@@ -49,8 +48,7 @@ public class ScratchObjectBoolean extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
     }

@@ -79,10 +79,8 @@ public class ScratchObjectSoundMedia extends ScratchObjectMedia
 
         specifyField(FIELD_ORIGINAL_SOUND, new ScratchObjectSampledSound());
 
-        specifyField(FIELD_VOLUME,
-                new ScratchObjectSmallInteger16((short) 100));
-        specifyField(FIELD_BALANCE,
-                new ScratchObjectSmallInteger16((short) 50));
+        specifyField(FIELD_VOLUME, new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_BALANCE, new ScratchObjectSmallInteger16((short) 50));
 
         specifyField(FIELD_COMPRESSED_SAMPLE_RATE, NIL);
         specifyField(FIELD_COMPRESSED_BITS_PER_SAMPLE, NIL);

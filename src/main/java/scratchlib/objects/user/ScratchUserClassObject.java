@@ -3,6 +3,7 @@ package scratchlib.objects.user;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import scratchlib.objects.IScratchReferenceType;
@@ -26,8 +27,7 @@ import scratchlib.writer.ScratchOutputStream;
  * subclasses should make available as {@code public static final} properties
  * (e.g. {@code FIELD_BOUNDS} for a field called "bounds").
  */
-public abstract class ScratchUserClassObject extends ScratchObject
-        implements IScratchReferenceType
+public abstract class ScratchUserClassObject extends ScratchObject implements IScratchReferenceType
 {
     private final ClassVersion version;
     private final Map<String, FieldDescriptor> fields = new LinkedHashMap<>();
@@ -46,8 +46,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
      * Gets the class version in relation to a given Scratch version, as the
      * class version may change between those.
      *
-     * @param projectVersion The Scratch version for which to get the class
-     *            version.
+     * @param projectVersion The Scratch version for which to get the class version.
      * @return The version of the class this object belongs to.
      */
     public int getClassVersion(ScratchVersion projectVersion)
@@ -61,10 +60,10 @@ public abstract class ScratchUserClassObject extends ScratchObject
      *
      * @param name The field's name.
      * @param defaultValue The field's initial value.
-     * @throws IllegalArgumentException If the name is null, already specified,
-     *             or if the value is null.
-     * @throws UnsupportedOperationException If the class would have too many
-     *             (more than 255) fields after specifying this one.
+     * @throws NullPointerException If name or defaultValue are null.
+     * @throws IllegalArgumentException If the name is already taken.
+     * @throws IndexOutOfBoundsException If the class would have too many (more than 255) fields
+     *          after specifying this one.
      */
     protected void specifyField(String name, ScratchObject defaultValue)
     {
@@ -83,33 +82,23 @@ public abstract class ScratchUserClassObject extends ScratchObject
      * @param name The field's name.
      * @param defaultValue The field's initial value.
      * @param version The Scratch version this field applies to.
-     * @throws IllegalArgumentException If the name is null, already specified,
-     *             or if the value is null.
-     * @throws UnsupportedOperationException If the class would have too many
-     *             (more than 255) fields after specifying this one.
+     * @throws NullPointerException If name or defaultValue are null.
+     * @throws IllegalArgumentException If the name is already taken.
+     * @throws IndexOutOfBoundsException If the class would have too many (more than 255) fields
+     *          after specifying this one.
      */
-    protected void specifyField(String name, ScratchObject defaultValue,
-            ScratchVersion version)
+    protected void specifyField(String name, ScratchObject defaultValue, ScratchVersion version)
     {
-        // param checks
-        if (name == null) {
-            throw new IllegalArgumentException("field name may not be null");
-        }
+        Objects.requireNonNull(name);
         if (fields.containsKey(name)) {
-            throw new IllegalArgumentException(
-                    "field " + name + " already specified");
+            throw new IllegalArgumentException(String.format("field %s already specified", name));
         }
-        if (defaultValue == null) {
-            throw new IllegalArgumentException("field value may not be null");
-        }
+        Objects.requireNonNull(defaultValue);
 
-        // field count checks
         if (fields.size() >= 255) {
-            throw new UnsupportedOperationException(
-                    "too many fields (max 255)");
+            throw new IndexOutOfBoundsException("too many fields (max 255)");
         }
 
-        // add field
         fields.put(name, new FieldDescriptor(defaultValue, version));
     }
 
@@ -129,13 +118,11 @@ public abstract class ScratchUserClassObject extends ScratchObject
      *
      * @param name The field's name.
      * @param value The field's new value.
-     * @throws IllegalArgumentException If the value is null.
+     * @throws NullPointerException If the value is null.
      */
     public void setField(String name, ScratchObject value)
     {
-        if (value == null) {
-            throw new IllegalArgumentException("field value may not be null");
-        }
+        Objects.requireNonNull(value);
         fields.get(name).field = new ScratchOptionalField(value);
     }
 
@@ -148,8 +135,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
     }
 
     @Override
-    public boolean createReferences(ScratchReferenceTable ref,
-            ScratchProject project)
+    public boolean createReferences(ScratchReferenceTable ref, ScratchProject project)
     {
         if (!super.createReferences(ref, project)) {
             return false;
@@ -175,15 +161,13 @@ public abstract class ScratchUserClassObject extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
         out.write(getClassVersion(project.getVersion()));
 
-        int length = (int) fields.values().stream()
-                .filter(fd -> fd.isApplicable(project)).count();
+        int length = (int) fields.values().stream().filter(fd -> fd.isApplicable(project)).count();
         out.write(length);
         for (FieldDescriptor fd : fields.values()) {
             if (fd.isApplicable(project)) {
@@ -193,24 +177,22 @@ public abstract class ScratchUserClassObject extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 
         int version = in.read();
-        int expectedVersion = this.getClassVersion(project.getVersion());
+        int expectedVersion = getClassVersion(project.getVersion());
         if (version != expectedVersion) {
-            throw new IOException("illegal version " + version + ", expected "
-                    + expectedVersion + " (class ID " + getClassID() + ")");
+            throw new IOException(String.format("illegal version %d, expected %d (class ID %d",
+                    version, expectedVersion, getClassID()));
         }
 
         int length = in.read();
-        int expectedLength = (int) fields.values().stream()
-                .filter(fd -> fd.isApplicable(project)).count();
+        int expectedLength = (int) fields.values().stream().filter(fd -> fd.isApplicable(project)).count();
         if (length != expectedLength) {
-            throw new IOException("illegal length " + length + ", expected "
-                    + expectedLength + " (class ID " + getClassID() + ")");
+            throw new IOException(String.format("illegal length %d, expected %d (class ID %d",
+                    length, expectedLength, getClassID()));
         }
 
         for (FieldDescriptor fd : fields.values()) {
@@ -295,8 +277,7 @@ public abstract class ScratchUserClassObject extends ScratchObject
                 case SCRATCH14:
                     return versionScratch;
                 default:
-                    throw new RuntimeException("no case for project version: "
-                            + projectVersion.name());
+                    throw new RuntimeException(String.format("no case for project version: %s", projectVersion.name()));
             }
         }
     }

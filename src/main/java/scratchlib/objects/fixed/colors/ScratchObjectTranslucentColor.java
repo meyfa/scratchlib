@@ -17,8 +17,7 @@ import scratchlib.writer.ScratchOutputStream;
  * words, there are two bits of padding, then 10 bits per RGB component, and
  * another 8 bits for the A component.
  */
-public class ScratchObjectTranslucentColor extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectTranslucentColor extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -105,8 +104,7 @@ public class ScratchObjectTranslucentColor extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -118,8 +116,7 @@ public class ScratchObjectTranslucentColor extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

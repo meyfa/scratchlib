@@ -121,6 +121,10 @@ public class ScratchFormEncoder
      */
     private static byte[] encodeInt(int i)
     {
+        if (i < 0) {
+            throw new IllegalArgumentException("cannot encode negative values");
+        }
+
         /*
          * Algorithm purpose: Compress a given int as much as possible in the
          * binary representation by taking shortcuts for small values.
@@ -137,17 +141,12 @@ public class ScratchFormEncoder
          *             following 4 bytes are the big-endian int representation.
          */
 
-        if (i < 0) {
-            throw new IllegalArgumentException("cannot encode negative values");
-        }
-
         if (i < 224) {
             return new byte[] { (byte) i };
         } else if (i <= (30 * 256 + 255)) {
             return new byte[] { (byte) (224 + (i / 256)), (byte) (i % 256) };
+        } else {
+            return ByteBuffer.allocate(5).put((byte) 255).putInt(i).array();
         }
-
-        return (byte[]) ByteBuffer.allocate(5).put((byte) 255).putInt(i)
-                .rewind().array();
     }
 }

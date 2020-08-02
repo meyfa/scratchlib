@@ -114,11 +114,9 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
         specifyField(FIELD_TITLE_MORPH, new ScratchObjectStringMorph());
 
         specifyField(FIELD_READOUT, new ScratchObjectUpdatingStringMorph());
-        specifyField(FIELD_READOUT_FRAME,
-                new ScratchObjectWatcherReadoutFrameMorph());
+        specifyField(FIELD_READOUT_FRAME, new ScratchObjectWatcherReadoutFrameMorph());
 
-        specifyField(FIELD_SCRATCH_SLIDER,
-                new ScratchObjectWatcherSliderMorph());
+        specifyField(FIELD_SCRATCH_SLIDER, new ScratchObjectWatcherSliderMorph());
 
         specifyField(FIELD_WATCHER, NIL);
 
@@ -126,10 +124,8 @@ public class ScratchObjectWatcherMorph extends ScratchObjectAlignmentMorph
 
         specifyField(FIELD_UNUSED, NIL);
 
-        specifyField(FIELD_SLIDER_MIN,
-                new ScratchObjectSmallInteger16((short) 0));
-        specifyField(FIELD_SLIDER_MAX,
-                new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_SLIDER_MIN, new ScratchObjectSmallInteger16((short) 0));
+        specifyField(FIELD_SLIDER_MAX, new ScratchObjectSmallInteger16((short) 100));
 
         specifyField(FIELD_IS_LARGE, ScratchObjectBoolean.FALSE);
     }

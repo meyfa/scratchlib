@@ -25,8 +25,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_OBJ_NAME;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         obj.setField(field, new ScratchObjectUtf8("foobar"));
         assertEquals("foobar", obj.getName());
@@ -37,12 +36,10 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_OBJ_NAME;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         obj.setName("foobar");
-        assertEquals("foobar",
-                ((ScratchObjectAbstractString) obj.getField(field)).getValue());
+        assertEquals("foobar", ((ScratchObjectAbstractString) obj.getField(field)).getValue());
     }
 
     // ---- CUSTOM BLOCKS ------------------------------------------------------
@@ -52,13 +49,11 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_CUSTOM_BLOCKS;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectCustomBlockDefinition cb0 = new ScratchObjectCustomBlockDefinition();
         ScratchObjectCustomBlockDefinition cb1 = new ScratchObjectCustomBlockDefinition();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
         assertEquals(2, obj.getCustomBlockCount());
 
         obj.setField(field, ScratchObject.NIL);
@@ -70,13 +65,11 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_CUSTOM_BLOCKS;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectCustomBlockDefinition cb0 = new ScratchObjectCustomBlockDefinition();
         ScratchObjectCustomBlockDefinition cb1 = new ScratchObjectCustomBlockDefinition();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
 
         assertSame(cb0, obj.getCustomBlock(0));
         assertSame(cb1, obj.getCustomBlock(1));
@@ -87,8 +80,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_CUSTOM_BLOCKS;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         obj.addCustomBlock(new ScratchObjectCustomBlockDefinition());
         assertEquals(1, obj.getCustomBlockCount());
@@ -106,13 +98,11 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_CUSTOM_BLOCKS;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectCustomBlockDefinition cb0 = new ScratchObjectCustomBlockDefinition();
         ScratchObjectCustomBlockDefinition cb1 = new ScratchObjectCustomBlockDefinition();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
 
         obj.removeCustomBlock(1);
         assertEquals(1, obj.getCustomBlockCount());
@@ -127,13 +117,11 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_CUSTOM_BLOCKS;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectCustomBlockDefinition cb0 = new ScratchObjectCustomBlockDefinition();
         ScratchObjectCustomBlockDefinition cb1 = new ScratchObjectCustomBlockDefinition();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
 
         obj.clearCustomBlocks();
         assertEquals(0, obj.getCustomBlockCount());
@@ -148,16 +136,13 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_CUSTOM_BLOCKS;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectCustomBlockDefinition cb0 = new ScratchObjectCustomBlockDefinition();
         ScratchObjectCustomBlockDefinition cb1 = new ScratchObjectCustomBlockDefinition();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(cb0, cb1)));
 
-        assertEquals(Arrays.asList(cb0, cb1),
-                obj.streamCustomBlocks().collect(Collectors.toList()));
+        assertEquals(Arrays.asList(cb0, cb1), obj.streamCustomBlocks().collect(Collectors.toList()));
 
         obj.setField(field, ScratchObject.NIL);
         assertEquals(0, obj.streamCustomBlocks().count());
@@ -170,8 +155,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         assertEquals(0, obj.getScriptCount());
 
@@ -193,8 +177,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -215,8 +198,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -237,8 +219,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -257,8 +238,7 @@ public class ScratchObjectScriptableMorphTest
     @Test
     public void addsScript()
     {
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         obj.addScript(new ScratchObjectPoint(20, 20), new ScratchObjectArray());
         assertEquals(1, obj.getScriptCount());
@@ -275,8 +255,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -301,8 +280,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -323,8 +301,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -336,8 +313,7 @@ public class ScratchObjectScriptableMorphTest
         ));
         obj.setField(field, new ScratchObjectArray(Arrays.asList(b0, b1)));
 
-        assertEquals(Arrays.asList(b0, b1),
-                obj.streamScripts().collect(Collectors.toList()));
+        assertEquals(Arrays.asList(b0, b1), obj.streamScripts().collect(Collectors.toList()));
     }
 
     @Test
@@ -345,8 +321,7 @@ public class ScratchObjectScriptableMorphTest
     {
         final String field = ScratchObjectScriptableMorph.FIELD_BLOCKS_BIN;
 
-        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42,
-                new ClassVersion(3));
+        ScratchObjectScriptableMorph obj = new ScratchObjectScriptableMorph(42, new ClassVersion(3));
 
         ScratchObjectArray b0 = new ScratchObjectArray(Arrays.asList(//
                 new ScratchObjectPoint(20, 20), // location
@@ -358,7 +333,6 @@ public class ScratchObjectScriptableMorphTest
         ));
         obj.setField(field, new ScratchObjectArray(Arrays.asList(b0, b1)));
 
-        assertEquals(Arrays.asList(b0.get(1), b1.get(1)),
-                obj.streamScriptBodies().collect(Collectors.toList()));
+        assertEquals(Arrays.asList(b0.get(1), b1.get(1)), obj.streamScriptBodies().collect(Collectors.toList()));
     }
 }

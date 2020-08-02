@@ -19,8 +19,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Note that the sign bit is ignored when written, although the class property
  * is the negative integer for convenience.
  */
-public class ScratchObjectLargeNegativeInteger
-        extends ScratchObjectAbstractNumber
+public class ScratchObjectLargeNegativeInteger extends ScratchObjectAbstractNumber
 {
     /**
      * Class ID in binary files.
@@ -75,8 +74,7 @@ public class ScratchObjectLargeNegativeInteger
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -86,8 +84,7 @@ public class ScratchObjectLargeNegativeInteger
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

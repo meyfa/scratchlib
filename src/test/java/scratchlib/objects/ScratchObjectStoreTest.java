@@ -52,8 +52,7 @@ public class ScratchObjectStoreTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ByteArrayInputStream bin = new ByteArrayInputStream(
-                "ObjS\1Stttt".getBytes(StandardCharsets.UTF_8));
+        ByteArrayInputStream bin = new ByteArrayInputStream("ObjS\1Stttt".getBytes(StandardCharsets.UTF_8));
 
         assertThrows(IOException.class, () -> {
             ScratchObjectStore.readFrom(new ScratchInputStream(bin), project);
@@ -75,8 +74,7 @@ public class ScratchObjectStoreTest
                 // end
         });
 
-        ScratchObjectStore obj = ScratchObjectStore
-                .readFrom(new ScratchInputStream(bin), project);
+        ScratchObjectStore obj = ScratchObjectStore.readFrom(new ScratchInputStream(bin), project);
 
         assertSame(ScratchObjectBoolean.TRUE, obj.get());
     }
@@ -106,8 +104,7 @@ public class ScratchObjectStoreTest
                 // end
         });
 
-        ScratchObjectStore obj = ScratchObjectStore
-                .readFrom(new ScratchInputStream(bin), project);
+        ScratchObjectStore obj = ScratchObjectStore.readFrom(new ScratchInputStream(bin), project);
 
         assertTrue(obj.get() instanceof ScratchObjectArray);
         ScratchObjectArray arr = (ScratchObjectArray) obj.get();
@@ -138,8 +135,7 @@ public class ScratchObjectStoreTest
                 // end
         });
 
-        ScratchObjectStore obj = ScratchObjectStore
-                .readFrom(new ScratchInputStream(bin), project);
+        ScratchObjectStore obj = ScratchObjectStore.readFrom(new ScratchInputStream(bin), project);
 
         assertTrue(obj.get() instanceof ScratchObjectArray);
 

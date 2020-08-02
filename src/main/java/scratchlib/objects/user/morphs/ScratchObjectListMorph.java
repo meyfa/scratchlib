@@ -77,7 +77,6 @@ public class ScratchObjectListMorph extends ScratchObjectBorderedMorph
         specifyField(FIELD_CELL_MORPHS, new ScratchObjectArray());
         specifyField(FIELD_TARGET, NIL);
 
-        specifyField(FIELD_OBJECT_ENTRIES, new ScratchObjectArray(),
-                ScratchVersion.BYOB311);
+        specifyField(FIELD_OBJECT_ENTRIES, new ScratchObjectArray(), ScratchVersion.BYOB311);
     }
 }

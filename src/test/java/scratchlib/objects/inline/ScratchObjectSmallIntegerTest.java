@@ -36,8 +36,7 @@ public class ScratchObjectSmallIntegerTest
         ScratchObjectSmallInteger obj = new ScratchObjectSmallInteger(-42);
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(),
-                project);
+        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(), project);
 
         assertArrayEquals(new byte[] {
                 // class id

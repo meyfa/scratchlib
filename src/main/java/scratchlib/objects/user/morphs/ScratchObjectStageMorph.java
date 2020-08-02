@@ -117,10 +117,8 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
 
         specifyField(FIELD_SPRITES, new ScratchObjectOrderedCollection());
 
-        specifyField(FIELD_VOLUME,
-                new ScratchObjectSmallInteger16((short) 100));
-        specifyField(FIELD_TEMPO_BPM,
-                new ScratchObjectSmallInteger16((short) 60));
+        specifyField(FIELD_VOLUME, new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_TEMPO_BPM, new ScratchObjectSmallInteger16((short) 60));
 
         specifyField(FIELD_SCENE_STATES, new ScratchObjectDictionary());
 
@@ -154,8 +152,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     {
         // retrieve item at 'index' in 'sprites' collection
         final ScratchObject spritesObj = getField(FIELD_SPRITES);
-        return (ScratchObjectSpriteMorph) (((ScratchObjectAbstractCollection) spritesObj)
-                .get(index));
+        return (ScratchObjectSpriteMorph) (((ScratchObjectAbstractCollection) spritesObj).get(index));
     }
 
     /**
@@ -169,7 +166,7 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     {
         // remove from previous owner
         final ScratchObject prevOwner = sprite.getField(FIELD_OWNER);
-        if (prevOwner != null && prevOwner instanceof ScratchObjectStageMorph) {
+        if (prevOwner instanceof ScratchObjectStageMorph) {
             ((ScratchObjectStageMorph) prevOwner).removeSprite(sprite);
         }
 
@@ -235,16 +232,13 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
         ((ScratchObjectAbstractCollection) spritesObj).clear();
 
         // filter 'submorphs' collection to only contain non-sprites
-        final ScratchObjectAbstractCollection submorphs = (ScratchObjectAbstractCollection) getField(
-                FIELD_SUBMORPHS);
+        final ScratchObjectAbstractCollection submorphs = (ScratchObjectAbstractCollection) getField(FIELD_SUBMORPHS);
         for (int i = submorphs.size() - 1; i >= 0; --i) {
             final ScratchObject morph = submorphs.get(i);
             if (morph instanceof ScratchObjectSpriteMorph) {
-                // remove
+                // remove, then update owner
                 submorphs.remove(i);
-                // update owner
-                ((ScratchObjectSpriteMorph) morph).setField(FIELD_OWNER,
-                        ScratchObject.NIL);
+                ((ScratchObjectSpriteMorph) morph).setField(FIELD_OWNER, ScratchObject.NIL);
             }
         }
     }
@@ -255,7 +249,6 @@ public class ScratchObjectStageMorph extends ScratchObjectScriptableMorph
     public Stream<ScratchObjectSpriteMorph> streamSprites()
     {
         final ScratchObject spritesObj = getField(FIELD_SPRITES);
-        return ((ScratchObjectAbstractCollection) spritesObj).stream()
-                .map(obj -> (ScratchObjectSpriteMorph) obj);
+        return ((ScratchObjectAbstractCollection) spritesObj).stream().map(obj -> (ScratchObjectSpriteMorph) obj);
     }
 }

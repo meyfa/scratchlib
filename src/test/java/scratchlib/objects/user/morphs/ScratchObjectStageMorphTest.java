@@ -25,8 +25,7 @@ public class ScratchObjectStageMorphTest
 
         ScratchObjectSpriteMorph s0 = new ScratchObjectSpriteMorph();
         ScratchObjectSpriteMorph s1 = new ScratchObjectSpriteMorph();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
 
         assertEquals(2, obj.getSpriteCount());
     }
@@ -40,8 +39,7 @@ public class ScratchObjectStageMorphTest
 
         ScratchObjectSpriteMorph s0 = new ScratchObjectSpriteMorph();
         ScratchObjectSpriteMorph s1 = new ScratchObjectSpriteMorph();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
 
         assertSame(s0, obj.getSprite(0));
         assertSame(s1, obj.getSprite(1));
@@ -87,19 +85,16 @@ public class ScratchObjectStageMorphTest
 
         ScratchObjectSpriteMorph s0 = new ScratchObjectSpriteMorph();
         ScratchObjectSpriteMorph s1 = new ScratchObjectSpriteMorph();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
 
         obj.removeSprite(1);
         assertEquals(1, obj.getSpriteCount());
         assertSame(s0, obj.getSprite(0));
-        assertSame(ScratchObject.NIL,
-                s1.getField(ScratchObjectMorph.FIELD_OWNER));
+        assertSame(ScratchObject.NIL, s1.getField(ScratchObjectMorph.FIELD_OWNER));
 
         obj.removeSprite(s0);
         assertEquals(0, obj.getSpriteCount());
-        assertSame(ScratchObject.NIL,
-                s0.getField(ScratchObjectMorph.FIELD_OWNER));
+        assertSame(ScratchObject.NIL, s0.getField(ScratchObjectMorph.FIELD_OWNER));
     }
 
     @Test
@@ -111,21 +106,17 @@ public class ScratchObjectStageMorphTest
 
         ScratchObjectSpriteMorph s0 = new ScratchObjectSpriteMorph();
         ScratchObjectSpriteMorph s1 = new ScratchObjectSpriteMorph();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
 
         ScratchObjectStringMorph sm = new ScratchObjectStringMorph();
-        obj.setField(ScratchObjectMorph.FIELD_SUBMORPHS,
-                new ScratchObjectOrderedCollection(Arrays.asList(sm, s0, s1)));
+        obj.setField(ScratchObjectMorph.FIELD_SUBMORPHS, new ScratchObjectOrderedCollection(Arrays.asList(sm, s0, s1)));
 
         obj.clearSprites();
         assertEquals(0, obj.getSpriteCount());
 
         // resets owners
-        assertSame(ScratchObject.NIL,
-                s0.getField(ScratchObjectMorph.FIELD_OWNER));
-        assertSame(ScratchObject.NIL,
-                s1.getField(ScratchObjectMorph.FIELD_OWNER));
+        assertSame(ScratchObject.NIL, s0.getField(ScratchObjectMorph.FIELD_OWNER));
+        assertSame(ScratchObject.NIL, s1.getField(ScratchObjectMorph.FIELD_OWNER));
 
         // filters submorphs
         ScratchObjectOrderedCollection sum = (ScratchObjectOrderedCollection) obj
@@ -143,10 +134,8 @@ public class ScratchObjectStageMorphTest
 
         ScratchObjectSpriteMorph s0 = new ScratchObjectSpriteMorph();
         ScratchObjectSpriteMorph s1 = new ScratchObjectSpriteMorph();
-        obj.setField(field,
-                new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
+        obj.setField(field, new ScratchObjectOrderedCollection(Arrays.asList(s0, s1)));
 
-        assertEquals(Arrays.asList(s0, s1),
-                obj.streamSprites().collect(Collectors.toList()));
+        assertEquals(Arrays.asList(s0, s1), obj.streamSprites().collect(Collectors.toList()));
     }
 }

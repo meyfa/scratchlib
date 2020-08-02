@@ -37,9 +37,7 @@ public class ScratchObjectBorderedMorph extends ScratchObjectMorph
     {
         super(classID, version);
 
-        specifyField(FIELD_BORDER_WIDTH,
-                new ScratchObjectSmallInteger16((short) 0));
-        specifyField(FIELD_BORDER_COLOR,
-                new ScratchObjectColor(new Color(148, 145, 145)));
+        specifyField(FIELD_BORDER_WIDTH, new ScratchObjectSmallInteger16((short) 0));
+        specifyField(FIELD_BORDER_COLOR, new ScratchObjectColor(new Color(148, 145, 145)));
     }
 }

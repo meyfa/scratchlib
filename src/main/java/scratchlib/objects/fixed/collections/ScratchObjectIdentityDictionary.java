@@ -7,8 +7,7 @@ package scratchlib.objects.fixed.collections;
  * <p>
  * Functionally equivalent to {@link ScratchObjectDictionary}.
  */
-public class ScratchObjectIdentityDictionary
-        extends ScratchObjectAbstractDictionary
+public class ScratchObjectIdentityDictionary extends ScratchObjectAbstractDictionary
 {
     /**
      * Class ID in binary files.

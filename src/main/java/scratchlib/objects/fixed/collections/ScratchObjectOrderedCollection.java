@@ -13,8 +13,7 @@ import scratchlib.objects.ScratchObject;
  * Functionally equivalent to every other subclass of
  * {@link ScratchObjectAbstractCollection}.
  */
-public class ScratchObjectOrderedCollection
-        extends ScratchObjectAbstractCollection
+public class ScratchObjectOrderedCollection extends ScratchObjectAbstractCollection
 {
     /**
      * Class ID in binary files.
@@ -32,8 +31,7 @@ public class ScratchObjectOrderedCollection
     /**
      * @param entries The entries to initialize this collection with.
      */
-    public ScratchObjectOrderedCollection(
-            Collection<? extends ScratchObject> entries)
+    public ScratchObjectOrderedCollection(Collection<? extends ScratchObject> entries)
     {
         super(CLASS_ID, entries);
     }

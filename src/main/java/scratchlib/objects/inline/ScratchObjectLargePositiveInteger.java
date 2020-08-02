@@ -15,8 +15,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Inline {@link ScratchObject} type for positive integers of arbitrary size,
  * stored by first writing a 16-bit length, followed by that many bytes.
  */
-public class ScratchObjectLargePositiveInteger
-        extends ScratchObjectAbstractNumber
+public class ScratchObjectLargePositiveInteger extends ScratchObjectAbstractNumber
 {
     /**
      * Class ID in binary files.
@@ -71,8 +70,7 @@ public class ScratchObjectLargePositiveInteger
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -82,8 +80,7 @@ public class ScratchObjectLargePositiveInteger
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

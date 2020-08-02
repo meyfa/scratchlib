@@ -87,8 +87,7 @@ public class ScratchReferenceTable implements Iterable<ScratchObject>
      * @param project The project the object is part of.
      * @throws IOException
      */
-    public void writeField(ScratchObject o, ScratchOutputStream out,
-            ScratchProject project) throws IOException
+    public void writeField(ScratchObject o, ScratchOutputStream out, ScratchProject project) throws IOException
     {
         int ref = lookup(o);
 

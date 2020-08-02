@@ -155,8 +155,9 @@ public class ScratchInputStreamTest
     @Test
     public void readsString() throws IOException
     {
-        MockInputStream in = new MockInputStream(new byte[] { 'H', 'e', 'l',
-                'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', 1, 2, 3 });
+        MockInputStream in = new MockInputStream(new byte[] {
+                'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', 1, 2, 3
+        });
         @SuppressWarnings("resource")
         ScratchInputStream obj = new ScratchInputStream(in);
 

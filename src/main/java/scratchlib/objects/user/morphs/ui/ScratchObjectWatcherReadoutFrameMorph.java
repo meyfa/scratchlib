@@ -6,8 +6,7 @@ import scratchlib.objects.user.morphs.ScratchObjectBorderedMorph;
 /**
  * Represents the border of a variable watcher readout morph.
  */
-public class ScratchObjectWatcherReadoutFrameMorph
-        extends ScratchObjectBorderedMorph
+public class ScratchObjectWatcherReadoutFrameMorph extends ScratchObjectBorderedMorph
 {
     /**
      * Class ID in binary files.
@@ -33,8 +32,7 @@ public class ScratchObjectWatcherReadoutFrameMorph
      * @param classID The ID of the class this object belongs to.
      * @param version The version of the class this object belongs to.
      */
-    public ScratchObjectWatcherReadoutFrameMorph(int classID,
-            ClassVersion version)
+    public ScratchObjectWatcherReadoutFrameMorph(int classID, ClassVersion version)
     {
         super(classID, version);
     }

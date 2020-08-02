@@ -46,8 +46,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
      * @param classID The ID of the class this object belongs to.
      * @param entries The entries to initialize this collection with.
      */
-    public ScratchObjectAbstractCollection(int classID,
-            Collection<? extends ScratchObject> entries)
+    public ScratchObjectAbstractCollection(int classID, Collection<? extends ScratchObject> entries)
     {
         super(classID);
 
@@ -79,12 +78,11 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
      *
      * @param index The object's index.
      * @param object The object to replace the current one with.
+     * @throws NullPointerException If object is null.
      */
     public void set(int index, ScratchObject object)
     {
-        if (object == null) {
-            throw new IllegalArgumentException("object may not be null");
-        }
+        Objects.requireNonNull(object);
         entries.set(index, new ScratchOptionalField(object));
     }
 
@@ -92,13 +90,11 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
      * Adds an element to this collection.
      *
      * @param object The element to add.
-     * @throws IllegalArgumentException If object is null.
+     * @throws NullPointerException If object is null.
      */
     public void add(ScratchObject object)
     {
-        if (object == null) {
-            throw new IllegalArgumentException("object may not be null");
-        }
+        Objects.requireNonNull(object);
         entries.add(new ScratchOptionalField(object));
     }
 
@@ -108,13 +104,11 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
      *
      * @param index The position at which to insert.
      * @param object The element to add.
-     * @throws IllegalArgumentException If object is null.
+     * @throws NullPointerException If object is null.
      */
     public void add(int index, ScratchObject object)
     {
-        if (object == null) {
-            throw new IllegalArgumentException("object may not be null");
-        }
+        Objects.requireNonNull(object);
         entries.add(index, new ScratchOptionalField(object));
     }
 
@@ -136,12 +130,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
      */
     public void remove(ScratchObject object)
     {
-        Iterator<ScratchOptionalField> it = entries.iterator();
-        while (it.hasNext()) {
-            if (Objects.equals(it.next().get(), object)) {
-                it.remove();
-            }
-        }
+        entries.removeIf(optionalField -> Objects.equals(optionalField.get(), object));
     }
 
     /**
@@ -167,8 +156,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
     }
 
     @Override
-    public boolean createReferences(ScratchReferenceTable ref,
-            ScratchProject project)
+    public boolean createReferences(ScratchReferenceTable ref, ScratchProject project)
     {
         if (!super.createReferences(ref, project)) {
             return false;
@@ -192,8 +180,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -204,8 +191,7 @@ public abstract class ScratchObjectAbstractCollection extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

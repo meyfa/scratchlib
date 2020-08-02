@@ -42,8 +42,7 @@ public class ScratchOutputStreamTest
 
         assertEquals(0, out.flushed);
         assertEquals(0, out.closed);
-        assertArrayEquals(new byte[] { 0x00, 0x7F, (byte) 0xFF, 0x01, 0x02 },
-                out.toByteArray());
+        assertArrayEquals(new byte[] { 0x00, 0x7F, (byte) 0xFF, 0x01, 0x02 }, out.toByteArray());
     }
 
     @Test
@@ -84,9 +83,7 @@ public class ScratchOutputStreamTest
 
         assertEquals(0, out.flushed);
         assertEquals(0, out.closed);
-        assertArrayEquals(
-                new byte[] { 'B', 'l', 'o', 'x', 'E', 'x', 'p', 'V', '0', '1' },
-                out.toByteArray());
+        assertArrayEquals(new byte[] { 'B', 'l', 'o', 'x', 'E', 'x', 'p', 'V', '0', '1' }, out.toByteArray());
     }
 
     @Test

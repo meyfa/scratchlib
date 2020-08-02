@@ -15,8 +15,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Reference type for 32-bit RGB colors. The 32 bits are achieved by allocating
  * 10 bits to each component, and padding with two leading zeros.
  */
-public class ScratchObjectColor extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectColor extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -92,8 +91,7 @@ public class ScratchObjectColor extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -104,8 +102,7 @@ public class ScratchObjectColor extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

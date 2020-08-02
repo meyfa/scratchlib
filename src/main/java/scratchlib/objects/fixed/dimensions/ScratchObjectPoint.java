@@ -17,8 +17,7 @@ import scratchlib.writer.ScratchOutputStream;
  * Reference type representing a 2D point, consisting (in most cases) of two
  * 16-bit integers.
  */
-public class ScratchObjectPoint extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectPoint extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -48,8 +47,7 @@ public class ScratchObjectPoint extends ScratchObject
      * @param x The x value.
      * @param y The y value.
      */
-    public ScratchObjectPoint(ScratchObjectAbstractNumber x,
-            ScratchObjectAbstractNumber y)
+    public ScratchObjectPoint(ScratchObjectAbstractNumber x, ScratchObjectAbstractNumber y)
     {
         super(CLASS_ID);
 
@@ -74,8 +72,7 @@ public class ScratchObjectPoint extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -84,14 +81,11 @@ public class ScratchObjectPoint extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 
-        this.x = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
-                .get();
-        this.y = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
-                .get();
+        this.x = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project).get();
+        this.y = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project).get();
     }
 }

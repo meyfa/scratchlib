@@ -13,8 +13,7 @@ import scratchlib.writer.ScratchOutputStream;
 /**
  * Byte array reference type. The bytes are written exactly as specified.
  */
-public class ScratchObjectByteArray extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectByteArray extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -49,8 +48,7 @@ public class ScratchObjectByteArray extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -59,8 +57,7 @@ public class ScratchObjectByteArray extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 

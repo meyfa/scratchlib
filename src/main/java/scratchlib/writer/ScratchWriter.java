@@ -30,8 +30,7 @@ public class ScratchWriter
      */
     public void write(ScratchProject project) throws IOException
     {
-        ScratchOutputStream out = new ScratchOutputStream(
-                new FileOutputStream(file));
+        ScratchOutputStream out = new ScratchOutputStream(new FileOutputStream(file));
         project.writeTo(out);
         out.close();
     }

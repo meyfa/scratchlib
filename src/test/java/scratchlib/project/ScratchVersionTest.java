@@ -17,10 +17,8 @@ public class ScratchVersionTest
     @Test
     public void looksUpCorrectVersionsFromHeader()
     {
-        assertSame(ScratchVersion.SCRATCH14,
-                ScratchVersion.lookupHeader("ScratchV02"));
-        assertSame(ScratchVersion.BYOB311,
-                ScratchVersion.lookupHeader("BloxExpV01"));
+        assertSame(ScratchVersion.SCRATCH14, ScratchVersion.lookupHeader("ScratchV02"));
+        assertSame(ScratchVersion.BYOB311, ScratchVersion.lookupHeader("BloxExpV01"));
     }
 
     @Test

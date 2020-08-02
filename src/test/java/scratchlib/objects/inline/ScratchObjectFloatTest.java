@@ -36,8 +36,7 @@ public class ScratchObjectFloatTest
         ScratchObjectFloat obj = new ScratchObjectFloat(-42.5);
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(),
-                project);
+        obj.writeTo(new ScratchOutputStream(bout), new ScratchReferenceTable(), project);
 
         assertArrayEquals(new byte[] {
                 // class id

@@ -123,8 +123,7 @@ public class ScratchObjectSimpleSliderMorph extends ScratchObjectRectangleMorph
         specifyField(FIELD_SLIDER, NIL);
 
         specifyField(FIELD_VALUE, new ScratchObjectFloat(0));
-        specifyField(FIELD_SET_VALUE_SELECTOR,
-                new ScratchObjectSymbol("setVar:to:"));
+        specifyField(FIELD_SET_VALUE_SELECTOR, new ScratchObjectSymbol("setVar:to:"));
 
         specifyField(FIELD_SLIDER_SHADOW, NIL);
         specifyField(FIELD_SLIDER_COLOR, NIL);
@@ -136,9 +135,7 @@ public class ScratchObjectSimpleSliderMorph extends ScratchObjectRectangleMorph
         specifyField(FIELD_TARGET, NIL);
 
         specifyField(FIELD_ACTION_SELECTOR, NIL);
-        specifyField(FIELD_ARGUMENTS,
-                new ScratchObjectSmallInteger16((short) 0));
-        specifyField(FIELD_ACT_WHEN,
-                new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_ARGUMENTS, new ScratchObjectSmallInteger16((short) 0));
+        specifyField(FIELD_ACT_WHEN, new ScratchObjectSmallInteger16((short) 100));
     }
 }

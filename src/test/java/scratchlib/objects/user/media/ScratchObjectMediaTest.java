@@ -14,19 +14,16 @@ public class ScratchObjectMediaTest
     @Test
     public void getsName()
     {
-        ScratchObjectMedia obj = new ScratchObjectMedia(42,
-                new ClassVersion(1));
+        ScratchObjectMedia obj = new ScratchObjectMedia(42, new ClassVersion(1));
 
-        obj.setField(ScratchObjectMedia.FIELD_MEDIA_NAME,
-                new ScratchObjectUtf8("foobar"));
+        obj.setField(ScratchObjectMedia.FIELD_MEDIA_NAME, new ScratchObjectUtf8("foobar"));
         assertEquals("foobar", obj.getName());
     }
 
     @Test
     public void setsName()
     {
-        ScratchObjectMedia obj = new ScratchObjectMedia(42,
-                new ClassVersion(1));
+        ScratchObjectMedia obj = new ScratchObjectMedia(42, new ClassVersion(1));
 
         obj.setName("foobar");
         ScratchObject f = obj.getField(ScratchObjectMedia.FIELD_MEDIA_NAME);

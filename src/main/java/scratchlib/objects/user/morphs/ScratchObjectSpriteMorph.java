@@ -187,18 +187,15 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
     {
         super(classID, version);
 
-        specifyField(FIELD_VISIBILITY,
-                new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_VISIBILITY, new ScratchObjectSmallInteger16((short) 100));
 
         specifyField(FIELD_SCALE_POINT, new ScratchObjectPoint(1, 1));
 
         specifyField(FIELD_ROTATION_DEGREES, new ScratchObjectFloat(0));
         specifyField(FIELD_ROTATION_STYLE, new ScratchObjectSymbol("normal"));
 
-        specifyField(FIELD_VOLUME,
-                new ScratchObjectSmallInteger16((short) 100));
-        specifyField(FIELD_TEMPO_BPM,
-                new ScratchObjectSmallInteger16((short) 60));
+        specifyField(FIELD_VOLUME, new ScratchObjectSmallInteger16((short) 100));
+        specifyField(FIELD_TEMPO_BPM, new ScratchObjectSmallInteger16((short) 60));
 
         specifyField(FIELD_DRAGGABLE, ScratchObjectBoolean.FALSE);
 
@@ -208,21 +205,16 @@ public class ScratchObjectSpriteMorph extends ScratchObjectScriptableMorph
 
         // BYOB fields
 
-        specifyField(FIELD_SCALE, new ScratchObjectSmallInteger16((short) 100),
-                ScratchVersion.BYOB311);
+        specifyField(FIELD_SCALE, new ScratchObjectSmallInteger16((short) 100), ScratchVersion.BYOB311);
 
         specifyField(FIELD_UNKNOWN0, NIL, ScratchVersion.BYOB311);
-        specifyField(FIELD_UNKNOWN1, new ScratchObjectOrderedCollection(),
-                ScratchVersion.BYOB311);
-        specifyField(FIELD_UNKNOWN2, ScratchObjectBoolean.TRUE,
-                ScratchVersion.BYOB311);
+        specifyField(FIELD_UNKNOWN1, new ScratchObjectOrderedCollection(), ScratchVersion.BYOB311);
+        specifyField(FIELD_UNKNOWN2, ScratchObjectBoolean.TRUE, ScratchVersion.BYOB311);
 
-        specifyField(FIELD_MIDPOINT, new ScratchObjectPoint(0, 0),
-                ScratchVersion.BYOB311);
+        specifyField(FIELD_MIDPOINT, new ScratchObjectPoint(0, 0), ScratchVersion.BYOB311);
 
         specifyField(FIELD_PARENT, NIL, ScratchVersion.BYOB311);
-        specifyField(FIELD_INHERITED_MEDIA, new ScratchObjectSet(),
-                ScratchVersion.BYOB311);
+        specifyField(FIELD_INHERITED_MEDIA, new ScratchObjectSet(), ScratchVersion.BYOB311);
 
         // populate fields
 

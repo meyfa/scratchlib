@@ -69,16 +69,15 @@ public class ScratchObjectAbstractStringTest
         });
         ScratchInputStream sin = new ScratchInputStream(bin);
 
-        ScratchObjectAbstractString str0 = new ScratchObjectAbstractString(42,
-                StandardCharsets.US_ASCII) {
+        ScratchObjectAbstractString str0 = new ScratchObjectAbstractString(42, StandardCharsets.US_ASCII) {
         };
         str0.readFrom(42, sin, project);
-        ScratchObjectAbstractString str1 = new ScratchObjectAbstractString(42,
-                StandardCharsets.UTF_8) {
+
+        ScratchObjectAbstractString str1 = new ScratchObjectAbstractString(42, StandardCharsets.UTF_8) {
         };
         str1.readFrom(42, sin, project);
-        ScratchObjectAbstractString str2 = new ScratchObjectAbstractString(42,
-                StandardCharsets.US_ASCII) {
+
+        ScratchObjectAbstractString str2 = new ScratchObjectAbstractString(42, StandardCharsets.US_ASCII) {
         };
         str2.readFrom(42, sin, project);
 

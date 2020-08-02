@@ -15,8 +15,7 @@ public class ScratchObjectUpdatingStringMorphTest
     {
         ScratchObjectUpdatingStringMorph obj = new ScratchObjectUpdatingStringMorph();
 
-        obj.setField(ScratchObjectUpdatingStringMorph.FIELD_PARAMETER,
-                new ScratchObjectUtf8("foobar"));
+        obj.setField(ScratchObjectUpdatingStringMorph.FIELD_PARAMETER, new ScratchObjectUtf8("foobar"));
         assertEquals("foobar", obj.getParameter());
     }
 
@@ -26,8 +25,7 @@ public class ScratchObjectUpdatingStringMorphTest
         ScratchObjectUpdatingStringMorph obj = new ScratchObjectUpdatingStringMorph();
 
         obj.setParameter("foobar");
-        ScratchObject f = obj
-                .getField(ScratchObjectUpdatingStringMorph.FIELD_PARAMETER);
+        ScratchObject f = obj.getField(ScratchObjectUpdatingStringMorph.FIELD_PARAMETER);
         assertEquals("foobar", ((ScratchObjectAbstractString) f).getValue());
     }
 }

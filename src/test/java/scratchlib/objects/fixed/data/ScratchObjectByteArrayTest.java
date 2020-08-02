@@ -30,8 +30,7 @@ public class ScratchObjectByteArrayTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchObjectByteArray obj = new ScratchObjectByteArray(
-                new byte[] { 42, 37, 0, (byte) 0xFF });
+        ScratchObjectByteArray obj = new ScratchObjectByteArray(new byte[] { 42, 37, 0, (byte) 0xFF });
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchReferenceTable ref = new ScratchReferenceTable();
@@ -65,7 +64,6 @@ public class ScratchObjectByteArrayTest
         });
         obj.readFrom(11, new ScratchInputStream(bin), project);
 
-        assertArrayEquals(new byte[] { 42, 37, 0, (byte) 0xFF },
-                obj.getValue());
+        assertArrayEquals(new byte[] { 42, 37, 0, (byte) 0xFF }, obj.getValue());
     }
 }

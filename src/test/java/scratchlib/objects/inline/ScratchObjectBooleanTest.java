@@ -17,9 +17,7 @@ public class ScratchObjectBooleanTest
     @Test
     public void returnsCorrectScratchValue()
     {
-        assertSame(ScratchObjectBoolean.TRUE,
-                ScratchObjectBoolean.valueOf(true));
-        assertSame(ScratchObjectBoolean.FALSE,
-                ScratchObjectBoolean.valueOf(false));
+        assertSame(ScratchObjectBoolean.TRUE, ScratchObjectBoolean.valueOf(true));
+        assertSame(ScratchObjectBoolean.FALSE, ScratchObjectBoolean.valueOf(false));
     }
 }

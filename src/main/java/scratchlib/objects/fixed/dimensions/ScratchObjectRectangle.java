@@ -18,8 +18,7 @@ import scratchlib.writer.ScratchOutputStream;
  * coordinates as well as width and height values (all four are, in most cases,
  * 16-bit).
  */
-public class ScratchObjectRectangle extends ScratchObject
-        implements IScratchReferenceType
+public class ScratchObjectRectangle extends ScratchObject implements IScratchReferenceType
 {
     /**
      * Class ID in binary files.
@@ -44,8 +43,7 @@ public class ScratchObjectRectangle extends ScratchObject
      */
     public ScratchObjectRectangle(int x, int y, int width, int height)
     {
-        this(ScratchNumbers.of(x), ScratchNumbers.of(y),
-                ScratchNumbers.of(width), ScratchNumbers.of(height));
+        this(ScratchNumbers.of(x), ScratchNumbers.of(y), ScratchNumbers.of(width), ScratchNumbers.of(height));
     }
 
     /**
@@ -54,9 +52,8 @@ public class ScratchObjectRectangle extends ScratchObject
      * @param width The width value.
      * @param height The height value.
      */
-    public ScratchObjectRectangle(ScratchObjectAbstractNumber x,
-            ScratchObjectAbstractNumber y, ScratchObjectAbstractNumber width,
-            ScratchObjectAbstractNumber height)
+    public ScratchObjectRectangle(ScratchObjectAbstractNumber x, ScratchObjectAbstractNumber y,
+                                  ScratchObjectAbstractNumber width, ScratchObjectAbstractNumber height)
     {
         super(CLASS_ID);
 
@@ -99,8 +96,7 @@ public class ScratchObjectRectangle extends ScratchObject
     }
 
     @Override
-    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref,
-            ScratchProject project) throws IOException
+    public void writeTo(ScratchOutputStream out, ScratchReferenceTable ref, ScratchProject project) throws IOException
     {
         super.writeTo(out, ref, project);
 
@@ -111,18 +107,13 @@ public class ScratchObjectRectangle extends ScratchObject
     }
 
     @Override
-    public void readFrom(int id, ScratchInputStream in, ScratchProject project)
-            throws IOException
+    public void readFrom(int id, ScratchInputStream in, ScratchProject project) throws IOException
     {
         super.readFrom(id, in, project);
 
-        this.x = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
-                .get();
-        this.y = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
-                .get();
-        this.w = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
-                .get();
-        this.h = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project)
-                .get();
+        this.x = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project).get();
+        this.y = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project).get();
+        this.w = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project).get();
+        this.h = (ScratchObjectAbstractNumber) ScratchObjects.read(in, project).get();
     }
 }

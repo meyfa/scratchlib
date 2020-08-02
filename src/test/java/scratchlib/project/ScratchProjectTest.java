@@ -59,13 +59,11 @@ public class ScratchProjectTest
     {
         ScratchProject obj = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        obj.setInfoProperty(ScratchProject.INFO_COMMENT,
-                new ScratchObjectUtf8("unit-test-comment"));
+        obj.setInfoProperty(ScratchProject.INFO_COMMENT, new ScratchObjectUtf8("unit-test-comment"));
         assertEquals("unit-test-comment",
                 ((ScratchObjectUtf8) obj.getInfoProperty(ScratchProject.INFO_COMMENT)).getValue());
 
-        obj.setInfoProperty("unknownproperty",
-                new ScratchObjectUtf8("unit-test-comment"));
+        obj.setInfoProperty("unknownproperty", new ScratchObjectUtf8("unit-test-comment"));
         assertEquals("unit-test-comment",
                 ((ScratchObjectUtf8) obj.getInfoProperty("unknownproperty")).getValue());
     }
@@ -83,8 +81,7 @@ public class ScratchProjectTest
         byte[] actual = bout.toByteArray();
 
         // starts with header
-        byte[] header = ScratchVersion.SCRATCH14.getHeader()
-                .getBytes(StandardCharsets.UTF_8);
+        byte[] header = ScratchVersion.SCRATCH14.getHeader().getBytes(StandardCharsets.UTF_8);
         assertArrayRange(header, actual, 0);
 
         // follows with info section length
@@ -97,12 +94,10 @@ public class ScratchProjectTest
 
         // ends with stage section bytes
         byte[] stage = getSectionBytes(obj, obj.getStageSection());
-        assertArrayRange(stage, actual,
-                header.length + infoLength.length + info.length);
+        assertArrayRange(stage, actual, header.length + infoLength.length + info.length);
 
         // nothing else follows
-        assertEquals(bout.size(),
-                header.length + infoLength.length + info.length + stage.length);
+        assertEquals(bout.size(), header.length + infoLength.length + info.length + stage.length);
     }
 
     private static void assertArrayRange(byte[] exp, byte[] act, int start)
@@ -114,8 +109,7 @@ public class ScratchProjectTest
         }
     }
 
-    private byte[] getSectionBytes(ScratchProject project,
-            ScratchObjectStore section) throws IOException
+    private byte[] getSectionBytes(ScratchProject project, ScratchObjectStore section) throws IOException
     {
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchOutputStream out = new ScratchOutputStream(bout);

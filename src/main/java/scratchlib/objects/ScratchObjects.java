@@ -56,8 +56,7 @@ import scratchlib.reader.ScratchInputStream;
  */
 public class ScratchObjects
 {
-    private static final List<Supplier<ScratchObject>> cons = new ArrayList<>(
-            Collections.nCopies(255, null));
+    private static final List<Supplier<ScratchObject>> cons = new ArrayList<>(Collections.nCopies(255, null));
 
     /**
      * Stores the given constructor for the given class ID.
@@ -68,7 +67,7 @@ public class ScratchObjects
     private static void storeConstructor(int id, Supplier<ScratchObject> con)
     {
         if (cons.get(id - 1) != null) {
-            throw new IllegalArgumentException("class ID already used: " + id);
+            throw new IllegalArgumentException(String.format("class ID already used: %d", id));
         }
         cons.set(id - 1, con);
     }
@@ -93,10 +92,9 @@ public class ScratchObjects
      * @return The object that was read.
      * @throws IOException
      */
-    public static ScratchOptionalField read(ScratchInputStream in,
-            ScratchProject project) throws IOException
+    public static ScratchOptionalField read(ScratchInputStream in, ScratchProject project) throws IOException
     {
-        int id = in.read();
+        final int id = in.read();
 
         if (id == 99) {
             return new ScratchOptionalField(in.read24bitUnsignedInt());
@@ -104,7 +102,7 @@ public class ScratchObjects
 
         Supplier<ScratchObject> con = lookupConstructor(id);
         if (con == null) {
-            throw new IOException("unknown class id: " + id);
+            throw new IOException(String.format("unknown class id: %d", id));
         }
 
         ScratchObject obj = con.get();
@@ -114,8 +112,6 @@ public class ScratchObjects
     }
 
     static {
-        //@formatter:off
-
         // inline: constants (1, 2, 3)
         storeConstructor(ScratchObject.NIL.getClassID(), () -> ScratchObject.NIL);
         storeConstructor(ScratchObjectBoolean.TRUE.getClassID(), () -> ScratchObjectBoolean.TRUE);
@@ -185,7 +181,5 @@ public class ScratchObjects
         // BYOB
         storeConstructor(ScratchObjectCustomBlockDefinition.CLASS_ID, ScratchObjectCustomBlockDefinition::new);
         storeConstructor(ScratchObjectVariableFrame.CLASS_ID, ScratchObjectVariableFrame::new);
-
-        //@formatter:on
     }
 }

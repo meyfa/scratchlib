@@ -23,7 +23,7 @@ public enum ScratchVersion
 
     private final String header, version;
 
-    private ScratchVersion(String header, String version)
+    ScratchVersion(String header, String version)
     {
         this.header = header;
         this.version = version;

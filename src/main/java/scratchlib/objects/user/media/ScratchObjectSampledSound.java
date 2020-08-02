@@ -109,16 +109,13 @@ public class ScratchObjectSampledSound extends ScratchUserClassObject
 
         specifyField(FIELD_SCALED_VOL, new ScratchObjectSmallInteger(32768));
 
-        specifyField(FIELD_INITIAL_COUNT,
-                new ScratchObjectSmallInteger16((short) 0));
+        specifyField(FIELD_INITIAL_COUNT, new ScratchObjectSmallInteger16((short) 0));
 
         specifyField(FIELD_SAMPLES, new ScratchObjectSoundBuffer(new byte[0]));
-        specifyField(FIELD_ORIGINAL_SAMPLING_RATE,
-                new ScratchObjectSmallInteger16((short) 22050));
+        specifyField(FIELD_ORIGINAL_SAMPLING_RATE, new ScratchObjectSmallInteger16((short) 22050));
         specifyField(FIELD_SAMPLES_SIZE, new ScratchObjectSmallInteger(37792));
 
-        specifyField(FIELD_SCALED_INCREMENT,
-                new ScratchObjectSmallInteger(65536));
+        specifyField(FIELD_SCALED_INCREMENT, new ScratchObjectSmallInteger(65536));
         specifyField(FIELD_SCALED_INITIAL_INDEX, NIL);
     }
 }

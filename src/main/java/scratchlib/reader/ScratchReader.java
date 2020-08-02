@@ -43,8 +43,7 @@ public class ScratchReader
     {
         try (ScratchInputStream sin = new ScratchInputStream(in)) {
 
-            ScratchVersion version = ScratchVersion
-                    .lookupHeader(sin.readString(10));
+            ScratchVersion version = ScratchVersion.lookupHeader(sin.readString(10));
             if (version == null) {
                 throw new IOException("Scratch version unknown");
             }
@@ -54,10 +53,8 @@ public class ScratchReader
             // skip infoSize (redundant, since object store has own length)
             sin.read32bitUnsignedInt();
 
-            // read info
+            // read info, then read contents
             project.setInfoSection(ScratchObjectStore.readFrom(sin, project));
-
-            // read contents
             project.setStageSection(ScratchObjectStore.readFrom(sin, project));
 
             return project;

@@ -26,15 +26,13 @@ public class ScratchObjectRectangleTest
         assertEquals(10, r0.getWidth().intValue());
         assertEquals(20, r0.getHeight().intValue());
 
-        ScratchObjectRectangle r1 = new ScratchObjectRectangle(1 << 27, 1 << 28,
-                1 << 29, 1 << 30);
+        ScratchObjectRectangle r1 = new ScratchObjectRectangle(1 << 27, 1 << 28, 1 << 29, 1 << 30);
         assertEquals(1 << 27, r1.getX().intValue());
         assertEquals(1 << 28, r1.getY().intValue());
         assertEquals(1 << 29, r1.getWidth().intValue());
         assertEquals(1 << 30, r1.getHeight().intValue());
 
-        ScratchObjectRectangle r2 = new ScratchObjectRectangle(-70, -(1 << 28),
-                -10, -(1 << 29));
+        ScratchObjectRectangle r2 = new ScratchObjectRectangle(-70, -(1 << 28), -10, -(1 << 29));
         assertEquals(-70, r2.getX().intValue());
         assertEquals(-(1 << 28), r2.getY().intValue());
         assertEquals(-10, r2.getWidth().intValue());

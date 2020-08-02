@@ -25,8 +25,7 @@ public class ScratchUserClassObjectTest
     @Test
     public void returnsCorrectClassVersion()
     {
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
 
         assertEquals(3, obj.getClassVersion(ScratchVersion.SCRATCH14));
@@ -36,8 +35,7 @@ public class ScratchUserClassObjectTest
     @Test
     public void getsFields()
     {
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
         obj.specifyField("testfield", ScratchObjectBoolean.TRUE);
         obj.specifyField("testfield2", ScratchObjectBoolean.FALSE);
@@ -49,8 +47,7 @@ public class ScratchUserClassObjectTest
     @Test
     public void setsFields()
     {
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
         obj.specifyField("testfield", ScratchObjectBoolean.TRUE);
         obj.specifyField("testfield2", ScratchObjectBoolean.FALSE);
@@ -64,61 +61,49 @@ public class ScratchUserClassObjectTest
     @Test
     public void throwsForIllegalFieldSpecifications()
     {
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
 
         // null name
-        try {
+        assertThrows(IllegalArgumentException.class, () -> {
             obj.specifyField(null, ScratchObject.NIL);
-            fail("not thrown");
-        } catch (IllegalArgumentException e) {
-        }
+        });
 
         // duplicate name
         obj.specifyField("testfield", ScratchObject.NIL);
-        try {
+        assertThrows(IllegalArgumentException.class, () -> {
             obj.specifyField("testfield", ScratchObject.NIL);
-            fail("not thrown");
-        } catch (IllegalArgumentException e) {
-        }
+        });
 
         // null value
-        try {
+        assertThrows(IllegalArgumentException.class, () -> {
             obj.specifyField("otherfield", null);
-            fail("not thrown");
-        } catch (IllegalArgumentException e) {
-        }
+        });
     }
 
     @Test
     public void throwsForTooManyFieldSpecifications()
     {
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
 
         for (int i = 0; i < 255; ++i) {
             obj.specifyField("testfield" + i, ScratchObject.NIL);
         }
-        try {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             obj.specifyField("testfield255", ScratchObject.NIL);
-            fail("not thrown");
-        } catch (UnsupportedOperationException e) {
-        }
+        });
     }
 
     @Test
     public void returnsFieldNames()
     {
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
         obj.specifyField("testfield", ScratchObjectBoolean.TRUE);
         obj.specifyField("testfield2", ScratchObjectBoolean.FALSE);
 
-        assertEquals(new HashSet<>(Arrays.asList("testfield", "testfield2")),
-                obj.getFieldNames());
+        assertEquals(new HashSet<>(Arrays.asList("testfield", "testfield2")), obj.getFieldNames());
     }
 
     @Test
@@ -128,8 +113,7 @@ public class ScratchUserClassObjectTest
         ScratchObject ref1 = new ScratchObjectArray();
         ScratchObject ref2 = new ScratchObjectArray();
 
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
         obj.specifyField("foo", ref0);
         obj.specifyField("bar", ref1, ScratchVersion.SCRATCH14);
@@ -162,14 +146,11 @@ public class ScratchUserClassObjectTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
         obj.specifyField("foo", ScratchObject.NIL);
-        obj.specifyField("bar", ScratchObjectBoolean.TRUE,
-                ScratchVersion.SCRATCH14);
-        obj.specifyField("baz", ScratchObjectBoolean.FALSE,
-                ScratchVersion.BYOB311);
+        obj.specifyField("bar", ScratchObjectBoolean.TRUE, ScratchVersion.SCRATCH14);
+        obj.specifyField("baz", ScratchObjectBoolean.FALSE, ScratchVersion.BYOB311);
 
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ScratchReferenceTable ref = new ScratchReferenceTable();
@@ -196,8 +177,7 @@ public class ScratchUserClassObjectTest
     {
         ScratchProject project = new ScratchProject(ScratchVersion.SCRATCH14);
 
-        ScratchUserClassObject obj = new ScratchUserClassObject(42,
-                new ClassVersion(3, 5)) {
+        ScratchUserClassObject obj = new ScratchUserClassObject(42, new ClassVersion(3, 5)) {
         };
         obj.specifyField("foo", ScratchObject.NIL);
         obj.specifyField("bar", ScratchObject.NIL, ScratchVersion.SCRATCH14);
