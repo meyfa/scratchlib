@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 import scratchlib.media.ScratchFormEncoder;
 import scratchlib.objects.ScratchObject;
